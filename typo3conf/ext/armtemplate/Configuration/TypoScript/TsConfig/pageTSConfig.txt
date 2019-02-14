@@ -1,0 +1,65 @@
+TCEFORM {
+    tt_content {
+        frame_class {
+            removeItems = 1,5,6,10,11,12,20,21,66
+            addItems {
+                100 = Center Center
+                101 = Left Float
+                102 = Left Padding
+                103 = Right Padding
+                104 = Padding (Both)
+                105 = Max width (1400px)
+                106 = Anthracite (BG)
+                107 = White (BG)
+                108 = Bright Grey (BG)
+                109 = Blue (BG)
+                110 = Green (BG)
+                111 = Red (BG)
+                112 = Yellow (BG)
+                113 = Pastell 1 (BG)
+                114 = Pastell 2 (BG)
+                115 = Pastell 3 (BG)
+                116 = Pastell 4 (BG)
+                117 = Slide Show
+                118 = Small Text (Right)
+                119 = Small Text (Left)
+            }
+        }
+        header_layout {
+            addItems {
+                101 = Heading 1 (padding)
+                102 = Heading 2 (padding)
+                103 = Heading 1 (white)
+                104 = Heading 2 (white)
+                105 = Heading 1 (grey)
+                106 = Heading 2 (grey)
+                107 = Heading 1 (anthracite)
+                108 = Heading 2 (anthracite)
+                109 = Heading 1 (yellow)
+                110 = Heading 2 (yellow)
+                111 = Heading 1 (green)
+                112 = Heading 2 (green)
+                113 = Heading 1 (blue)
+                114 = Heading 2 (blue)
+                115 = Heading 1 (red)
+                116 = Heading 2 (red)
+                117 = Heading 1 (pastell 1)
+                118 = Heading 2 (pastell 1)
+                119 = Heading 1 (pastell 2)
+                120 = Heading 2 (pastell 2)
+                121 = Heading 1 (pastell 3)
+                122 = Heading 2 (pastell 3)
+                123 = Heading 1 (pastell 4)
+                124 = Heading 2 (pastell 4)
+            }
+        }
+    }
+}
+
+RTE.default.preset = default
+RTE.default.buttons.image.options.magic.maxWidth = 1020
+RTE.default.buttons.image.options.magic.maxHeight = 800
+RTE.tt_content.types.text.bodytext.preset = armtemplate_preset
+RTE.tt_content.types.textmedia.bodytext.preset = armtemplate_preset
+RTE.tt_content.types.textimage.bodytext.preset = armtemplate_preset
+RTE.config.tt_content.bodytext.preset = armtemplate_preset

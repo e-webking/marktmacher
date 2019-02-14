@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <field_heading type="array">
+        <TCEforms type="array">
+          <label>Heading</label>
+          <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </field_heading>
+      <field_color type="array">
+        <TCEforms type="array">
+          <label>Text Color</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">White</numIndex>
+                 <numIndex index="1">white</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">Black</numIndex>
+                <numIndex index="1">black</numIndex>
+              </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">Bright Grey</numIndex>
+                <numIndex index="1">grey</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Anthracite</numIndex>
+                <numIndex index="1">darkgrey</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_color>
+      <field_align type="array">
+        <TCEforms type="array">
+          <label>Text align</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">Left</numIndex>
+                 <numIndex index="1">text-left</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">Right</numIndex>
+                <numIndex index="1">text-right</numIndex>
+              </numIndex>
+               <numIndex index="2" type="array">
+                <numIndex index="0">Middle - Left</numIndex>
+                <numIndex index="1">text-middle-left</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Bottom - Left</numIndex>
+                <numIndex index="1">text-bottom-left</numIndex>
+              </numIndex>
+               <numIndex index="4" type="array">
+                <numIndex index="0">Middle - Right</numIndex>
+                <numIndex index="1">text-middle-right</numIndex>
+              </numIndex>
+                <numIndex index="5" type="array">
+                <numIndex index="0">Bottom - Right</numIndex>
+                <numIndex index="1">text-bottom-right</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_align>
+      <field_htype type="array">
+        <TCEforms type="array">
+          <label>H1 / H2 / H3</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">H1</numIndex>
+                 <numIndex index="1">h1</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">H2</numIndex>
+                <numIndex index="1">h2</numIndex>
+              </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">H3</numIndex>
+                <numIndex index="1">h3</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_htype>
+      <field_bgcolor type="array">
+        <TCEforms type="array">
+          <label>Background Color</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+                 <numIndex index="0" type="array">
+                <numIndex index="0">Black</numIndex>
+                <numIndex index="1">blackbg</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">White</numIndex>
+                 <numIndex index="1">whitebg</numIndex>
+              </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">Anthracite</numIndex>
+                <numIndex index="1">darkgreybg</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Bright Grey</numIndex>
+                <numIndex index="1">greybg</numIndex>
+              </numIndex>
+              <numIndex index="4" type="array">
+                <numIndex index="0">Green</numIndex>
+                <numIndex index="1">greenbg</numIndex>
+              </numIndex>
+               <numIndex index="5" type="array">
+                <numIndex index="0">Yellow</numIndex>
+                <numIndex index="1">yellowbg</numIndex>
+              </numIndex>
+               <numIndex index="6" type="array">
+                <numIndex index="0">Red</numIndex>
+                <numIndex index="1">redbg</numIndex>
+              </numIndex>
+              <numIndex index="7" type="array">
+                <numIndex index="0">Blue</numIndex>
+                <numIndex index="1">bluebg</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_bgcolor>
+      <field_link>
+          <TCEforms type="array">
+          <label>Link</label>
+          <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+            <wizards type="array">
+                <link type="array">
+                    <type>popup</type>
+                    <title>Link</title>
+                    <icon>link_popup.gif</icon>
+                    <module type="array">
+                        <name>wizard_element_browser</name>
+                        <urlParameters type="array">
+                            <mode>wizard</mode>
+                        </urlParameters>
+                    </module>
+                    <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+                </link>
+            </wizards>
+            <softref>typolink</softref>
+          </config>
+        </TCEforms>
+      </field_link>
+    </el>
+  </ROOT>
+</T3DataStructure>

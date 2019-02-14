@@ -1,0 +1,96 @@
+imports:
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+    - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+    
+editor:
+   config:
+      contentsCss: ["EXT:rte_ckeditor/Resources/Public/Css/contents.css", "EXT:armtemplate/Resources/Public/css/rte.css"]
+      
+      format_tags: "div;p;h1;h2;h3;h4;h5;h6;pre"
+      
+      stylesSet:
+        # block level styles
+        - { name: "align-left", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'align-left' }}
+        - { name: "align-center", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'align-center' }}
+        - { name: "align-right", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'align-right' }}
+        - { name: "align-justify", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'align-justify' }}
+        - { name: "text-center", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'text-center' }}
+        - { name: "White", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'white' }}
+        - { name: "Black", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'black' }}
+        - { name: "Bright Grey", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'grey' }}
+        - { name: "Anthracite", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'anthracite' }}
+        - { name: "Blue", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'blue' }}
+        - { name: "Green", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'green' }}
+        - { name: "Yellow", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'yellow' }}
+        - { name: "Red", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'red' }}
+        - { name: "Pastell 1", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell1' }}
+        - { name: "Pastell 2", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell2' }}
+        - { name: "Pastell 3", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell3' }}
+        - { name: "Pastell 4", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell4' }}
+        - { name: "row", element: "div", attributes: { 'class': 'row' }}
+        - { name: "col-sm-6", element: "div", attributes: { 'class': 'col-sm-6' }}
+        - { name: "col-md-3", element: "div", attributes: { 'class': 'col-md-3' }}
+        - { name: "Grey (BG)", element: "div", attributes: { 'class': 'bggrey' }}
+        - { name: "White (BG)", element: "div", attributes: { 'class': 'bgwhite' }}
+        - { name: "Blue (BG)", element: "div", attributes: { 'class': 'bgblue' }}
+        - { name: "Anthracite (BG)", element: "div", attributes: { 'class': 'bganthracite' }}
+        - { name: "Green (BG)", element: "div", attributes: { 'class': 'bggreen' }}
+        - { name: "Red (BG)", element: "div", attributes: { 'class': 'bgred' }}
+        - { name: "Yellow (BG)", element: "div", attributes: { 'class': 'bgyellow' }}
+        - { name: "Pastell 1 (BG)", element: "div", attributes: { 'class': 'bgpastell1' }}
+        - { name: "Pastell 2 (BG)", element: "div", attributes: { 'class': 'bgpastell2' }}
+        - { name: "Pastell 3 (BG)", element: "div", attributes: { 'class': 'bgpastell3' }}
+        - { name: "Pastell 4 (BG)", element: "div", attributes: { 'class': 'bgpastell4' }}
+        - { name: "table-responsive", element: "div", attributes: { 'class': 'table-responsive' }}
+        - { name: "table", element: "table", attributes: { 'class': 'table' }}
+        - { name: "table-bordered", element: "table", attributes: { 'class': 'table-bordered' }}
+        # Inline styles
+        - { name: "btn", element: "a", attributes: { 'class': 'btn' }}
+        - { name: "btn-primary", element: "a", attributes: { 'class': 'btn-primary' }}
+        - { name: "btn-lg", element: "a", attributes: { 'class': 'btn-lg' }}
+        - { name: "anchor-link", element: "a", attributes: { 'class': 'anchor-link' }}
+        - { name: "btn-default", element: "a", attributes: { 'class': 'btn-default' }}
+        
+      toolbarGroups:
+      - { name: clipboard, groups: [clipboard, undo] }
+      - { name: editing,   groups: [find, selection, spellchecker] }
+      - { name: insert }
+      - { name: table }
+      - { name: tabletools }
+      - { name: document,  groups: [ mode, document, doctools ] }
+      - "/"
+      - { name: basicstyles, groups: [ basicstyles, align, cleanup ] }
+      - { name: paragraph,   groups: [ list, indent, blocks, align, bidi ] }
+      - { name: links }
+      - "/"
+      - { name: styles }
+      - { name: others }
+      
+      extraPlugins:
+        - justify
+        - specialchar
+        - showblocks
+        - codesnippet
+        
+      externalPlugins:
+        typo3image:
+            allowedExtensions: "jpg,jpeg,png"
+      
+      
+      justifyClasses:
+      - align-left
+      - align-center
+      - align-right
+      - align-justify
+      
+      removePlugins:
+
+      removeButtons:
+
+# Allow s and u tag
+processing:
+  allowTags:
+    - s
+    - u

@@ -1,0 +1,16 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armtemplate/Configuration/TypoScript/setup_inc_page.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armtemplate/Configuration/TypoScript/setup_inc_nav.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armtemplate/Configuration/TypoScript/setup_inc_plugin.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armtemplate/Configuration/TypoScript/setup_inc_content.txt">
+plugin.tx_armtemplate {
+    view {
+        templateRootPaths.0 = {$plugin.tx_armtemplate.view.templateRootPath}
+    }
+    settings {
+        mail {
+            contact = Contact request made at www.worktoday.ch
+            adminEmail = info@worktoday.ch
+            adminName = Worktoday.ch
+        }
+    }
+}

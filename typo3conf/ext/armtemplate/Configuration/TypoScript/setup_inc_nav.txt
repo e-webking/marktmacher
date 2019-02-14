@@ -1,0 +1,80 @@
+lib.logo = IMAGE
+lib.logo {
+    file = {$logoFile}
+    file.width = 100
+    file.height = 100
+    stdWrap {
+        typolink.parameter = {$rootPID}
+#        typolink.ATagParams = class="logo"
+        wrap = |
+    }
+}
+
+lib.moblogo = IMAGE
+lib.moblogo {
+    file = {$logoFile}
+    file.width = 170
+    file.height = 80
+    stdWrap {
+        typolink.parameter = {$rootPID}
+        wrap = |
+    }
+}
+
+lib.mainMenu = HMENU
+lib.mainMenu {
+    wrap = <ul class="header-nav__list">|</ul>
+    
+    1 = TMENU
+    1 {
+        expAll = 1
+        noBlur=1
+
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = description // title
+            ATagParams = class="smoothscroll"
+            stdWrap.htmlSpecialChars = 1
+        }
+        CUR = 1
+        CUR {			
+            wrapItemAndSub = <li class="current">|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+    }
+}
+
+lib.colorMenu = HMENU
+lib.colorMenu {
+    wrap = <ul class="colormenu">|</ul>
+    
+    1 = TMENU
+    1 {
+        expAll = 1
+        noBlur=1
+
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+        
+    }
+}
+
+ ## Main Menu - End
+
+# Breadcrumb Navigation
+lib.breadcrumb = HMENU
+lib.breadcrumb {
+    wrap = <ul class="breadcrumbs">|</ul>
+    special = rootline
+    special.range = 0|
+    1 = TMENU
+    1 {
+  
+        NO.allWrap = <li>|</li>
+        NO.ATagTitle.field = description // title
+    }
+}

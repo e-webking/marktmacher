@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+        <field_heading type="array">
+            <TCEforms type="array">
+              <label>Heading</label>
+              <config type="array">
+                <type>input</type>
+                <size>30</size>
+                <eval>trim</eval>
+              </config>
+            </TCEforms>
+        </field_heading>
+        <field_hpos type="array">
+        <TCEforms type="array">
+          <label>Heading Position</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">Bottom Center (on image)</numIndex>
+                 <numIndex index="1">bottom-center</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">Below Image</numIndex>
+                <numIndex index="1">below-center</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+        </field_hpos>
+        <field_color type="array">
+            <TCEforms type="array">
+              <label>Text Color</label>
+              <config type="array">
+                <type>select</type>
+                <items type="array">
+                  <numIndex index="0" type="array">
+                    <numIndex index="0">White</numIndex>
+                     <numIndex index="1">white</numIndex>
+                  </numIndex>
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">Black</numIndex>
+                    <numIndex index="1">black</numIndex>
+                  </numIndex>
+                </items>
+              </config>
+            </TCEforms>
+        </field_color>
+        <field_image type="array">
+            <TCEforms type="array">
+              <label>Image</label>
+              <config type="array">
+                <type>group</type>
+                <internal_type>file</internal_type>
+                <allowed>gif,png,jpg,jpeg</allowed>
+                <max_size>2000</max_size>
+                <uploadfolder>uploads/tx_armtemplate</uploadfolder>
+                <show_thumbs>1</show_thumbs>
+                <size>1</size>
+                <maxitems>1</maxitems>
+                <minitems>0</minitems>
+              </config>
+            </TCEforms>
+        </field_image>
+       <field_hover type="array">
+            <TCEforms type="array">
+              <label>Hover Image</label>
+              <config type="array">
+                <type>group</type>
+                <internal_type>file</internal_type>
+                <allowed>gif,png,jpg,jpeg</allowed>
+                <max_size>2000</max_size>
+                <uploadfolder>uploads/tx_armtemplate</uploadfolder>
+                <show_thumbs>1</show_thumbs>
+                <size>1</size>
+                <maxitems>1</maxitems>
+                <minitems>0</minitems>
+              </config>
+            </TCEforms>
+        </field_hover>
+        <field_imgalt type="array">
+            <TCEforms type="array">
+              <label>IMAGE Alt text</label>
+              <config type="array">
+                <type>input</type>
+                <size>30</size>
+                <eval>trim</eval>
+              </config>
+            </TCEforms>
+        </field_imgalt>
+    </el>
+  </ROOT>
+</T3DataStructure>

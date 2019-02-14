@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <field_noofitems type="array">
+        <TCEforms type="array">
+          <label>No. of images</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">Two</numIndex>
+                 <numIndex index="1">twogrid</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">Three</numIndex>
+                <numIndex index="1">threegrid</numIndex>
+              </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">Four</numIndex>
+                <numIndex index="1">fourgrid</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Five</numIndex>
+                <numIndex index="1">fivegrid</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_noofitems>
+    </el>
+  </ROOT>
+</T3DataStructure>

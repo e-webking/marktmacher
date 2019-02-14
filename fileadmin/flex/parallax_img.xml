@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <field_vid type="array">
+        <TCEforms type="array">
+          <label>Background Image</label>
+          <config type="array">
+            <type>group</type>
+            <internal_type>file</internal_type>
+            <allowed>jpg,png,jpeg,svg</allowed>
+            <max_size>5000</max_size>
+            <uploadfolder>uploads/tx_armtemplate</uploadfolder>
+            <show_thumbs>1</show_thumbs>
+            <size>1</size>
+            <maxitems>1</maxitems>
+            <minitems>0</minitems>
+          </config>
+        </TCEforms>
+      </field_vid>
+    </el>
+  </ROOT>
+</T3DataStructure>

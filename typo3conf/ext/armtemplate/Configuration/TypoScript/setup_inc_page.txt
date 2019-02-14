@@ -1,0 +1,126 @@
+# page
+page = PAGE
+page.typeNum = 0
+config {
+  doctype = html5
+  doctype(
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9"> <![endif]-->
+  )
+  baseURL = {$baseUrl}
+  absRefPrefix = {$baseUrl}
+  xhtml_cleaning = all
+  xmlprologue = none
+  metaCharset = utf-8
+  renderCharset = utf-8
+  additionalHeaders = Content-Type:text/html;charset=utf-8
+  simulateStaticDocuments = 0
+  tx_realurl_enable = 0
+  linkVars = L
+  uniqueLinkVars = 1
+  
+  language = de
+  locale_all = de_DE.UTF-8
+  htmlTag_langKey = de-DE
+  sys_language_uid = 0
+  sys_language_overlay = 1
+  sys_language_mode = ignore
+  spamProtectEmailAddresses = 1
+  index_enable = 1
+  index_externals = 1
+  jQueryNoConflict = 1
+  useCacheHash = 0
+  disablePrefixComment = 1
+  disableImgBorderAttr = 1
+  noPageTitle = 2
+  
+  #concatenateCss = 1
+  #compressJs = 1
+  #compressCss = 1
+  removeDefaultCss = 1
+  cache_period = 0 
+  sendCacheHeaders = 0
+  moveJsFromHeaderToFooter = 1
+}
+
+## Meta
+page.meta {
+  viewport = width=device-width, initial-scale=1
+  # google-site-verification = 
+  abstract.field = abstract
+  description.field = description
+  keywords.field = keywords
+  og:title.field = title
+  og:description.field = description
+  og:url = http://www.marktmacher.com/
+  og:site_name = MarktMacher
+  og:type = website
+}
+page.headerData.5 = TEXT
+page.headerData.5.field = nav_title // title
+page.headerData.5.noTrimWrap = |<title>|: Marktmacher</title>|
+
+page.headerData.15 = TEXT
+page.headerData.15.value (
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+)
+
+page.includeCSS {
+    file01 = {$templatePath}Resources/Public/css/bootstrap/css/bootstrap.min.css
+    file02 = {$templatePath}Resources/Public/font-awesome/css/font-awesome.min.css
+    file03 = {$templatePath}Resources/Public/owl-carousel/assets/owl.carousel.css
+    file04 = {$templatePath}Resources/Public/owl-carousel/assets/owl.theme.default.css
+    file05 = {$templatePath}Resources/Public/revolution/css/settings.css
+    file06 = {$templatePath}Resources/Public/revolution/css/layers.css
+    file07 = {$templatePath}Resources/Public/revolution/css/navigation.css
+    file08 = {$templatePath}Resources/Public/css/style.css
+}
+
+page.includeJSFooter {
+    file01 = {$templatePath}Resources/Public/js/jquery.min.js
+    file02 = {$templatePath}Resources/Public/js/jquery-migrate.min.js
+    file03 = {$templatePath}Resources/Public/js/jquery.easing.1.3.min.js
+    file04 = {$templatePath}Resources/Public/css/bootstrap/js/bootstrap.min.js
+    file05 = {$templatePath}Resources/Public/js/bootstrap-hover-dropdown.min.js
+    file06 = {$templatePath}Resources/Public/owl-carousel/owl.carousel.min.js
+    file07 = {$templatePath}Resources/Public/revolution/js/jquery.themepunch.revolution.min.js
+    file08 = {$templatePath}Resources/Public/revolution/js/jquery.themepunch.tools.min.js
+    file09 = {$templatePath}Resources/Public/js/jarallax.min.js
+    file10 = {$templatePath}Resources/Public/js/custom.js
+}
+
+## Add Template
+page.10 = FLUIDTEMPLATE
+page.10 {
+    file = {$templatePath}Resources/Private/Templates/fullwidth.html
+    layoutRootPath = {$templatePath}Resources/Private/Layouts/
+    partialRootPath = {$templatePath}Resources/Private/Partials/
+
+    file.stdWrap.cObject = CASE
+    file.stdWrap.cObject {
+
+        key.field = backend_layout
+        key.ifEmpty.data = levelfield:-1, backend_layout_next_level, slide
+
+        default = TEXT
+        default.value = {$templatePath}Resources/Private/Templates/fullwidth.html
+
+        # Main Template
+        1 = TEXT
+        1.value = {$templatePath}Resources/Private/Templates/fullwidth.html
+
+        # Main Template
+        2 = TEXT
+        2.value = {$templatePath}Resources/Private/Templates/fullwidthgrid.html
+    }
+
+    variables {
+        marcel = TEXT
+        marcel.value = marcel kuriger
+    }
+}

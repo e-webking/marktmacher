@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <field_bgcolor type="array">
+        <TCEforms type="array">
+          <label>Background Color</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+                 <numIndex index="0" type="array">
+                <numIndex index="0">Black</numIndex>
+                <numIndex index="1">blackbg</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">White</numIndex>
+                 <numIndex index="1">whitebg</numIndex>
+              </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">Anthracite</numIndex>
+                <numIndex index="1">darkgreybg</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Bright Grey</numIndex>
+                <numIndex index="1">greybg</numIndex>
+              </numIndex>
+              <numIndex index="4" type="array">
+                <numIndex index="0">Green</numIndex>
+                <numIndex index="1">greenbg</numIndex>
+              </numIndex>
+               <numIndex index="5" type="array">
+                <numIndex index="0">Yellow</numIndex>
+                <numIndex index="1">yellowbg</numIndex>
+              </numIndex>
+               <numIndex index="6" type="array">
+                <numIndex index="0">Red</numIndex>
+                <numIndex index="1">redbg</numIndex>
+              </numIndex>
+              <numIndex index="7" type="array">
+                <numIndex index="0">Blue</numIndex>
+                <numIndex index="1">bluebg</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_bgcolor>
+    </el>
+  </ROOT>
+</T3DataStructure>

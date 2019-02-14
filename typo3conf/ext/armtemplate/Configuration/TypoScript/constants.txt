@@ -1,0 +1,5 @@
+baseUrl = http://typo3.local/marktmacher/
+rootPID = 1
+searchPid = 
+templatePath = typo3conf/ext/armtemplate/
+logoFile = typo3conf/ext/armtemplate/Resources/Public/images/logo.jpg

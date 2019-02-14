@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <field_video type="array">
+        <TCEforms type="array">
+          <label>YouTube URL</label>
+           <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </field_video>
+    </el>
+  </ROOT>
+</T3DataStructure>

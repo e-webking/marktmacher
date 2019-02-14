@@ -1,0 +1,19 @@
+
+<f:if condition="{data.space_before_class}">
+    <div class="frame-space-before-{data.space_before_class}"></div>
+</f:if>
+<section class="overlap {data.flexform_field_hpos}">
+    <h3 class="overlap-title {data.flexform_field_color}">
+        {data.flexform_field_heading}
+        <span class="overlap-border {data.flexform_field_ulinebgcolor}"></span>
+    </h3>
+    <div class="overlap-content {data.flexform_field_mainbgcolor}">
+        <f:format.raw>{data.tx_gridelements_view_column_10}</f:format.raw>
+    </div>
+    <div class="overlap-content-below {data.flexform_field_stbgcolor}">
+        <f:format.raw>{data.tx_gridelements_view_column_20}</f:format.raw>
+    </div>
+</section>
+<f:if condition="{data.space_after_class}">
+    <div class="frame-space-after-{data.space_after_class}"></div>
+</f:if>

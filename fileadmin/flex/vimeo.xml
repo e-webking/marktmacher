@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+  <meta type="array">
+    <langDisable>1</langDisable>
+  </meta>
+  <ROOT type="array">
+    <type>array</type>
+    <el type="array">
+      <field_video type="array">
+        <TCEforms type="array">
+          <label>Vimeo Video ID</label>
+           <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </field_video>
+     <field_heading type="array">
+        <TCEforms type="array">
+          <label>Heading</label>
+          <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </field_heading>
+      <field_htype type="array">
+        <TCEforms type="array">
+          <label>H1 / H2</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">H1</numIndex>
+                 <numIndex index="1">h1</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">H2</numIndex>
+                <numIndex index="1">h2</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_htype>
+<field_color type="array">
+        <TCEforms type="array">
+          <label>Text Color</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">White</numIndex>
+                 <numIndex index="1">white</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">Black</numIndex>
+                <numIndex index="1">black</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_color>
+ <field_subheading type="array">
+        <TCEforms type="array">
+          <label>Sub Heading</label>
+          <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+          </config>
+        </TCEforms>
+      </field_subheading>
+<field_hpos type="array">
+        <TCEforms type="array">
+          <label>Header Position</label>
+          <config type="array">
+            <type>select</type>
+            <items type="array">
+              <numIndex index="0" type="array">
+                <numIndex index="0">Top Left</numIndex>
+                 <numIndex index="1">top-left</numIndex>
+              </numIndex>
+              <numIndex index="1" type="array">
+                <numIndex index="0">Top Center</numIndex>
+                <numIndex index="1">top-center</numIndex>
+              </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">Top Right</numIndex>
+                <numIndex index="1">top-right</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Center Center</numIndex>
+                <numIndex index="1">center-center</numIndex>
+              </numIndex>
+              <numIndex index="4" type="array">
+                <numIndex index="0">Bottom Left</numIndex>
+                <numIndex index="1">bottom-left</numIndex>
+              </numIndex>
+              <numIndex index="5" type="array">
+                <numIndex index="0">Bottom Center</numIndex>
+                <numIndex index="1">bottom-center</numIndex>
+              </numIndex>
+              <numIndex index="6" type="array">
+                <numIndex index="0">Bottom Right</numIndex>
+                <numIndex index="1">bottom-right</numIndex>
+              </numIndex>
+            </items>
+          </config>
+        </TCEforms>
+      </field_hpos>
+    </el>
+  </ROOT>
+</T3DataStructure>
