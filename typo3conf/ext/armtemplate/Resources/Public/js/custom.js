@@ -94,6 +94,7 @@
                 $(".scrollh").fadeIn();
             }
         }
+        siteBody.removeClass('menu-is-open');
     }
    
     $window.on('scroll', menuanimate);
