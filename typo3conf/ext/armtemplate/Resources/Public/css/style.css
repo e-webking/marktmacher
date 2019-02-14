@@ -46,6 +46,10 @@ header {height: 50px;}
 .green {color: #297e47!important;}
 .blue {color: #4463a9!important;}
 .yellow {color: #d4ab2b!important;}
+.redbright {color: #e5d1d4!important;}
+.greenbright {color: #c9e0d1!important;}
+.bluebright {color: #cbd2e2!important;}
+.yellowbright {color: #e3dbc2!important;}
 .white{color: #fff;}
 .grey {color: #e6e6e6;}
 .darkgrey {color: #323232;}
@@ -54,6 +58,10 @@ header {height: 50px;}
 .greenbg {background-color: #297e47 !important;}
 .bluebg {background-color: #4463a9 !important;}
 .yellowbg {background-color: #d4ab2b !important;}
+.redbrightbg {background-color: #e5d1d4 !important;}
+.greenbrightbg {background-color: #c9e0d1 !important;}
+.bluebrightbg {background-color: #cbd2e2 !important;}
+.yellowbrightbg {background-color: #e3dbc2 !important;}
 .whitebg {background-color: #fff !important;}
 .blackbg {background-color: #000 !important;}
 .darkgreybg {background: #323232;}
@@ -147,7 +155,7 @@ header {height: 50px;}
 .overlap-title {position: absolute; top: 50%; height: 80px; z-index: 2; white-space: nowrap}
 .ceright .overlap-title {right:53%;}
 .celeft .overlap-title {left:53%;}
-.overlap-border {height: 12px; display: block; width: 100%; background-color: #ded1d2; position: absolute; z-index: -1; margin-top: -6px;}
+.overlap-border {height: 12px; display: block; width: 100%; background-color: #ded1d2; position: absolute; z-index: -1; margin-top: -15px;}
 .overlap-content-below {width: 30%; height: 80px; position: absolute; bottom: 40px; background: #ccd1e0; padding: 20px;}
 .celeft .overlap-content-below {left: 15%}
 .ceright .overlap-content-below {right: 15%}

@@ -86,13 +86,13 @@ tt_content.stdWrap.innerWrap.cObject {
   112 = TEXT
   112.value = <div class="yellowbg">|</div>
   113 = TEXT
-  113.value = <div class="bgpastell1">|</div>
+  113.value = <div class="redbrightbg">|</div>
   114 = TEXT
-  114.value = <div class="bgpastell2">|</div>
+  114.value = <div class="greenbrightbg">|</div>
   115 = TEXT
-  115.value = <div class="bgpastell13">|</div>
+  115.value = <div class="bluebrightbg">|</div>
   116 = TEXT
-  116.value = <div class="bgpastell14">|</div>
+  116.value = <div class="yellowbrightbg">|</div>
   117 = TEXT
   117.value = <div class="slideshow">|</div>
   118 = TEXT

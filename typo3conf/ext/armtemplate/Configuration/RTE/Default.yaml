@@ -25,10 +25,10 @@ editor:
         - { name: "Green", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'green' }}
         - { name: "Yellow", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'yellow' }}
         - { name: "Red", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'red' }}
-        - { name: "Pastell 1", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell1' }}
-        - { name: "Pastell 2", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell2' }}
-        - { name: "Pastell 3", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell3' }}
-        - { name: "Pastell 4", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'pastell4' }}
+        - { name: "Red Pastell", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'redbright' }}
+        - { name: "Green Pastell", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'greenbright' }}
+        - { name: "Blue Pastell", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'bluebright' }}
+        - { name: "Yellow Pastell", element: ['h1', 'h2', 'h3', 'h4','h5', 'h6', 'div', 'p', 'td', 'th'], attributes: { 'class': 'yellowbright' }}
         - { name: "row", element: "div", attributes: { 'class': 'row' }}
         - { name: "col-sm-6", element: "div", attributes: { 'class': 'col-sm-6' }}
         - { name: "col-md-3", element: "div", attributes: { 'class': 'col-md-3' }}
@@ -39,10 +39,10 @@ editor:
         - { name: "Green (BG)", element: "div", attributes: { 'class': 'bggreen' }}
         - { name: "Red (BG)", element: "div", attributes: { 'class': 'bgred' }}
         - { name: "Yellow (BG)", element: "div", attributes: { 'class': 'bgyellow' }}
-        - { name: "Pastell 1 (BG)", element: "div", attributes: { 'class': 'bgpastell1' }}
-        - { name: "Pastell 2 (BG)", element: "div", attributes: { 'class': 'bgpastell2' }}
-        - { name: "Pastell 3 (BG)", element: "div", attributes: { 'class': 'bgpastell3' }}
-        - { name: "Pastell 4 (BG)", element: "div", attributes: { 'class': 'bgpastell4' }}
+        - { name: "Red Pastell (BG)", element: "div", attributes: { 'class': 'redbrightbg' }}
+        - { name: "Green Pastell (BG)", element: "div", attributes: { 'class': 'greenbrightbg' }}
+        - { name: "Blue Pastell (BG)", element: "div", attributes: { 'class': 'bluebrightbg' }}
+        - { name: "Yellow Pastell (BG)", element: "div", attributes: { 'class': 'yellowbrightbg' }}
         - { name: "table-responsive", element: "div", attributes: { 'class': 'table-responsive' }}
         - { name: "table", element: "table", attributes: { 'class': 'table' }}
         - { name: "table-bordered", element: "table", attributes: { 'class': 'table-bordered' }}
