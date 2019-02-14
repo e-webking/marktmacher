@@ -136,6 +136,22 @@
                 <numIndex index="0">Blue</numIndex>
                 <numIndex index="1">bluebg</numIndex>
               </numIndex>
+               <numIndex index="8" type="array">
+                <numIndex index="0">Green Pastell</numIndex>
+                <numIndex index="1">greenbrightbg</numIndex>
+              </numIndex>
+               <numIndex index="9" type="array">
+                <numIndex index="0">Yellow Pastell</numIndex>
+                <numIndex index="1">yellowbrightbg</numIndex>
+              </numIndex>
+               <numIndex index="10" type="array">
+                <numIndex index="0">Red Pastell</numIndex>
+                <numIndex index="1">redbrightbg</numIndex>
+              </numIndex>
+              <numIndex index="11" type="array">
+                <numIndex index="0">Blue Pastell</numIndex>
+                <numIndex index="1">bluebrightbg</numIndex>
+              </numIndex>
             </items>
           </config>
         </TCEforms>
