@@ -122,5 +122,7 @@ page.10 {
     variables {
         marcel = TEXT
         marcel.value = marcel kuriger
+        facebookUrl = TEXT
+        facebookUrl.value = {$facebookUrl}
     }
 }

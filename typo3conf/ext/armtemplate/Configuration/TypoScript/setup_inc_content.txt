@@ -55,6 +55,19 @@ lib.armsearch {
     stdWrap.wrap = <div class="armsearch">|</div>
 }
 
+lib.address = RECORDS
+lib.address {
+    tables = tt_content
+    source = {$cmsAddressUid}
+    languageField = sys_language_uid
+}
+#lib.imgLinks = RECORDS
+lib.imgLinks < lib.address
+lib.imgLinks.source = {$cmsImgLinksUid}
+
+#lib.linkList = RECORDS
+lib.linkList < lib.address
+lib.linkList.source = {$cmsLinkListUid}
 
 tt_content.stdWrap.innerWrap.cObject = CASE
 tt_content.stdWrap.innerWrap.cObject {
@@ -827,4 +840,16 @@ tt_content.gridelements_pi1.20.10.setup {
             file = EXT:armtemplate/Resources/Private/Templates/GridElements/textparallax.html
         }
     }
+    25 < lib.gridelements.defaultGridSetup
+    25 {
+        cObject = FLUIDTEMPLATE
+        cObject {
+            partialRootPaths {
+                20 = EXT:armtemplate/Resources/Private/Partials/ContentElements/
+            }
+            file = EXT:armtemplate/Resources/Private/Templates/GridElements/scroll.html
+        }
+    }
 }
+tt_content.gridelements_pi1.stdWrap.wrap = <div class="content-frame gridWrap frame-{field:frame_class} frame-layout-{field:layout} frame-space-before-{field:space_before_class} frame-space-after-{field:space_after_class}" id="c{field:uid}">|</div>
+tt_content.gridelements_pi1.stdWrap.wrap.insertData = 1

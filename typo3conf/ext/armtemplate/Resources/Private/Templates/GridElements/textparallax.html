@@ -1,11 +1,8 @@
 
-<f:if condition="{data.space_before_class}">
-    <div class="frame-space-before-{data.space_before_class}"></div>
-</f:if>
 <div class="dparallax {data.flexform_field_hpos}">
     <f:if condition="{0:data.flexform_field_hpos} == {0:'celeft'}">
         <f:then>
-            <div class="dparallax__layer--back {data.flexform_field_mainbgcolor}">
+            <div class="dparallax__layer--back {data.flexform_field_mainbgcolor}"  style="height: {data.flexform_field_baseheight}px">
                 <div class="dparallax__layer-inner">
                      <f:format.raw>{data.tx_gridelements_view_column_10}</f:format.raw>
                 </div>
@@ -14,20 +11,17 @@
         <f:else>
             <f:if condition="{0:data.flexform_field_hpos} == {0:'ceright'}">
                 <f:then>
-                    <div class="dparallax__layer--back {data.flexform_field_mainbgcolor}">
+                    <div class="dparallax__layer--back {data.flexform_field_mainbgcolor}"  style="height: {data.flexform_field_baseheight}px">
                         <f:format.raw>{data.tx_gridelements_view_column_10}</f:format.raw>
                     </div>
                 </f:then>
                 <f:else>
-                    <div class="dparallax__layer--back {data.flexform_field_mainbgcolor}"></div>
+                    <div class="dparallax__layer--back {data.flexform_field_mainbgcolor} hidden-xs"  style="height: {data.flexform_field_baseheight}px"></div>
                 </f:else>
             </f:if>
         </f:else>
     </f:if>
-    <div class="dparallax__layer--base {data.flexform_field_overbgcolor}" data-scroll-speed="10">
+    <div class="dparallax__layer--base {data.flexform_field_overbgcolor}" data-scroll-speed="10" style="height: {data.flexform_field_bottomheight}px">
         <f:format.raw>{data.tx_gridelements_view_column_20}</f:format.raw>
     </div>
 </div>
-<f:if condition="{data.space_after_class}">
-    <div class="frame-space-after-{data.space_after_class}"></div>
-</f:if>

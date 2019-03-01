@@ -46,12 +46,14 @@ editor:
         - { name: "table-responsive", element: "div", attributes: { 'class': 'table-responsive' }}
         - { name: "table", element: "table", attributes: { 'class': 'table' }}
         - { name: "table-bordered", element: "table", attributes: { 'class': 'table-bordered' }}
+        - { name: "links", element: "ul", attributes: { 'class': 'links' }}
         # Inline styles
         - { name: "btn", element: "a", attributes: { 'class': 'btn' }}
         - { name: "btn-primary", element: "a", attributes: { 'class': 'btn-primary' }}
         - { name: "btn-lg", element: "a", attributes: { 'class': 'btn-lg' }}
         - { name: "anchor-link", element: "a", attributes: { 'class': 'anchor-link' }}
         - { name: "btn-default", element: "a", attributes: { 'class': 'btn-default' }}
+        - { name: "Regis Btn", element: "a", attributes: { 'class': 'regbtn' }}
         
       toolbarGroups:
       - { name: clipboard, groups: [clipboard, undo] }

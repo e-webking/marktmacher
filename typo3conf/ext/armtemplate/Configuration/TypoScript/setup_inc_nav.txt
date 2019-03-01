@@ -65,6 +65,7 @@ lib.colorMenu {
 
  ## Main Menu - End
 
+
 # Breadcrumb Navigation
 lib.breadcrumb = HMENU
 lib.breadcrumb {
@@ -75,6 +76,19 @@ lib.breadcrumb {
     1 {
   
         NO.allWrap = <li>|</li>
+        NO.ATagTitle.field = description // title
+    }
+}
+
+lib.footerMenu = HMENU
+lib.footerMenu {
+    wrap = <ul class="footer-nav">|</ul>
+    special = directory
+    special.value = {$footerMenu}
+    1 = TMENU
+    1 {
+  
+        NO.allWrap = <li><i class="fa fa-angle-right" aria-hidden="true"></i> |</li>
         NO.ATagTitle.field = description // title
     }
 }

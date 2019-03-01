@@ -81,6 +81,21 @@
             }
         }
     });
+    var $hoverSrc = '';
+    var $mainSrc = '';
+    $('.hover-image').on('mouseenter', function (){
+        $hoverSrc = $(this).find('.hover').attr('src');
+        $mainSrc = $(this).find('.display').attr('src');
+        $(this).find('.display').attr('src', $hoverSrc);
+        $(this).find('.hover').attr('src', $mainSrc);
+        
+    });
+    $('.hover-image').on('mouseleave', function (){
+        $hoverSrc = $(this).find('.hover').attr('src');
+        $mainSrc = $(this).find('.display').attr('src');
+        $(this).find('.display').attr('src', $hoverSrc);
+        $(this).find('.hover').attr('src', $mainSrc);
+    });
     
     var $window = $(window);
     var menuanimate = function(){
