@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-03-13T17:58:22Z" product-name="armpackage">
+		<header/>
+		<body>
+			<trans-unit id="tx_armpackage_domain_model_package">
+				<source>Package</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.subtitle">
+				<source>Subtitle</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.brief">
+				<source>Brief</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.rate">
+				<source>Rate</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.rebate2">
+				<source>Rebate2</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.rebate3to10">
+				<source>Rebate3to10</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_package.rebatemt10">
+				<source>Rebatemt10</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration">
+				<source>Registration</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.feuser">
+				<source>Feuser</source>
+			</trans-unit>                        
+			<trans-unit id="tx_armpackage_domain_model_registration.qty">
+				<source>Qty</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.rate">
+				<source>Rate</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.amount">
+				<source>Amount</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.discount">
+				<source>Discount</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.vat">
+				<source>Vat</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.total">
+				<source>Total</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_registration.package">
+				<source>Package</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_registration.status">
+				<source>Status</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_registration.currency">
+				<source>Currency</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_branch">
+				<source>Branch</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_branch.feuser">
+				<source>Username</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_branch.company">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_domain_model_branch.address">
+				<source>Address</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_branch.city">
+				<source>City</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_branch.country">
+				<source>Country</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_branch.zip">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_list.name">
+				<source>List</source>
+			</trans-unit>
+			<trans-unit id="tx_armpackage_list.description">
+				<source>Package list</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

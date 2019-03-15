@@ -1,0 +1,27 @@
+<div id="armpayment-return">
+    <div class="row">
+	<div class="col-sm-10 col-md-8 col-md-offset-2">
+            <h2>Zahlungsstatus</h2>
+            <f:if condition="{error}">
+                <f:then>
+                    <div class="alert alert-danger alert-error">
+                    <strong>Error!</strong> Zahlungsvorgang war nicht erfolgreich und konnte nicht abgeschlossen werden.
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Erfolg!</strong> Zahlungsvorgang war erfolgreich.
+                    </div>
+                    <div class="thumb-pad4 maxheight">
+                            <p><strong>Payer: </strong>{payerId}</p>
+                            <p><strong>Transaction ID: </strong>{trxid}</p>
+                            <p><strong>Zwischensumme: </strong>{currency} {subtotal}</p>
+                            <p><strong>MwSt: </strong>{currency} {tax}</p>
+                            <p><strong>Gesamt: </strong>{currency} {total}</p>
+                    </div>
+                </f:else>
+            </f:if>
+        </div>
+    </div>
+</div>

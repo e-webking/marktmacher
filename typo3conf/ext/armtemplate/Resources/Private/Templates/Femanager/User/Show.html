@@ -1,0 +1,71 @@
+{namespace femanager=In2code\Femanager\ViewHelpers}
+<f:layout name="Logged" />
+<f:section name="main">
+        <h3>Profile</h3>
+	<div class="femanager_show">
+		<f:render partial="Misc/FlashMessages" arguments="{_all}" />
+		<f:if condition="{user}">
+			<f:then>
+                            <f:if condition="{user.email}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.email" />:</div>
+                                    <div class="col-xs-8">{user.email}</div>
+                                </div>
+                            </f:if>
+                            <f:if condition="{user.username}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.username" />:</div>
+                                    <div class="col-xs-8">{user.username}</div>
+                                </div>
+                            </f:if>
+                            <f:if condition="{user.title}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.title" />:</div>
+                                    <div class="col-xs-8">{user.title}</div>
+                                </div>
+                            </f:if>
+                             <f:if condition="{user.firstName}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.firstName" />:</div>
+                                    <div class="col-xs-8">{user.firstName}</div>
+                                </div>
+                            </f:if>
+                            <f:if condition="{user.lastName}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.lastName" />:</div>
+                                    <div class="col-xs-8">{user.lastName}</div>
+                                </div>
+                            </f:if>
+                            <f:if condition="{user.address}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.address" />:</div>
+                                    <div class="col-xs-8">{user.address}</div>
+                                </div>
+                            </f:if>
+                             <f:if condition="{user.city}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.city" />:</div>
+                                    <div class="col-xs-8">{user.city}</div>
+                                </div>
+                            </f:if>
+                            <f:if condition="{user.zip}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.zip" />:</div>
+                                    <div class="col-xs-8">{user.zip}</div>
+                                </div>
+                            </f:if>
+                            <f:if condition="{user.telephone}">
+                                <div class="row">
+                                    <div class="col-xs-4"><f:translate key="tx_femanager_domain_model_user.telephone" />:</div>
+                                    <div class="col-xs-8">{user.telephone}</div>
+                                </div>
+                            </f:if>
+			</f:then>
+			<f:else>
+				<div class="femanager_note">
+					<f:translate key="noRecordFoundShow" />
+				</div>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>

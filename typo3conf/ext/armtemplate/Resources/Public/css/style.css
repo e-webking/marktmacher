@@ -186,7 +186,7 @@ a.regbtn:hover {color: #323232; background: #e5d1d4!important;}
 .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-left-nowrap .csc-textpic-text,.dummy-cell .csc-vcenter .csc-textpic .csc-textpic-intext-right-nowrap .csc-textpic-text {position: relative;}
 .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-left-nowrap .csc-textpic-text h1, .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-left-nowrap .csc-textpic-text h2 { margin-top: 50% !important; transform: translateY(-100%);}
 .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-right-nowrap .csc-textpic-text h1, .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-right-nowrap .csc-textpic-text h2 { margin-top: 50% !important; transform: translateY(-100%);}
-.dummy-cell p {padding: 15px !important;}
+.dummy-cell p:not(.alert-message) {padding: 15px !important;}
 .dummy-cell > div {height: 100%}
 .dummy-cell .csc-textpic-imagewrap {margin-right: 0px !important}
 .armabove {position: relative; width: 100%;}
@@ -327,7 +327,14 @@ iframe {max-width: 100%;}
 .btn-primary:hover {background: #a89e8c}
 .powermail_reset {background: #9fa1a2}
 .csc-bothpadding {padding: 10px 20px}
-.internal_scroll {display: inline-flex; float: right; margin: 0; padding: 10px 0;}
+.internal_scroll {width: 75px; margin: 0 auto; padding: 10px 0;}
+.frame-type-login {padding: 15px; overflow-y: auto;}
+.tx-felogin-pi1 {height: 400px; display: block; background: #999;}
+.login-form {padding-bottom: 15px;}
+div#userprocess {padding: 10px;}
+div#bformoverlay{display:none; position: absolute;top: 88px;width: 100%;background: rgba(255,255,255,0.5);height: 300px;text-align: center; padding-top: 130px;}
+.typo3-messages {list-style: none; margin: 0px;}
+.typo3-messages .alert{margin: 0px!important; padding: 0px!important;}
 @media only screen and (max-width:600px){
     .s-header{height:90px}
     .header-logo{left:30px}
@@ -453,6 +460,10 @@ button:focus {
     .twogrid .fullwidth-img { width: 50%;}
     .threegrid .fullwidth-img, .fourgrid .fullwidth-img, .fivegrid .fullwidth-img { width: 33.3%;}
     .image-caption {padding-top: 15px;}
+    .ce-textpic.ce-left.ce-intext {display: table;}
+    .ce-textpic.ce-left.ce-intext .ce-gallery {display: block; float: left;}
+    .ce-textpic.ce-left.ce-intext .ce-bodytext {padding-top: 15px}
+    
     div[data-ce-columns="2"] .ce-row .ce-column {width: 50%; padding: 15px;}
     div[data-ce-columns="3"] .ce-row .ce-column {width: 33%; padding: 15px;}
     div[data-ce-columns="4"] .ce-row .ce-column {width: 25%; padding: 15px;}
@@ -461,6 +472,9 @@ button:focus {
     .visible-mid {display:block !important;}
     .center-center h2 {font-size: 60px;}
     .csc-bothpadding {padding: 10px 25px}
+    
+    .frame-type-login {padding: 25px;}
+    .login-form {padding-bottom: 25px;}
 }
 @media (min-width: 992px) {
     body {font-size: 15px;}
@@ -471,7 +485,11 @@ button:focus {
     .frame-space-before-large:before, .frame-space-after-large:after {height: 4.5em; margin: 4.5em;}
     .frame-space-before-extra-large:before, .frame-space-after-extra-large:after {height: 5.0em;margin: 5.0em;}
     .frame-type-menu_sitemap {width: 70%;}
+    .internal_scroll {margin: -15px auto 0px; }
     .powermail_fieldset  .row:nth-last-child(2) {width: 26%; padding-left: 13%}
+    
+    .frame-type-login {padding: 30px;}
+    .login-form {padding-bottom: 30px;}
 }
 
 @media (min-width: 1352px) {
@@ -503,6 +521,9 @@ button:focus {
     }
     .hover-image {min-height: 420px;}
     .powermail_fieldset  .row:nth-last-child(2) {width: 20%; padding-left: 14%}
+    
+    .frame-type-login {padding: 40px;}
+    .login-form {padding-bottom: 40px;}
 }
 .img-left {
   margin: 10px 15px 10px 0;
@@ -738,7 +759,6 @@ Dropdown Styles
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
   border-radius: 0px;
-  border-top: 3px solid #42b8d4;
   min-width: 190px;
 }
 .dropdown-menu > li > a {

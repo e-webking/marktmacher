@@ -1,0 +1,27 @@
+# Mapping
+config.tx_extbase {
+    persistence {
+        classes {
+            In2code\Femanager\Domain\Model\User {
+                subclasses {
+                    0 = In2code\Armfemanager\Domain\Model\User
+                }
+            }
+            In2code\Armfemanager\Domain\Model\User {
+                mapping {
+                    tableName = fe_users
+                    recordType = 0
+
+                    columns {
+                        tx_femanager_branch.mapOnProperty = branch
+                    }
+                }
+            }
+        }
+    }
+    objects {
+        In2code\Femanager\ViewHelpers\Form\GetCountriesViewHelper.className = In2code\Armfemanager\ViewHelpers\Form\GetCountriesViewHelper
+        In2code\Femanager\Controller\NewController.className = In2code\Armfemanager\Controller\NewController
+        In2code\Femanager\Controller\EditController.className = In2code\Armfemanager\Controller\EditController
+    }
+}

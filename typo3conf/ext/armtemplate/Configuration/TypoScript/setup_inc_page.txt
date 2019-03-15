@@ -83,6 +83,7 @@ page.includeCSS {
 
 page.includeJSFooter {
     file01 = {$templatePath}Resources/Public/js/jquery.min.js
+    file01.forceOnTop = 1
     file02 = {$templatePath}Resources/Public/js/jquery-migrate.min.js
     file03 = {$templatePath}Resources/Public/js/jquery.easing.1.3.min.js
     file04 = {$templatePath}Resources/Public/css/bootstrap/js/bootstrap.min.js
@@ -124,5 +125,7 @@ page.10 {
         marcel.value = marcel kuriger
         facebookUrl = TEXT
         facebookUrl.value = {$facebookUrl}
+        studentRegPage = TEXT
+        studentRegPage.value = {$studentRegPage}
     }
 }

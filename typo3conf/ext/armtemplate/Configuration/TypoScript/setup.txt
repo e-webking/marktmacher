@@ -6,13 +6,6 @@ plugin.tx_armtemplate {
     view {
         templateRootPaths.0 = {$plugin.tx_armtemplate.view.templateRootPath}
     }
-    settings {
-        mail {
-            contact = Contact request made at www.worktoday.ch
-            adminEmail = info@worktoday.ch
-            adminName = Worktoday.ch
-        }
-    }
 }
 
 tt_content.textpic.dataProcessing.20.maxGalleryWidth = 1920

@@ -7,3 +7,135 @@ plugin.tx_powermail.settings.setup {
         }
     }
 }
+
+plugin.tx_felogin_pi1.templateFile >
+plugin.tx_felogin_pi1 {
+    templateFile = {$templatePath}Resources/Private/Templates/Felogin/felogin.html
+    email_from = office@marktmacher.com
+    email_fromName = Markmacher
+    replyTo = office@marktmacher.com
+}
+
+plugin.tx_femanager {    
+    _LOCAL_LANG {
+        default {
+            titleCreateProfile = Create Account
+            tx_femanager_domain_model_user.username = Benutzername
+            titleUpdateProfile = Update Profile
+            tx_femanager_domain_model_user.email = E-Mail
+            tx_femanager_domain_model_user.usergroup = Benutzertyp
+            tx_femanager_domain_model_user.password = Passwort
+            tx_femanager_domain_model_user.password_repeat = Passwort-Wiederholung
+            tx_femanager_domain_model_user.title = Titel
+            tx_femanager_domain_model_user.firstName = Vorname
+            tx_femanager_domain_model_user.lastName = Nachname
+            tx_femanager_domain_model_user.address = Adresse
+            tx_femanager_domain_model_user.city = Ort
+            tx_femanager_domain_model_user.zip = Postleitzahl
+            tx_femanager_domain_model_user.telephone = Telefon
+            tx_femanager_domain_model_user.company = Unternehmen / Firma
+            tx_femanager_domain_model_user.branch = Anzahl Verkaufshäuser
+            tx_femanager_domain_model_user.www = Webseite
+            tx_femanager_domain_model_user.country = Land
+            tx_femanager_domain_model_user.terms = Ich stimme den AGB zu
+            tx_femanager_domain_model_user.termslinktext = Klicken Sie hier, um die AGB anzuzeigen
+            pleaseChoose = bitte wählen Sie
+            submitNew = Senden
+            submitUpdate = Senden
+            emailSignature2 = Ihr Team vom Marktmacher.com
+            create = Profil erfolgreich erstellt
+            login = Sie sind jetzt erfolgreich eingeloggt
+            emailCreateUserConfirmationSignature = Mit freundlichen Grüßen,
+            emailCreateUserNotifySignature = Mit freundlichen Grüßen, 
+            emailUpdateRequestRefusedSignature = Mit freundlichen Grüßen,
+            emailSignature2 = Marktmacher Team
+            emailCreateUserConfirmationSubject = Bitte bestätigen Sie Ihre Registrierung
+        }
+        de {
+            tx_femanager_domain_model_user.username = Benutzername
+            tx_femanager_domain_model_user.email = E-Mail
+            tx_femanager_domain_model_user.usergroup = Benutzertyp
+            tx_femanager_domain_model_user.password = Passwort
+            tx_femanager_domain_model_user.password_repeat = Passwort-Wiederholung
+            tx_femanager_domain_model_user.title = Titel
+            tx_femanager_domain_model_user.firstName = Vorname
+            tx_femanager_domain_model_user.lastName = Nachname
+            tx_femanager_domain_model_user.address = Adresse
+            tx_femanager_domain_model_user.city = Ort
+            tx_femanager_domain_model_user.zip = Postleitzahl
+            tx_femanager_domain_model_user.telephone = Telefon
+            tx_femanager_domain_model_user.company = Unternehmen / Firma
+            tx_femanager_domain_model_user.country = Land
+            tx_femanager_domain_model_user.branch = Anzahl Verkaufshäuser
+            tx_femanager_domain_model_user.www = Webseite
+            tx_femanager_domain_model_user.terms = Ich stimme den AGB zu
+            tx_femanager_domain_model_user.termslinktext = Klicken Sie hier, um die AGB anzuzeigen
+            pleaseChoose = bitte wählen Sie
+            submitNew = Senden
+            submitUpdate = Senden
+            emailSignature2 = Ihr Team vom Marktmacher.com
+            create = Profil erfolgreich erstellt
+            login = Sie sind jetzt erfolgreich eingeloggt
+            emailCreateUserConfirmationSubject = Bitte bestätigen Sie Ihre Registrierung
+            emailCreateUserConfirmationSalutation = Sehr geehrte 
+            emailCreateUserConfirmationText1 = vielen Dank für Ihre Registrierung auf der Seite http://www.marktmacher.com/. Bitte bestätigen Sie Ihre Registrierung durch Aufruf des folgenden Links:
+            emailCreateUserConfirmationLinkConfirm = Profil bestätigen
+            emailCreateUserConfirmationText2 = Rufen Sie bitte den folgenden Link auf, falls Sie die Registrierung ablehnen möchten:
+            emailCreateUserConfirmationLinkConfirmRefused = Profil löschen
+            validationErrorSameAs = Bitte überprüfen Sie den eingegebenen Wert
+            validationErrorRequiredModel = Benutzername und Passwort müssen ausgefüllt werden
+            validationErrorRequired = Bitte füllen Sie das  %sfeld aus
+            validationErrorPasswordRepeat = Bitte geben Sie das gleiche Passwort zweimal ein.
+            validationErrorUniquePage = Der Wert von Feld%s wird bereits verwendet
+            createRequestWaitingForUserConfirm = Um die Registrierung erfolgreich abzuschließen, schauen Sie bitte in Ihr E-Mail-Postfach. Wir haben Ihnen eine E-Mail mit einem Bestätigungslink geschickt. Bitte klicken Sie auf diesen Link, um die Registrierung abzuschließen.
+        }
+    }
+    settings {
+        new {
+            fillEmailWithUsername = 0
+            login = 0
+            validation {
+                email {
+                    required = 1
+                    email = 1
+                }
+                usergroup {
+                    inList = 1
+                }
+                firstName {
+                    required = 1
+                }
+                lastName {
+                    required = 1
+                }
+                address {
+                    required = 1
+                }
+                city {
+                    required = 1
+                }
+                zip {
+                    required = 1
+                }
+                telephone {
+                    required = 1
+                }
+            }
+            email {
+                createUserConfirmation {
+                    subject = TEXT
+                    subject.value = Bitte bestätigen Sie Ihre Registrierung
+                }
+                sender {
+                    email = TEXT
+                    email.value = office@marktmacher.com
+                    name = TEXT
+                    name.value = Marcel Kuriger
+                }
+            }
+            misc {
+                removeFromUserGroupSelection = 
+            }
+        }
+    }
+}

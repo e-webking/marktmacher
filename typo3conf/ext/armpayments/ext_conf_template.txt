@@ -1,0 +1,8 @@
+# cat=basic; type=# cat=basic; label=Stripe: Secret Key
+stripeApiKey = sk_test_dszam2ZPJ78AWacwDYWRt4CE
+
+# cat=basic; type=# cat=basic; label=Stripe: Publish Key
+stripePubKey = pk_test_a934trexhl4ULKN8OP5IfUVR
+
+# cat=basic; type=# cat=basic; label=Currency
+currency = EUR

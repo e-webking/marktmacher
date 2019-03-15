@@ -1,0 +1,162 @@
+<ul>
+	<li>###ACTION_URI###     - URI of the request for the login/logout form</li>
+	<li>###EXTRA_HIDDEN###   - Hook required (additional hidden field used by kb_md5fepw extension by Kraft Bernhard)</li>
+	<li>###ON_SUBMIT###      - Hook required (used by kb_md5fepw extension by Kraft Bernhard)</li>
+	<li>###PREFIXID###       - Same as class name ('tx_felogin_pi1') useful to get a unique classname prefix</li>
+	<li>###REDIRECT_URL###   - URL of redirection upon login</li>
+	<li>###NOREDIRECT###     - if set, no redirect will be done</li>
+	<li>###STORAGE_PID###    - explicit enough I guess (if not : id of the page where user are stored)</li>
+	<li>###STATUS_HEADER###  - depends of the template</li>
+	<li>###STATUS_MESSAGE### - depends of the template</li>
+</ul>
+
+<h2>Wrap parts</h2>
+<ul>
+	<li>###HEADER_VALID###  - useful to define what to show/hide</li>
+	<li>###MESSAGE_VALID### - useful to define what to show/hide</li>
+	<li>###FORGOTP_VALID### - useful to define what to show/hide</li>
+	<li>###PERMALOGIN_VALID### - useful to define what to show/hide</li>
+</ul>
+
+<h2>felogin Language Markers (see pi/locallang.xlf)</h2>
+<ul>
+	<li>###EMAIL_LABEL###                 - corresponding to 'your_email'</li>
+	<li>###FORGOT_PASSWORD###             - corresponding to 'forgot_password'</li>
+	<li>###FORGOT_PASSWORD_BACKTOLOGIN### - corresponding to 'forgot_password_backToLogin'</li>
+	<li>###FORGOT_PASSWORD_ENTEREMAIL###  - corresponding to 'forgot_password_enterEmail'</li>
+	<li>###LOGIN_LABEL###                 - corresponding to 'login'</li>
+	<li>###PASSWORD_LABEL###              - corresponding to 'password'</li>
+	<li>###SEND_PASSWORD###               - corresponding to 'send_password'</li>
+	<li>###USERNAME_LABEL###              - corresponding to 'username'</li>
+</ul>
+
+<!--###TEMPLATE_LOGIN###-->
+
+            <div class="text-center">
+                ###STATUS_MESSAGE###<br>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="page-login-form box">
+                    <!-- ###LOGIN_FORM### -->
+                    <h3>Login</h3>
+                    <form role="form" class="login-form felogin" action="###ACTION_URI###" target="_top" method="post" onsubmit="###ON_SUBMIT###">
+                        <div class="form-group">
+                            <div class="input-icon">
+                              <i class="icon fa fa-user"></i>
+                              <input type="text" id="user" class="form-control" name="user" placeholder="Username" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon">
+                              <i class="icon fa fa-unlock-alt"></i>
+                              <input id="pass" name="pass" type="password" class="form-control" placeholder="Password" data-rsa-encryption="">
+                            </div>
+                        </div>
+                        <!--###PERMALOGIN_VALID###-->
+                        <div class="checkbox">
+                            <input name="permalogin" value="0" type="hidden" ###PERMALOGIN_HIDDENFIELD_ATTRIBUTES### id="permaloginHiddenField" />
+                            <input style="float: left;" name="permalogin" value="1" type="checkbox" ###PERMALOGIN_CHECKBOX_ATTRIBUTES### id="permalogin"  onclick="document.getElementById('permaloginHiddenField').disabled = this.checked;" />
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <!--###PERMALOGIN_VALID###-->
+                        <input type="submit" name="submit" class="btn btn-common log-btn" value="###LOGIN_LABEL###" />
+                        <div class="felogin-hidden">
+                            <input type="hidden" name="logintype" value="login" />
+                            <input type="hidden" name="pid" value="###STORAGE_PID###" />
+                            <input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
+                            <input type="hidden" name="###PREFIXID###[noredirect]" value="###NOREDIRECT###" />
+                            ###EXTRA_HIDDEN###
+                        </div>
+                    </form>
+                    <!--###FORGOTP_VALID###-->
+                    <div class="form-links">
+                        <div class="pull-left"><f:cObject typoscriptObjectPath="lib.signupAtLogin" /></div>
+                        <div class="pull-right"><!--###FORGOT_PASSWORD_LINK###-->###FORGOT_PASSWORD###<!--###FORGOT_PASSWORD_LINK###--></div>
+                    </div>
+                    <!--###FORGOTP_VALID###-->
+                    <!-- ###LOGIN_FORM### -->
+                </div>
+            </div>
+<!--###TEMPLATE_LOGIN###-->
+
+<!--###TEMPLATE_LOGOUT###-->
+<div class="col-xs-6 col-xs-offset-3">
+     <div class="page-login-form box">
+         <h3>Sign Out</h3>
+         <form class="felogin" action="###ACTION_URI###" target="_top" method="post">
+             <div class="from-group">
+                 <div class="input-group margin-bottom-sm">
+                     <span>###USERNAME_LABEL###</span> ###USERNAME###
+                 </div>
+                 <br>
+                 <input class="btn btn-common log-btn" type="submit" name="submit" value="###LOGOUT_LABEL###" />
+             </div>
+             <div class="felogin-hidden"> 
+                     <input type="hidden" name="logintype" value="logout" />
+                     <input type="hidden" name="pid" value="###STORAGE_PID###" />
+                     <input type="hidden" name="###PREFIXID###[noredirect]" value="###NOREDIRECT###" />
+             </div>
+         </form>
+     </div>
+ </div>
+<!--###TEMPLATE_LOGOUT###-->
+
+###STATUS_HEADER###
+<legend>###LEGEND###</legend>
+<p>###BACKLINK_LOGIN###&nbsp;</p>
+
+<!--###TEMPLATE_FORGOT###-->
+<div class="col-xs-6 col-xs-offset-3">
+    <div class="page-login-form box">
+        <h3>Forgot password</h3>
+        <!-- ###FORGOT_FORM### -->
+        <form class="felogin-pw" role="form" action="###ACTION_URI###" method="post">
+          <div class="felogin-hidden">
+              <input type="hidden" name="tx_felogin_pi1[forgot_hash]" value="###FORGOTHASH###">
+          </div>
+          <div class="form-group">
+              <div class="input-icon">
+                <i class="icon fa fa-user"></i>
+                <input type="text" id="tx_felogin_pi1-forgot-email" name="###FORGOT_EMAIL###" class="form-control" placeholder="Email">
+              </div>
+          </div>
+          <input class="felogin_forgot_submit btn btn-common log-btn" type="submit" name="submit" value="###SEND_PASSWORD###">
+        </form>
+        <!-- ###FORGOT_FORM### -->
+        <ul class="form-links">
+      <li class="pull-left"><f:cObject typoscriptObjectPath="lib.signupAtLogin" /></li>
+      <li class="pull-right">###BACKLINK_LOGIN###</li>
+    </ul>
+    </div>
+</div>
+<!--###TEMPLATE_FORGOT###-->
+
+<legend>###LEGEND###</legend>
+
+
+<!--###TEMPLATE_CHANGEPASSWORD###-->
+          <div class="col-xs-6 col-xs-offset-3">
+              ###STATUS_HEADER###
+              ###STATUS_MESSAGE###
+              <div class="page-login-form box">
+                  <h3>Change Password</h3>
+                  <!-- ###CHANGEPASSWORD_FORM### -->
+                  <form class="felogin" action="###ACTION_URI###" method="post">
+                      <div class="form-group">
+                            <div class="input-icon">
+                              <i class="icon fa fa-unlock-alt"></i>
+                              <input name="###NEWPASSWORD1###" id="tx_felogin_pi1-newpassword1" type="password" class="form-control" placeholder="###NEWPASSWORD1_LABEL###">
+                            </div>
+                      </div>
+                      <div class="form-group">
+                            <div class="input-icon">
+                              <i class="icon fa fa-unlock-alt"></i>
+                              <input name="###NEWPASSWORD2###" id="tx_felogin_pi1-newpassword2" type="password" class="form-control" placeholder="###NEWPASSWORD2_LABEL###">
+                            </div>
+                        </div>
+                      <input class="felogin_submit btn btn-common log-btn" type="submit" name="tx_felogin_pi1[changepasswordsubmit]" value="###SEND_PASSWORD###" />
+                  </form>
+                  <!-- ###CHANGEPASSWORD_FORM### -->
+              </div>
+          </div>
+<!--###TEMPLATE_CHANGEPASSWORD###--> 

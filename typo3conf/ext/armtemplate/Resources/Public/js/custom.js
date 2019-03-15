@@ -123,6 +123,57 @@
     $('.light-parallax').jarallax({
         speed: 0.2
     });
+    
+    /* Registration */    
+    $('#femanager_field_usergroup').on('change', function(){
+        if ($(this).val() == 2) {
+           var redPg = $('#studentRegPage').val();
+           location.href = redPg;
+        } 
+    });
+    
+    /* Ajax call for username */
+    $('#puser').on('blur', function(){
+        var username = $('#puser').val();
+        if (username == '') {
+            $('#userprocess').html('Please fill username field.');
+            $('#puser').focus();
+        }
+        
+        if (username != '') {
+            $('#userprocess').html('');
+            $('#bformoverlay').show();
+            var url = "index.php?eID=armpackage";
+            $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    format: "json",
+                    data: {
+                            "arguments[username]": username,
+                            "pluginName":"Company",
+                            "controllerName":"Package",
+                            "actionName":"getCompany",
+                            "extensionName": "Armpackage",
+                            "vendor": "ARM",
+                            "formatName":"html"
+                    }
+            }).done(function( data ) {
+                var html = '';
+                $('#bformoverlay').hide();
+                if (data.status == 'OK') {
+                    //need to assign coupon
+                       html += data.text
+                       $('#feuser').val(data.uid);
+                       $('#company').val(data.company);
+                } else{
+                       html += '<span class="error">'+data.error+'</span>';
+                }
+              $('#userprocess').html(html);
+            });
+        }
+    });
+   
     menuTrigger.on('click',function(e){e.preventDefault();siteBody.toggleClass('menu-is-open');});
     closeButton.on('click',function(e){e.preventDefault();menuTrigger.trigger('click');});
     siteBody.on('click',function(e){if(!$(e.target).is('.header-nav, .header-nav__content, .header-menu-toggle, .header-menu-toggle span')){siteBody.removeClass('menu-is-open');}});

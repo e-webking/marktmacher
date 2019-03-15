@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-03-13T17:58:22Z" product-name="armpackage">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="subtitle.description">
+				<source>subtitle</source>
+			</trans-unit>
+			<trans-unit id="brief.description">
+				<source>brief</source>
+			</trans-unit>
+			<trans-unit id="rate.description">
+				<source>rate</source>
+			</trans-unit>
+			<trans-unit id="rebate2.description">
+				<source>rebate2</source>
+			</trans-unit>
+			<trans-unit id="rebate3to10.description">
+				<source>rebate3to10</source>
+			</trans-unit>
+			<trans-unit id="rebatemt10.description">
+				<source>rebatemt10</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

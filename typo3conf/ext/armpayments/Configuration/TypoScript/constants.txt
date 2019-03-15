@@ -1,0 +1,26 @@
+plugin.tx_armpayments {
+    view {
+        # cat=plugin.tx_armpayments/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:armpayments/Resources/Private/Templates/
+        # cat=plugin.tx_armpayments/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:armpayments/Resources/Private/Partials/
+        # cat=plugin.tx_armpayments/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:armpayments/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.arm_payments//a; type=string; label=Default storage PID
+        storagePid = 16
+    }
+    settings {
+        # cat=plugin.tx_armpayments//a; type=int+; label= Payment: Stripe.
+        stripe = 1
+         # cat=plugin.tx_armpayments//a; type=int+; label= Payment: Test mode.
+        test = 1
+        # cat=plugin.tx_armpayments//a; type=int+; label= Payment: Process pageUid.
+        processUid = 
+        # cat=plugin.tx_armpayments//a; type=int+; label= Payment: Return pageUid.
+        returnUid = 
+        # cat=plugin.tx_armpayments//a; type=int+; label= Order: Storage
+        orderStoragePid = 
+    }
+}

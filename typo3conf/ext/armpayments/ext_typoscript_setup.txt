@@ -1,0 +1,14 @@
+config.tx_extbase{
+    persistence{
+        classes{
+            ARM\Armpayments\Domain\Model\Payment {
+                mapping {
+                    tableName = tx_armpayments_domain_model_payment
+                    columns {
+                        crdate.mapOnProperty = crdate
+                    }
+                }
+            }
+    	}
+    }
+}

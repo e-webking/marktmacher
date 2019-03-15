@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-03-08T15:49:07Z" product-name="armfemanager">
+		<header/>
+		<body>
+			
+			<trans-unit id="tx_femanager_domain_model_user.tx_femanager_branch">
+				<source>Anzahl Verkaufshäuser</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

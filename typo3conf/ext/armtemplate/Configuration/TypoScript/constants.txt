@@ -8,3 +8,25 @@ cmsImgLinksUid = 26
 cmsLinkListUid = 27
 facebookUrl = https://www.facebook.com/
 footerMenu = 11
+studentRegPage = 20
+
+plugin.tx_femanager {
+    view {
+        # cat=plugin.tx_femanager/file; type=string; label= Path to template root (FE)
+        templateRootPath = EXT:armtemplate/Resources/Private/Templates/Femanager/
+
+        # cat=plugin.tx_femanager/file; type=string; label= Path to template partials (FE)
+        partialRootPath = EXT:armtemplate/Resources/Private/Partials/Femanager/
+
+        # cat=plugin.tx_femanager/file; type=string; label= Path to template layouts (FE)
+        layoutRootPath = EXT:armtemplate/Resources/Private/Layouts/Femanager/
+    }
+    settings {
+        jQuery = 0
+        adminName = Marcel Kuriger
+        adminEmail = office@marktmacher.com
+    }
+}
+[globalString = ENV:HTTPS=on]
+baseUrl = https://www.marktmacher.com/
+[end]

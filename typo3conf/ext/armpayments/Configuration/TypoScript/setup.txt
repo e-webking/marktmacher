@@ -1,0 +1,18 @@
+## Configuring the frontend rendering
+plugin.tx_armpayments {
+    view {
+        templateRootPaths.0 = {$plugin.tx_armpayments.view.templateRootPath}
+        partialRootPaths.0 = {$plugin.tx_armpayments.view.partialRootPath}
+        layoutRootPaths.0 = {$plugin.tx_armpayments.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_armpayments.persistence.storagePid}
+    }
+    settings {
+        stripe = {$plugin.tx_armpayments.settings.stripe}
+        test = {$plugin.tx_armpayments.settings.test}
+        orderStoragePid = {$plugin.tx_armpayments.settings.orderStoragePid}
+        processPid = {$plugin.tx_armpayments.settings.processUid}
+        returnUid = {$plugin.tx_armpayments.settings.returnUid}
+    }
+}

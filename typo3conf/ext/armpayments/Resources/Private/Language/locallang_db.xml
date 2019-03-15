@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'tx_armpayments_domain_model_payment'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+
+			<label index="tx_armpayments_domain_model_payment">Payment</label>
+			<label index="tx_armpayments_domain_model_payment.gateway">Gateway</label>
+			<label index="tx_armpayments_domain_model_payment.transactionid">Transaction Id</label>
+			<label index="tx_armpayments_domain_model_payment.amount">Amount</label>
+			<label index="tx_armpayments_domain_model_payment.tax">Tax</label>
+			<label index="tx_armpayments_domain_model_payment.subtotal">Sub-Total</label>
+			<label index="tx_armpayments_domain_model_payment.orderid">Order ID</label>
+			<label index="tx_armpayments_domain_model_payment.tablename">Order Table</label>
+			<label index="tx_armpayments_domain_model_payment.token">Token</label>
+			<label index="tx_armpayments_domain_model_payment.payer">Payer</label>
+			<label index="tx_armpayments_domain_model_payment.status">Status</label>
+			<label index="tx_armpayments_domain_model_payment.currency">Currency</label>
+		</languageKey>
+	</data>
+</T3locallang>

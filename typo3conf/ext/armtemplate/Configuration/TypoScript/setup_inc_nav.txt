@@ -43,6 +43,36 @@ lib.mainMenu {
             stdWrap.htmlSpecialChars = 1
         }
     }
+    2 = TMENU
+    2 {
+            wrap = <ul>|</ul>
+            noBlur=1
+            expAll = 1
+            NO = 1
+            NO {
+                    wrapItemAndSub = <li>|</li>
+                    ATagTitle.field = description // title
+                    stdWrap.htmlSpecialChars = 1
+            }
+            ACT= 1
+            ACT.wrapItemAndSub = <li class="active">|</li>
+    }
+
+    3 = TMENU
+    3 {
+            wrap = <ul>|</ul>
+            noBlur=1
+            NO = 1
+            NO {
+                    wrapItemAndSub = <li>|</li>
+                    ATagTitle.field = description // title
+                    stdWrap.htmlSpecialChars = 1
+            }
+
+            ACT= 1
+            ACT.wrapItemAndSub = <li class="active">|</li>
+    }
+    4 < .3
 }
 
 lib.colorMenu = HMENU
@@ -60,6 +90,40 @@ lib.colorMenu {
             stdWrap.htmlSpecialChars = 1
         }
         
+        IFSUB = 1
+        IFSUB {
+            wrapItemAndSub = <li class="dropdown">|</li>
+            ATagParams = class="dropdown-toggle js-activated" data-toggle="dropdown"
+            stdWrap.htmlSpecialChars = 1
+        }
+    }
+    2 = TMENU
+    2 {
+        noBlur=1
+        expAll = 1
+        stdWrap.dataWrap = <ul class="dropdown-menu">|</ul>
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+        IFSUB = 1
+        IFSUB.wrapItemAndSub = <li class="dropdown-submenu">|</li>
+        ACT= 1
+        ACT.wrapItemAndSub = <li class="dropdown-submenu active">|</li>
+    }
+
+    3 = TMENU
+    3 {
+        wrap = <ul class="dropdown-menu">|</ul>
+        noBlur=1
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+        ACT= 1
+        ACT.wrapItemAndSub = <li class="active">|</li>
     }
 }
 

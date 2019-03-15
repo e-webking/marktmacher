@@ -1,0 +1,10 @@
+tx_femanager {
+    flexForm {
+        new {
+            addFieldOptions {
+                tx_femanager_branch = Anzahl Verkaufshäuser
+            }
+        }
+        edit < tx_femanager.flexForm.new
+    }
+}

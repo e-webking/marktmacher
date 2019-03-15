@@ -1,0 +1,30 @@
+<img src="https://www.marktmacher.com/typo3conf/ext/armtemplate/Resources/Public/images/logo.jpg" width="100" height="100" alt="" border="0">
+<br>
+<p>
+Sehr geehrte {username} [{company}],<br><br>
+<f:if condition="{status}">
+<f:then>
+Der Zahlungsvorgang mit Kreditkarte war erfolgreich. 
+</f:then>
+<f:else>
+Der Zahlungsvorgang mit Kreditkarte war nicht erfolgreich.
+</f:else>
+</f:if>
+ Hier finden Sie die Zahlungsinformationen:<br>
+</p>
+
+<h2>Zahlung</h2>
+<p>Rechnungsnummer: {orderid}<br>
+Betrag: {currency} {total}<br>
+Datum: {pdate}<br>
+Zahlungsstatus: {pstatus}<br>
+Package: {package}<br>
+Rate: {rate}<br>
+Anzahl Verkaufshäuser: {qty}<br>
+VAT: {vat}<br>
+Rebatt: {discount}<br>
+</p>
+<p><br>
+Freundliche Gr&uuml;sse,<br>
+Marktmacher
+</p>

@@ -1,0 +1,44 @@
+<div id="armpayment">
+    <div class="row">
+        <div class="col-lg-1 col-lg-offset-1"><f:image src="{f:uri.resource(path:'Images/stripe.png')}" width="48" height="48" alt="Stripe" /></div>
+        <div class="col-lg-8"><h2><f:translate key="tx_armpayment_tpl.ccpayment" /></h2></div>   
+    </div>
+    <h3><f:translate key="tx_armpayment_tpl.odetails" /></h3>
+    <div class="table-responsive">
+        <table class="table table-stripe">
+            <tr>
+                <td>Order ID</td>
+                <td>{orderid}</td>
+            </tr>
+            <tr>
+                <td>Kurs</td>
+                <td>{description}</td>
+            </tr>
+            <tr>
+                <td>Kosten</td>
+                <td>{amount} {currency}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="text-center">
+        <f:form pageUid="{settings.returnUid}" action="stripereturn" method="post">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="{stripePubKey}"
+          data-description="{description}"
+          data-amount="{amountCent}"
+          data-image="/apple-icon-120x120.png"
+          data-locale="auto"
+          data-label="{f:translate(key:'tx_armpayment_tpl.pbutton')}"
+          data-currency="{currency}"
+          ></script>
+                    
+                <input type="hidden" name="method" value="{method}">
+                <input type="hidden" name="orderid" value="{orderid}" />
+                <input type="hidden" name="amount" value="{amount}" />
+                <input type="hidden" name="vat" value="{vat}" />
+                <input type="hidden" name="currency" value="{currency}" />
+                <input type="hidden" name="tablename" value="{tablename}" />
+
+        </f:form>
+    </div>
+</div>
