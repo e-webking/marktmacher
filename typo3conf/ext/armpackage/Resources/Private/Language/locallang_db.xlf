@@ -16,22 +16,25 @@
 				<source>Brief</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rate">
-				<source>Rate</source>
+				<source>Rate (€)</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebate2">
-				<source>Rebate2</source>
+				<source>Rebate2 (%)</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebate3to10">
-				<source>Rebate3to10</source>
+				<source>Rebate3to10 (%)</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebatemt10">
-				<source>Rebatemt10</source>
+				<source>Rebatemt10 (%)</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_registration">
 				<source>Registration</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_registration.feuser">
-				<source>Feuser</source>
+				<source>Firm Username</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_registration.ptitle">
+				<source>Pack Title</source>
 			</trans-unit>                        
 			<trans-unit id="tx_armpackage_domain_model_registration.qty">
 				<source>Qty</source>

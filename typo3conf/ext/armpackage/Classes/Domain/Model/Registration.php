@@ -23,6 +23,12 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $feuser = 0;
+    
+    /**
+     *
+     * @var string
+     */
+    protected $ptitle = '';
 
     /**
      * qty
@@ -296,5 +302,26 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+    }
+    
+    /**
+     * Returns the ptitle
+     *
+     * @return string $ptitle
+     */
+    public function getPtitle()
+    {
+        return $this->ptitle;
+    }
+
+    /**
+     * Sets the ptitle
+     *
+     * @param string $ptitle
+     * @return void
+     */
+    public function setPtitle($ptitle)
+    {
+        $this->ptitle = $ptitle;
     }
 }

@@ -1,0 +1,8 @@
+<div class="packitem">
+    <p class="psub"><strong>{package.subtitle}</strong></p>
+    <h2 class="ptitle">{package.title}</h2>
+    <div class="pbrief"><f:format.raw>{package.brief}</f:format.raw></div>
+    <div class="pprice">&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.rate}</f:format.number>-- / <f:translate key="tx_armpackage_domain_model_package.month" />*</div>
+    <p class="text-center"><f:link.action action="register" arguments="{package:package}" class="reglink"><f:translate key="tx_armpackage_domain_model_package.register" /></f:link.action></p>
+    <p>* <f:translate key="tx_armpackage_domain_model_package.note" /></p>
+</div>

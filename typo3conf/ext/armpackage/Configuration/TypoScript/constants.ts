@@ -15,7 +15,11 @@ plugin.tx_armpackage {
     settings {
         furnplanLoginUrl = https://furnplan.academy/sign_in
         furnplanRegUrl = https://furnplan.academy/sign_up
-        senderEmailAdresseFe = office@marktmacher.com
+        senderEmailAdresse = office@marktmacher.com
         senderName = Marcel Kuriger
+        paymentUid = 23
+        currency = EUR
+        subject = Kursanmeldung unter www.marktmacher.com
+        bankdata = Raiffeisenbank  Hauptstrasse 19   8840 Einsiedeln   SWIFT-BIC: RAIFCH22   Cl No. 81361 IBAN: CH88 8080 8006 6519 4375 5
     }
 }

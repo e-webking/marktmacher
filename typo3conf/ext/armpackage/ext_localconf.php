@@ -9,11 +9,11 @@ call_user_func(
             'ARM.Armpackage',
             'List',
             [
-                'Package' => 'list, register, confirm'
+                'Package' => 'list, register, confirm, getPrice'
             ],
             // non-cacheable actions
             [
-                'Package' => 'list, register, confirm'
+                'Package' => 'list, register, confirm, getPrice'
             ]
         );
         
@@ -84,4 +84,5 @@ call_user_func(
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['armpackage'] = \ARM\Armpackage\Controller\PackageController::class . '::getCompanyAction';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['armpackageprice'] = \ARM\Armpackage\Controller\PackageController::class . '::getPriceAction';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['armpayments']['tx_armpayments_pi1']['paymentProcess'][] = \ARM\Armpackage\Hook\ArmpaymentsHook::class;

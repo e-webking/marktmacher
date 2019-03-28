@@ -18,14 +18,26 @@
 			<trans-unit id="tx_armpackage_domain_model_package.rate">
 				<source>Rate</source>
 			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_package.discount">
+				<source>Rabatt</source>
+			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebate2">
-				<source>Rebate2</source>
+				<source>bei 2 Standorten</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebate3to10">
-				<source>Rebate3to10</source>
+				<source>bei 3 bis 10 Standorten</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebatemt10">
-				<source>Rebatemt10</source>
+				<source>bei mehr als 10 Standorten</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_package.note">
+				<source>Der Abo Preis pro Monat gilt pro Standort, an dem furnplan installiert und angewendet wird</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_package.month">
+				<source>Monat</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_package.register">
+				<source>jetzt anmelden!</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_registration">
 				<source>Registration</source>

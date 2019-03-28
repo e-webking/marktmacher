@@ -59,15 +59,15 @@ class ArmpaymentsHook
 	 */
 	public function paymentProcess_beforeToken($tablename, $orderid, $amount, $vat, $currency, $pid, &$returnArr) {
 
-		if ($orderid != '' && $tablename != '') {	
-		    $data['status'] = 1;
-		    $data['tstamp'] = time();
-		    $GLOBALS['TYPO3_DB']->exec_UPDATEquery($tablename, 'uid='.$orderid, $data);
-		    
-		    $returnArr['orderid'] = $orderid;
-		    $returnArr['tablename'] = $tablename;
-		    $returnArr['amount'] = $amount;
-		}
+            if ($orderid != '' && $tablename != '') {	
+                $data['status'] = 1;
+                $data['tstamp'] = time();
+                $GLOBALS['TYPO3_DB']->exec_UPDATEquery($tablename, 'uid='.$orderid, $data);
+
+                $returnArr['orderid'] = $orderid;
+                $returnArr['tablename'] = $tablename;
+                $returnArr['amount'] = $amount;
+            }
 	}
 
 	/**
@@ -115,15 +115,16 @@ class ArmpaymentsHook
             //Send email to admin and user
             $record = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', $tablename, 'uid='.$orderid);
 
-            $senderMail = trim($settings['settings']['senderEmailAdresseFe']);
+            $senderMail = trim($settings['settings']['senderEmailAdresse']);
             $senderName = trim($settings['settings']['senderName']);
-            $recipient = $record['email'];
+            $recipient = $GLOBALS['TSFE']->fe_user->user['email'];
+            $name = $GLOBALS['TSFE']->fe_user->user['company'];
 
             $emailArr['status'] = $status;
             $emailArr['username'] = $GLOBALS['TSFE']->fe_user->user['username'];
             $emailArr['company'] =  $GLOBALS['TSFE']->fe_user->user['company'];
             $emailArr['email'] =  $GLOBALS['TSFE']->fe_user->user['email'];
-            $emailArr['package'] =  $record['package'];
+            $emailArr['package'] =  $record['ptitle'];
             $emailArr['rate'] =  $record['rate'];
             $emailArr['qty'] =  $record['qty'];
             $emailArr['amount'] =  $record['amount'];
@@ -149,31 +150,32 @@ class ArmpaymentsHook
             if (GeneralUtility::validEmail($recipient)) {
                 // If payment successful, then generate invoice and attach
                 if ($status==1) {
-		        
-    		    $rechnungPDF = PATH_site . 'uploads/tx_armpackage/rechnung_'.$orderid.'.pdf';
-    		    
-    		    if (file_exists($rechnungPDF)) {
-    		        
-    		        Pdf::initFpdi('P');
-    		        //Watermark part
-    		        Pdf::$fpdi->SetFont('Arial','B',60);
-    		        Pdf::$fpdi->SetTextColor(102,255,178);
-    		        Pdf::$fpdi->RotatedText(30,280,'Rechnung',35);
-    		        Pdf::$fpdi->RotatedText(90,270,'bezahlt',35);
-    		        //Copy the invoice
-    		        Pdf::$fpdi->SetY(0);
-    		        Pdf::$fpdi->setSourceFile($rechnungPDF);
-    		        $tplIdx = Pdf::$fpdi->importPage(1);
-    		        Pdf::$fpdi->useTemplate($tplIdx, 0, 0, 0, 0, true);
-                        
-                       
-                        Pdf::$fpdi->Output(PATH_site . 'uploads/tx_kursmanagement/creditcard_rechnung_'.$orderid.'.pdf', 'f');    	                 
-                        $mail->attach(\Swift_Attachment::fromPath(PATH_site . 'uploads/tx_armpackage/creditcard_rechnung_'.$orderid.'.pdf'));
-    		    }
-		}
-		    
+                    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('armpdfkit')) {
+                        $rechnungPDF = PATH_site . 'uploads/tx_armpackage/invoice_'.$orderid.'.pdf';
+
+                        if (file_exists($rechnungPDF)) {
+                            $pdf = GeneralUtility::makeInstance('ARM\\Armpdfkit\\Pdf\\Pdf');
+                            $pdf::initFpdi('P');
+                            //Watermark part
+                            $pdf::$fpdi->SetFont('Arial','B',60);
+                            $pdf::$fpdi->SetTextColor(102,255,178);
+                            $pdf::$fpdi->RotatedText(30,180,'Rechnung',35);
+                            $pdf::$fpdi->RotatedText(90,170,'bezahlt',35);
+                            //Copy the invoice
+                            $pdf::$fpdi->SetY(0);
+                            $pdf::$fpdi->setSourceFile($rechnungPDF);
+                            $tplIdx = $pdf::$fpdi->importPage(1);
+                            $pdf::$fpdi->useTemplate($tplIdx, 0, 0, 0, 0, true);
+                            $fileInv = PATH_site . 'uploads/tx_armpackage/creditcard_rechnung_'.$orderid.'.pdf';
+                            $pdf::$fpdi->Output($fileInv, 'f');
+                            
+                            $mail->attach(\Swift_Attachment::fromPath($fileInv));
+                        }
+                    }
+                }
+                
 		$mail->setFrom(array($senderMail => $senderName))
-		    ->setTo(array($recipient => $record['vorname_teilnehmer'].' '. $record['nachname_teilnehmer']))
+		    ->setTo(array($recipient => $name))
 		    ->setCc(array($senderMail => $senderName))
 		    ->setSubject($subject)
 		    ->setBody($body, 'text/html')

@@ -22,8 +22,12 @@ plugin.tx_armpackage {
     settings {
         furnplanLoginUrl = {$plugin.tx_armpackage.settings.furnplanLoginUrl}
         furnplanRegUrl = {$plugin.tx_armpackage.settings.furnplanRegUrl}
-        senderEmailAdresseFe = {$plugin.tx_armpackage.settings.senderEmailAdresseFe}
+        subject = {$plugin.tx_armpackage.settings.subject}
+        senderEmailAdresse = {$plugin.tx_armpackage.settings.senderEmailAdresse}
         senderName = {$plugin.tx_armpackage.settings.senderName}
+        paymentUid = {$plugin.tx_armpackage.settings.paymentUid}
+        currency = {$plugin.tx_armpackage.settings.currency}
+        bankdata = {$plugin.tx_armpackage.settings.bankdata}
     }
 }
 

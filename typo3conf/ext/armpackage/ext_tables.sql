@@ -53,6 +53,7 @@ CREATE TABLE tx_armpackage_domain_model_registration (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	feuser int(11) DEFAULT '0' NOT NULL,
+        ptitle varchar(250) DEFAULT '' NOT NULL,
 	qty int(11) DEFAULT '0' NOT NULL,
 	rate double(11,2) DEFAULT '0.00' NOT NULL,
         currency char(3) DEFAULT 'EUR' NOT NULL,

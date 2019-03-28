@@ -3,6 +3,8 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_registration',
         'label' => 'feuser',
+        'label_alt' => 'ptitle',
+        'label_alt_force'=>TRUE,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +18,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'feuser,qty,rate,amount,discount,vat,total,package,status,',
+        'searchFields' => 'feuser,ptitle,qty,rate,amount,discount,vat,total,package,status,',
         'iconfile' => 'EXT:armpackage/Resources/Public/Icons/tx_armpackage_domain_model_registration.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, status, qty, rate, currency, amount, discount, vat, total, package',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, ptitle, status, qty, rate, currency, amount, discount, vat, total, package',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, status, rate, currency, qty, amount, discount, vat, total, package, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, ptitle, status, rate, currency, qty, amount, discount, vat, total, package, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -122,6 +124,15 @@ return [
                 'type' => 'input',
                 'size' => 4,
                 'eval' => 'int'
+            ]
+        ],
+        'ptitle' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_registration.ptitle',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ]
         ],
         'status' => [

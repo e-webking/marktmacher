@@ -1,0 +1,74 @@
+{namespace arm=ARM\Armpackage\ViewHelpers}
+<div class="tx_armpackage">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <f:flashMessages />
+                <div id="buyprocess"></div>
+                <br>
+                <f:form class="form-horizontal" action="confirm" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-5 control-label">Package Preis / <f:translate key="tx_armpackage_domain_model_package.month" /> ({settings.currency})</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield id="rate" name="rate" class="form-control" value="{package.rate}" readonly="1" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 control-label">Subskription für 1 <f:translate key="tx_armpackage_domain_model_package.month" /> * Verkaufshäuser</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield type="number" id="packqty" name="qty" class="form-control" value="{qty}" />
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-sm-5 control-label">Amount ({settings.currency})</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield id="amount" name="amount" readonly="1" class="form-control" value="{amount}" />
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-sm-5 control-label">Discount ({settings.currency})</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield id="discount" name="discount" readonly="1" class="form-control" value="{discount}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 control-label">Total ({settings.currency})</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield id="total" name="total" readonly="1" class="form-control" value="{total}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-offset-5 controls col-sm-7">
+                            <f:if condition="{total}">
+                                <f:then>
+                                     <f:form.submit id="btnsub" name="sub" class="btn btn-default" value="Bestellen" />
+                                </f:then>
+                                <f:else>
+                                     <f:form.submit id="btnsub" name="sub" value="Bestellen" disabled="1" />
+                                </f:else>
+                            </f:if>                           
+                            <f:form.hidden name="feuser" id="feuser" value="{feuser}" />
+                            <f:form.hidden id="package" name="package" value="{package.uid}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-offset-5 controls col-sm-7">
+                            <f:if condition="{package.rebate2}">
+                                bei 2 Standorten {package.rebate2}% Rabatt: {settings.currency} <arm:discount discount="{package.rebate2}" rate="{package.rate}" /><br>
+                            </f:if>
+                            <f:if condition="{package.rebate3to10}">
+                                bei 3 bis 10 {package.rebate3to10}% Rabatt: {settings.currency} <arm:discount discount="{package.rebate3to10}" rate="{package.rate}" /><br>
+                            </f:if>
+                            <f:if condition="{package.rebatemt10}">
+                                bei mehr als 10 {package.rebatemt10}% Rabatt: {settings.currency} <arm:discount discount="{package.rebatemt10}" rate="{package.rate}" /><br>
+                            </f:if>
+                        </div>
+                    </div>
+                </f:form>
+                <div id="bformoverlay"> 
+                    <f:image src="{f:uri.resource(path:'Icons/bx_loader.gif')}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

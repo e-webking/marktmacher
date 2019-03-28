@@ -6,6 +6,9 @@
 			<trans-unit id="feuser.description">
 				<source>feuser</source>
 			</trans-unit>
+                        <trans-unit id="ptitle.description">
+				<source>package title</source>
+			</trans-unit>
 			<trans-unit id="qty.description">
 				<source>qty</source>
 			</trans-unit>
