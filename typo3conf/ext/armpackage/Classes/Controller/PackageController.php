@@ -212,7 +212,8 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf = $this->objectManager->get('ARM\\Armpdfkit\\Pdf\\Pdf');
             $pdf::init('P');
             $pdf::setFont('helvetica',16,'B');
-            $pdf::writeCell('Rechnung / Quittung', 70, 30, 0, 0, 'C');
+            $pdf::writeCell(' ', 5, 30, 0, 0, 'L');
+            $pdf::writeCell('Rechnung ', 65, 30, 0, 0, 'L');
             $pdf::image($furnplanLogo,null,20,50);
             $y = $pdf::$pdf->GetY();
             $pdf::$pdf->SetY($y-20);
@@ -331,7 +332,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf::writeCell(' ',10, 5, 1, 0);
             $pdf::writeCell(' ',10, 5, 1, 0);
             $pdf::writeCell(' ',20, 5, 1, 0);
-            $pdf::writeCell('Zahlung erhalten per Kreditkarte.',60, 5, 1, 0);
+            $pdf::writeCell('',60, 5, 1, 0);
             $pdf::writeCell(' ',30, 5, 1, 0);
             $pdf::writeCell(' ',20, 5, 1, 0);
             $pdf::writeCell(' ',30, 5, 1, 1);

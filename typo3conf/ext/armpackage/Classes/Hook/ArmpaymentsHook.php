@@ -154,13 +154,19 @@ class ArmpaymentsHook
                         $rechnungPDF = PATH_site . 'uploads/tx_armpackage/invoice_'.$orderid.'.pdf';
 
                         if (file_exists($rechnungPDF)) {
+                            
                             $pdf = GeneralUtility::makeInstance('ARM\\Armpdfkit\\Pdf\\Pdf');
                             $pdf::initFpdi('P');
-                            //Watermark part
-                            $pdf::$fpdi->SetFont('Arial','B',60);
-                            $pdf::$fpdi->SetTextColor(102,255,178);
-                            $pdf::$fpdi->RotatedText(30,180,'Rechnung',35);
-                            $pdf::$fpdi->RotatedText(90,170,'bezahlt',35);
+                            
+                            $pdf::$fpdi->SetFont('helvetica','B',16);
+                            $pdf::$fpdi->SetY(20);
+                            $pdf::$fpdi->Cell(35,10, ' ');
+                            $pdf::$fpdi->Cell(40,10,'/ Quittung');
+                            $pdf::$fpdi->SetFont('helvetica','',8);
+                            $pdf::$fpdi->SetY(126);
+                            $pdf::$fpdi->Cell(40,10, ' ');
+                            $pdf::$fpdi->Cell(60,10,'Zahlung erhalten per Kreditkarte.');
+                            
                             //Copy the invoice
                             $pdf::$fpdi->SetY(0);
                             $pdf::$fpdi->setSourceFile($rechnungPDF);
