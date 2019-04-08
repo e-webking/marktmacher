@@ -373,7 +373,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf::writeCell('      Bankverbindung: ',180, 5, 1, 1);
             $pdf::writeCell('      '.$this->settings['bankdata'],180, 5, 1, 1);
             
-            $filename = 'invoice_'.$registration->getUid().'.pdf';
+            $filename = 'Rechnung_'.$registration->getUid().'.pdf';
             $path = PATH_site.'uploads/tx_armpackage';
             
             $pdf::generatePDF($filename,FALSE,$path);

@@ -151,7 +151,7 @@ class ArmpaymentsHook
                 // If payment successful, then generate invoice and attach
                 if ($status==1) {
                     if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('armpdfkit')) {
-                        $rechnungPDF = PATH_site . 'uploads/tx_armpackage/invoice_'.$orderid.'.pdf';
+                        $rechnungPDF = PATH_site . 'uploads/tx_armpackage/Rechnung_'.$orderid.'.pdf';
 
                         if (file_exists($rechnungPDF)) {
                             
@@ -172,7 +172,7 @@ class ArmpaymentsHook
                             $pdf::$fpdi->setSourceFile($rechnungPDF);
                             $tplIdx = $pdf::$fpdi->importPage(1);
                             $pdf::$fpdi->useTemplate($tplIdx, 0, 0, 0, 0, true);
-                            $fileInv = PATH_site . 'uploads/tx_armpackage/creditcard_rechnung_'.$orderid.'.pdf';
+                            $fileInv = PATH_site . 'uploads/tx_armpackage/Rechnung_Quittung_'.$orderid.'.pdf';
                             $pdf::$fpdi->Output($fileInv, 'f');
                             
                             $mail->attach(\Swift_Attachment::fromPath($fileInv));
