@@ -31,6 +31,22 @@ plugin.tx_armpackage {
     }
 }
 
+# Module configuration
+module.tx_armpackage.settings < plugin.tx_armpackage.settings
+module.tx_armpackage {
+    persistence {
+        storagePid = {$module.tx_armpackage.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = {$module.tx_armpackage.view.templateRootPath}
+        partialRootPaths.0 = {$module.tx_armpackage.view.partialRootPath}
+        layoutRootPaths.0 = {$module.tx_armpackage.view.layoutRootPath}
+    }
+    settings {
+        itemsPerPage = {$module.tx_armpackage.settings.itemsPerPage}
+    }
+}
+
 # these classes are only used in auto-generated templates
 plugin.tx_armpackage._CSS_DEFAULT_STYLE (
     textarea.f3-form-error {
@@ -64,3 +80,19 @@ plugin.tx_armpackage._CSS_DEFAULT_STYLE (
         color:green;
     }
 )
+
+config.tx_extbase{
+    persistence{
+        classes{
+            ARM\Armpackage\Domain\Model\Registration {
+                mapping {
+                    tableName = tx_armpackage_domain_model_registration
+                    recordType =  0
+                    columns {
+                        crdate.mapOnProperty = crdate
+                    }
+                }
+            }
+    	}
+    }
+}

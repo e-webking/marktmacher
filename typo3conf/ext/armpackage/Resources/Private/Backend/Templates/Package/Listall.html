@@ -1,0 +1,33 @@
+<f:layout name="Default" />
+<f:section name="content">
+    <div class="table-responsive essay">
+        <b>Filter by username:</b><br>
+        <f:form action="search" method="post">
+            <table class="table table-condensed">
+                <tr>
+                    <td><f:form.select name="username" options="{users}" optionValueField="uid" optionLabelField="username" prependOptionValue="" prependOptionLabel=" All " /></td>
+                    <td><f:form.submit value="Suche" class="button" /></td>
+                </tr>
+            </table>
+        </f:form>
+    </div>
+<f:be.widget.paginate objects="{registrations}" as="pgregs" configuration="{itemsPerPage: settings.itemsPerPage}">
+<table  class="armpackage" >
+	<tr>
+            <th>Reg-Nr.</th>
+            <th>Username</th>
+            <th>Datum</th>
+            <th>Abonnement</th>
+            <th>Betrag</th>
+            <th>Anzahl Verkaufshäuser</th>
+            <th>Rabatt</th>
+            <th>Total</th>
+            <th>Zahlungsstatus</th>
+	</tr>
+
+	<f:for each="{pgregs}" as="reg">
+            <f:render partial="Package/List" arguments="{_all}" />
+	</f:for>
+</table>
+</f:be.widget.paginate>
+</f:section>

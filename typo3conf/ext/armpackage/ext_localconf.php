@@ -52,6 +52,18 @@ call_user_func(
                 'Package' => 'login'
             ]
         );
+        
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'ARM.Armpackage',
+            'Purchase',
+            [
+                'Package' => 'mypurchase'
+            ],
+            // non-cacheable actions
+            [
+                'Package' => 'mypurchase'
+            ]
+        );
 
     // wizards
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(

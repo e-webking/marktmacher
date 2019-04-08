@@ -26,6 +26,12 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     
     /**
      *
+     * @var \DateTime
+     */
+    protected $crdate;
+    
+    /**
+     *
      * @var string
      */
     protected $ptitle = '';
@@ -323,5 +329,24 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPtitle($ptitle)
     {
         $this->ptitle = $ptitle;
+    }
+    
+    /**
+     * Returns the crdate
+     *
+     * @return \DateTime $crdate
+     */
+    public function getCrdate() {
+        return $this->crdate;
+    }
+
+    /**
+     * Sets the crdate
+     *
+     * @param \DateTime $crdate
+     * 
+     */
+    public function setCrdate($crdate) {
+        $this->crdate = $crdate;
     }
 }

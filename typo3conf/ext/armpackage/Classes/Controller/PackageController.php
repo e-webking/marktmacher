@@ -43,6 +43,14 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @inject
      */
     protected $regRepository = null;
+    
+    /**
+     * userRepository
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
+     * @inject
+     */
+    protected $userRepository;
 
     /**
      * action list
@@ -693,6 +701,51 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                $this->redirectToUri($this->settings['furnplanLoginUrl']);
             }
         }
+    }
+    
+    /**
+     * BE list all registrations
+     */
+    public function listallAction() 
+    {
+        $users = $this->userRepository->findAll();
+        $regs = $this->regRepository->findAll();
+        
+        $this->view->assign('users', $users);
+        $this->view->assign('registrations', $regs);
+    }
+    
+    /**
+     * BE search registrations
+     */
+    public function searchAction() 
+    {
+        if ($this->request->hasArgument('username')) {
+            $userid = $this->request->getArgument('username');
+            if ($userid > 0) {
+                $regs = $this->regRepository->findByFeuser($userid);
+                $this->view->assign('registrations', $regs);
+            } else {
+                $this->addFlashMessage('Please select username', 
+                   '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+                $this->redirect('listall');
+            }
+        } else {
+             $this->addFlashMessage('Please select username', 
+                   '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $this->redirect('listall');
+        }      
+    }
+    
+    /**
+     * My purchases
+     * 
+     */
+    public function mypurchaseAction() 
+    {
+        $userid = $GLOBALS['TSFE']->fe_user->user['uid'];
+        $regs = $this->regRepository->findByFeuser($userid);
+        $this->view->assign('registrations', $regs);
     }
     
     /**

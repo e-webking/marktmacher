@@ -1,0 +1,21 @@
+<f:layout name="Default" />
+<f:section name="content">
+    <div class="table-responsive">
+        <table  class="table table-striped" >
+                <tr>
+                    <th>Reg-Nr.</th>
+                    <th>Datum</th>
+                    <th>Abonnement</th>
+                    <th>Betrag</th>
+                    <th>Anzahl Verkaufshäuser</th>
+                    <th>Rabatt</th>
+                    <th>Total</th>
+                    <th>Zahlungsstatus</th>
+                </tr>
+
+                <f:for each="{registrations}" as="reg">
+                    <f:render partial="Package/Purchase" arguments="{_all}" />
+                </f:for>
+        </table>
+    </div>
+</f:section>

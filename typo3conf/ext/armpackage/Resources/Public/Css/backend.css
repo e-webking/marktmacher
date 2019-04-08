@@ -1,0 +1,22 @@
+
+table.armpackage{
+    font-size:11px;
+}
+table.armpackage th{
+    background: -moz-linear-gradient(center top , #A2C26F 0%, #CCE6A9 4%, #CCE0AB 44%, #B5CC94 96%, #A4C16F 100%) repeat scroll 0 0 transparent;
+    padding:1px 3px 1px 3px;  
+    border: 1px black solid;   
+}
+table.armpackage td{
+    border: 1px black solid;
+    padding:1px 3px 1px 3px;  
+}
+table.armpackage{
+    border-collapse:collapse;
+    width:100%;
+    margin-bottom:0px;  
+    padding-bottom:0px;         
+}     
+table.armpackage tr td{
+    background-color:#f2f2f2;
+}
