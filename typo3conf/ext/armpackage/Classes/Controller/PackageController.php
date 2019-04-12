@@ -99,10 +99,10 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
             $amount = $package->getRate() * $qty;
             $discount = $amount - $total;
-            $this->view->assign('total', $total);
+            $this->view->assign('total', number_format($total,2,",","."));
             $this->view->assign('qty', $qty);
-            $this->view->assign('amount', $amount);
-            $this->view->assign('discount', $discount);
+            $this->view->assign('amount', number_format($amount,2,",","."));
+            $this->view->assign('discount', number_format($discount,2,",","."));
             $this->view->assign('feuser', $GLOBALS['TSFE']->fe_user->user['uid']);
         } else {
             $this->addFlashMessage('Please select a package', 
@@ -492,7 +492,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('feuser')) {
            $feuser =  $this->request->getArgument('feuser');
            if ($feuser == '') {
-               $this->addFlashMessage('Please fill username field', 
+               $this->addFlashMessage('Bitte geben Sie einen Benutzernamen ein', 
                '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                 $sub = FALSE;
             }
@@ -500,7 +500,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('company')) {
             $company =  $this->request->getArgument('company');
             if ($company == '') {
-                 $this->addFlashMessage('Company field is empty, please enter valid username', 
+                 $this->addFlashMessage('Das Feld Unternehmen / Firma ist noch leer. Bitte geben Sie einen gültigen Benutzernamen ein.', 
                '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                 $sub = FALSE;
             }
@@ -508,7 +508,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('address')) {
            $address =  $this->request->getArgument('address');
            if ($address == '') {
-                $this->addFlashMessage('Please fill address field', 
+                $this->addFlashMessage('Bitte geben Sie die Adresse ein', 
                '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                $sub = FALSE;
            }
@@ -518,7 +518,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('city')) {
            $city =  $this->request->getArgument('city');
            if ($city == '') {
-               $this->addFlashMessage('Please fill city field', 
+               $this->addFlashMessage('Bitte geben Sie den Ort ein', 
                '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                $sub = FALSE;
            }
@@ -527,7 +527,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('zip')) {
            $zip =  $this->request->getArgument('zip');
            if ($zip == '') {
-               $this->addFlashMessage('Please fill zip field', 
+               $this->addFlashMessage('Bitte geben Sie die Postleitzahl ein', 
                '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                $sub = FALSE;
            }
@@ -587,16 +587,16 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $arr['status'] = 'OK';
                 $arr['company'] = $cdata['company'];
                 $arr['uid'] = $cdata['uid'];
-                $arr['text'] = 'Username name verified successfully.';
+                $arr['text'] = 'Der Benutzername wurde erfolgreich bestätigt.';
                       
             } else {
                 $arr['status'] = 'ERR';
-                $arr['error'] = 'Username "'. $username.'" is invalid!';
+                $arr['error'] = 'Benutzername "'. $username.'" ist ungültig. Bitte geben Sie den gültigen Benutzernamen ein. Sollen Sie diesen nicht kennen, fragen Sie bei Ihrem Unternehmen an.';
             }
             
         } else {
             $arr['status'] = 'ERR';
-            $arr['error'] = 'No username provided!';
+            $arr['error'] = 'Nein Benutzername!';
         }
         
         $json = $this->array2Json($arr);
@@ -649,9 +649,9 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $discount = number_format(($amount - $total), 2, ",", ".");
                 
                 $arr['status'] = 'OK';
-                $arr['total'] = $total;
-                $arr['discount'] = $discount;
-                $arr['amount'] = $amount;
+                $arr['total'] = number_format($total,2,",",".");
+                $arr['discount'] = number_format($discount,2,",",".");
+                $arr['amount'] = number_format($amount,2,",",".");
                       
             } else {
                 $arr['status'] = 'ERR';
@@ -682,8 +682,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             if ($this->request->hasArgument('feuser')) {
                 $feuser =  $this->request->getArgument('feuser');
                 if ($feuser == '') {
-                    $msg .= 'Please fill username field!'."\n";
-                     $this->addFlashMessage('Please fill username field.', 
+                     $this->addFlashMessage('Bitte geben Sie den Benutzernamen ein, den Sie von Ihrem Unternehmen bekommen haben.', 
                    '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                     $sub = FALSE;
                 }
@@ -691,8 +690,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             if ($this->request->hasArgument('company')) {
                 $company =  $this->request->getArgument('company');
                 if ($company == '') {
-                    $msg .= 'Company field is empty, enter valid username!';
-                     $this->addFlashMessage('Company field is empty, enter valid username.', 
+                     $this->addFlashMessage('Das Feld Unternehmen / Firma ist noch leer. Bitte geben Sie einen gültigen Benutzernamen ein.', 
                    '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
                     $sub = FALSE;
                 }
