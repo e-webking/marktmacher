@@ -14,6 +14,17 @@ plugin.tx_felogin_pi1 {
     email_from = office@marktmacher.com
     email_fromName = Markmacher
     replyTo = office@marktmacher.com
+
+    _LOCAL_LANG {
+        default {
+            ll_welcome_message = Bitte geben Sie Ihren Benutzername und Ihr Passwort ein
+            username = Benutzername
+            password = Passwort
+            ll_forgot_password = Passwort vergessen?
+            ll_forgot_header_backToLogin = Zurück zum Login
+            ll_send_password = Passwort zurücksetzen
+        }
+    }
 }
 
 plugin.tx_femanager {    
@@ -38,7 +49,7 @@ plugin.tx_femanager {
             tx_femanager_domain_model_user.www = Webseite
             tx_femanager_domain_model_user.country = Land
             tx_femanager_domain_model_user.terms = Ich stimme den AGB zu
-            tx_femanager_domain_model_user.termslinktext = Klicken Sie hier, um die AGB anzuzeigen
+            tx_femanager_domain_model_user.termslinktext = Klicken Sie hier um die AGB
             pleaseChoose = bitte wählen Sie
             submitNew = Senden
             submitUpdate = Senden
@@ -120,6 +131,9 @@ plugin.tx_femanager {
                 telephone {
                     required = 1
                 }
+                terms {
+                    required = 1
+                }
             }
             email {
                 createUserConfirmation {
@@ -136,6 +150,9 @@ plugin.tx_femanager {
             misc {
                 removeFromUserGroupSelection = 
             }
+        }
+        misc {
+            link2 = 22
         }
     }
 }

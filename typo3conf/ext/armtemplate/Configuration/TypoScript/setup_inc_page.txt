@@ -78,7 +78,9 @@ page.includeCSS {
     file05 = {$templatePath}Resources/Public/revolution/css/settings.css
     file06 = {$templatePath}Resources/Public/revolution/css/layers.css
     file07 = {$templatePath}Resources/Public/revolution/css/navigation.css
-    file08 = {$templatePath}Resources/Public/css/style.css
+    file08 = //cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css
+    file08.external = 1
+    file09 = {$templatePath}Resources/Public/css/style.css
 }
 
 page.includeJSFooter {
@@ -92,7 +94,10 @@ page.includeJSFooter {
     file07 = {$templatePath}Resources/Public/revolution/js/jquery.themepunch.revolution.min.js
     file08 = {$templatePath}Resources/Public/revolution/js/jquery.themepunch.tools.min.js
     file09 = {$templatePath}Resources/Public/js/jarallax.min.js
-    file10 = {$templatePath}Resources/Public/js/custom.js
+    
+    file11 = //cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js
+    file11.external = 1
+    file12 = {$templatePath}Resources/Public/js/custom.js
 }
 
 ## Add Template
@@ -118,6 +123,14 @@ page.10 {
         # Main Template
         2 = TEXT
         2.value = {$templatePath}Resources/Private/Templates/fullwidthgrid.html
+
+        # Furnplan Template (no menu)
+        3 = TEXT
+        3.value = {$templatePath}Resources/Private/Templates/furnplannomenu.html
+
+        # Furnplan Template (with menu)
+        4 = TEXT
+        4.value = {$templatePath}Resources/Private/Templates/furnplanmenu.html
     }
 
     variables {
@@ -129,3 +142,7 @@ page.10 {
         studentRegPage.value = {$studentRegPage}
     }
 }
+
+[globalVar = TSFE:page|backend_layout = 3] || [globalVar = TSFE:page|backend_layout = 4]
+page.bodyTag = <body class="fpbg"> 
+[end]

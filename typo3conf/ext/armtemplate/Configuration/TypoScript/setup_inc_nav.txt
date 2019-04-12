@@ -20,6 +20,15 @@ lib.moblogo {
         wrap = |
     }
 }
+lib.fplogo = IMAGE
+lib.fplogo {
+    file = {$fpLogoFile}
+    file.height = 100
+    stdWrap {
+        typolink.parameter = {$fpPID}
+        wrap = |
+    }
+}
 
 lib.mainMenu = HMENU
 lib.mainMenu {

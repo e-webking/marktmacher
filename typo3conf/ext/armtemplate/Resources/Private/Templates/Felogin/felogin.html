@@ -38,18 +38,18 @@
             <div class="col-xs-8 col-xs-offset-2">
                 <div class="page-login-form box">
                     <!-- ###LOGIN_FORM### -->
-                    <h3>Login</h3>
+                    <h4>Login Unternehmen</h4>
                     <form role="form" class="login-form felogin" action="###ACTION_URI###" target="_top" method="post" onsubmit="###ON_SUBMIT###">
                         <div class="form-group">
                             <div class="input-icon">
                               <i class="icon fa fa-user"></i>
-                              <input type="text" id="user" class="form-control" name="user" placeholder="Username" value="">
+                              <input type="text" id="user" class="form-control" name="user" placeholder="Benutzername" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-icon">
                               <i class="icon fa fa-unlock-alt"></i>
-                              <input id="pass" name="pass" type="password" class="form-control" placeholder="Password" data-rsa-encryption="">
+                              <input id="pass" name="pass" type="password" class="form-control" placeholder="Passwort" data-rsa-encryption="">
                             </div>
                         </div>
                         <!--###PERMALOGIN_VALID###-->
@@ -71,7 +71,7 @@
                     <!--###FORGOTP_VALID###-->
                     <div class="form-links">
                         <div class="pull-left"><f:cObject typoscriptObjectPath="lib.signupAtLogin" /></div>
-                        <div class="pull-right"><!--###FORGOT_PASSWORD_LINK###-->###FORGOT_PASSWORD###<!--###FORGOT_PASSWORD_LINK###--></div>
+                        <div class="pull-right"><!--###FORGOT_PASSWORD_LINK###-->Passwort vergessen?<!--###FORGOT_PASSWORD_LINK###--></div>
                     </div>
                     <!--###FORGOTP_VALID###-->
                     <!-- ###LOGIN_FORM### -->
@@ -82,7 +82,7 @@
 <!--###TEMPLATE_LOGOUT###-->
 <div class="col-xs-6 col-xs-offset-3">
      <div class="page-login-form box">
-         <h3>Sign Out</h3>
+         <h4>Ausloggen</h4>
          <form class="felogin" action="###ACTION_URI###" target="_top" method="post">
              <div class="from-group">
                  <div class="input-group margin-bottom-sm">
@@ -108,7 +108,7 @@
 <!--###TEMPLATE_FORGOT###-->
 <div class="col-xs-6 col-xs-offset-3">
     <div class="page-login-form box">
-        <h3>Forgot password</h3>
+        <h4>Passwort vergessen</h4>
         <!-- ###FORGOT_FORM### -->
         <form class="felogin-pw" role="form" action="###ACTION_URI###" method="post">
           <div class="felogin-hidden">
@@ -120,13 +120,11 @@
                 <input type="text" id="tx_felogin_pi1-forgot-email" name="###FORGOT_EMAIL###" class="form-control" placeholder="Email">
               </div>
           </div>
-          <input class="felogin_forgot_submit btn btn-common log-btn" type="submit" name="submit" value="###SEND_PASSWORD###">
+          <input class="felogin_forgot_submit btn btn-common log-btn" type="submit" name="submit" value="Passwort zurücksetzen">
         </form>
         <!-- ###FORGOT_FORM### -->
-        <ul class="form-links">
-      <li class="pull-left"><f:cObject typoscriptObjectPath="lib.signupAtLogin" /></li>
-      <li class="pull-right">###BACKLINK_LOGIN###</li>
-    </ul>
+        <br>
+        <div>###BACKLINK_LOGIN###</div>
     </div>
 </div>
 <!--###TEMPLATE_FORGOT###-->

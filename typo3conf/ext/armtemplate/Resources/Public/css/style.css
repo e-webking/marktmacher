@@ -42,6 +42,9 @@ a:hover, a:focus {
   color: #42b8d4;
 }
 header {height: 50px;}
+.header2 {height: 80px;}
+.header2 .header-text{left:16px;}
+.header2 .header-text img {width: 50%; height: auto; max-width: 100%;}
 
 /**colors**/
 .red, .red a {color: #a93044!important;}
@@ -207,6 +210,7 @@ a.regbtn:hover {color: #323232; background: #e5d1d4!important;}
 .csc-vcenter {position: relative;}
 .csc-vcenter .valign-middle {top: 50%; transform: translateY(-50%);}
 .ce-image.ce-center {text-align: center;}
+.ce-image.ce-center .ce-column, .ce-textpic.ce-center.ce-above .ce-column{margin: 0 auto;}
 
 .hover-image {min-height: 390px;}
 .fullwidth-img {width: 100%; position: relative; max-width: 2560px; margin: 0 auto}
@@ -325,16 +329,26 @@ iframe {max-width: 100%;}
 .btn {border-radius: 4px; padding: 13px 14px; text-transform: uppercase}
 .btn-primary {background: #7a7463;}
 .btn-primary:hover {background: #a89e8c}
+.fpbg .btn-primary {background: #fff; color: #7a7463;}
+
 .powermail_reset {background: #9fa1a2}
 .csc-bothpadding {padding: 10px 20px}
 .internal_scroll {width: 75px; margin: 0 auto; padding: 10px 0;}
 .frame-type-login {padding: 15px; overflow-y: auto;}
 .tx-felogin-pi1 {height: 400px; display: block; background: #999;}
+.tx-felogin-pi1 a {color:#fff;}
 .login-form {padding-bottom: 15px;}
-div#userprocess {padding: 10px;}
+.tx-felogin-pi1 .btn-common {color: #000}
+div#userprocess,div#buyprocess {padding: 10px;}
 div#bformoverlay{display:none; position: absolute;top: 88px;width: 100%;background: rgba(255,255,255,0.5);height: 300px;text-align: center; padding-top: 130px;}
 .typo3-messages {list-style: none; margin: 0px;}
 .typo3-messages .alert{margin: 0px!important; padding: 0px!important;}
+#packqty {width: 100px;}
+.packitem {padding: 10px; width: 95%; margin: 0 auto;}
+.psub {font-size: 1.4em;}
+.pprice {font-size: 2.0em; font-weight: bold; line-height: 1.4;margin-bottom: 30px;}
+.reglink {padding: 8px 25px; border: 1px solid #000; background: #303030; text-align: center; font-size: 1.5em; font-weight: bold; color: #fff; margin: 10px}
+.pknote {top: 0; margin-left: 110px; position: relative; font-size: 10px; width: 350px; display: block;}
 @media only screen and (max-width:600px){
     .s-header{height:90px}
     .header-logo{left:30px}
@@ -411,6 +425,7 @@ button:focus {
 .white-bg {
   background: #fff !important;
 }
+.fpbg {background-image: url(../images/fpbg.jpg); background-repeat: no-repeat; background-position: center; background-attachment: fixed; color: #fff}
 @media (min-width: 768px) {
     body {
           font-size: 14px;
@@ -441,6 +456,7 @@ button:focus {
     .dummy-cell {display:table-cell; float: none; vertical-align: middle; height: 100%;}
     .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-left-nowrap .csc-textpic-text {position: absolute; left: 0; top: 0; height: 100%}
     .dummy-cell .csc-vcenter .csc-textpic.csc-textpic-intext-right-nowrap .csc-textpic-text {position: absolute; right: 0; top: 0; height: 100%; text-align: right}
+    #c634 .dummy-cell {float: left;}
     .slideshow .switcher {right: 15px;}
     .overlap-border {height: 12px; margin-top: -15px;}
     .vertical-center {
@@ -451,6 +467,8 @@ button:focus {
       align-items: center;
     }
     header {height: 75px;}
+    .header2 {height: 140px;}
+    .header2 .header-text img {width: inherit;}
     .imgblk > h1 {margin-top: 40px}
     .four-grid {margin-top: 40px;}
     .blkcontent {width: 54%; float: right; min-height: 380px}
@@ -475,7 +493,9 @@ button:focus {
     
     .frame-type-login {padding: 25px;}
     .login-form {padding-bottom: 25px;}
+    .pknote{position: absolute; width:400px; font-size: 12px;}
 }
+
 @media (min-width: 992px) {
     body {font-size: 15px;}
     .stext {width: 40%; padding-left: 40px; padding-top: 40px; padding-right: 40px;}
@@ -507,6 +527,8 @@ button:focus {
   .fivegrid .fullwidth-img { width: 20%;}
   .frame-type-menu_sitemap {width: 60%;}
   .csc-bothpadding {padding: 20px 30px}
+  .tx-felogin-pi1 {width:90%; margin: 0 auto;}
+  .tx-felogin-pi1 h4 {font-size: 2.0em}
 }
 @media (min-width: 1440px) {
     .container {
@@ -522,9 +544,14 @@ button:focus {
     .hover-image {min-height: 420px;}
     .powermail_fieldset  .row:nth-last-child(2) {width: 20%; padding-left: 14%}
     
+    .tx-felogin-pi1 {width: 80%}
     .frame-type-login {padding: 40px;}
     .login-form {padding-bottom: 40px;}
 }
+@media (min-width: 1600px) {
+    .tx-felogin-pi1 {width: 70%}
+}
+
 .img-left {
   margin: 10px 15px 10px 0;
   float: left;

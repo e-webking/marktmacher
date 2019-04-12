@@ -173,8 +173,72 @@
             });
         }
     });
+    
+    $('#packqty').on('change', function(){
+        var qty = $('#packqty').val();
+        var packuid = $('#package').val();
+        
+        if (qty < 1) {
+            $('#buyprocess').html('Quantity must be greater than zero!');
+            $('#btnsub').attr('disabled',1);
+            $('#packqty').focus();
+        }
+        
+        if (qty > 0) {
+            $('#buyprocess').html('');
+            $('#bformoverlay').show();
+            var url = "index.php?eID=armpackageprice";
+            $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    format: "json",
+                    data: {
+                            "arguments[package]": packuid,
+                            "arguments[qty]": qty,
+                            "pluginName":"Package",
+                            "controllerName":"Package",
+                            "actionName":"getPrice",
+                            "extensionName": "Armpackage",
+                            "vendor": "ARM",
+                            "formatName":"html"
+                    }
+            }).done(function( data ) {
+                var html = '';
+                $('#bformoverlay').hide();
+                if (data.status == 'OK') {
+                    $('#total').val(data.total);
+                    $('#amount').val(data.amount);
+                    $('#discount').val(data.discount);
+                    $('#btnsub').removeAttr("disabled");;
+                } else{
+                    html += '<span class="error">'+data.error+'</span>';
+                }
+              $('#buyprocess').html(html);
+            });
+        }
+    });
    
     menuTrigger.on('click',function(e){e.preventDefault();siteBody.toggleClass('menu-is-open');});
     closeButton.on('click',function(e){e.preventDefault();menuTrigger.trigger('click');});
     siteBody.on('click',function(e){if(!$(e.target).is('.header-nav, .header-nav__content, .header-menu-toggle, .header-menu-toggle span')){siteBody.removeClass('menu-is-open');}});
 })(jQuery);
+
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#323232",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "content": {
+    "message": "Um unsere Website für Sie optimal zu gestalten verwenden wir Cookies. Weitere Informationen/Datenschutzerklärung",
+    "dismiss": "OK",
+    "link": "Lern mehr",
+    "href": "https://www.marktmacher.com/index.php?id=22"
+  }
+})});

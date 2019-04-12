@@ -3,12 +3,14 @@ rootPID = 1
 searchPid = 
 templatePath = typo3conf/ext/armtemplate/
 logoFile = typo3conf/ext/armtemplate/Resources/Public/images/logo.jpg
+fpLogoFile = typo3conf/ext/armtemplate/Resources/Public/images/fplogo.jpg
 cmsAddressUid = 25
 cmsImgLinksUid = 26
 cmsLinkListUid = 27
 facebookUrl = https://www.facebook.com/
 footerMenu = 11
 studentRegPage = 20
+fpPID = 29
 
 plugin.tx_femanager {
     view {
