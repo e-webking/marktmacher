@@ -11,19 +11,20 @@ return [
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
+        'default_sortby' => 'uid DESC',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,subtitle,brief,rate,rebate2,rebate3to10,rebatemt10',
+        'searchFields' => 'title,subtitle,brief,mnth,dsprate,rate,rebate2,rebate3to10,rebatemt10',
         'iconfile' => 'EXT:armpackage/Resources/Public/Icons/tx_armpackage_domain_model_package.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, brief, rate, rebate2, rebate3to10, rebatemt10',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, brief, mnth, dsprate, rate, rebate2, rebate3to10, rebatemt10',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, brief, rate, rebate2, rebate3to10, rebatemt10, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, brief, mnth, dsprate, rate, rebate2, rebate3to10, rebatemt10, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -143,6 +144,24 @@ return [
                 'eval' => 'trim',
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'default'
+            ]
+        ],
+        'mnth' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_package.mnth',
+            'config' => [
+                'type' => 'input',
+                'size' => 5,
+                'eval' => 'int'
+            ]
+        ],
+        'dsprate' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_package.dsprate',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'double2'
             ]
         ],
         'rate' => [

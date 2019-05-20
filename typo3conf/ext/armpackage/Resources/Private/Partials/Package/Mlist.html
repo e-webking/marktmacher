@@ -1,22 +1,14 @@
-<div class="packitem">
+<div class="packminiitem">
     <p class="psub text-center"><strong>{package.subtitle}</strong></p>
     <h2 class="ptitle text-center">{package.title}</h2>
-    <div class="pbrief"><f:format.raw>{package.brief}</f:format.raw></div>
     <f:if condition="{package.dsprate}">
         <f:if condition="{0:package.dsprate} > {0:package.rate}">
             <div class="strprice text-center"><strike>&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.dsprate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</strike></div>
         </f:if>
     </f:if>
     <div class="pprice text-center">&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.rate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</div>
+    <div class="pnote text-center">* Der Abo Preis pro Monat gilt pro Standort, an dem furnplan installiert ist und angewendet wird.</div>
     <p class="text-center">
-    <f:if condition="{login}">
-        <f:then>
-            <f:link.action action="register" arguments="{package:package}" class="reglink"><f:translate key="tx_armpackage_domain_model_package.register" /></f:link.action>
-        </f:then>
-        <f:else>
-            <f:link.page pageUid="{settings.loginPid}" class="reglink"><f:translate key="tx_armpackage_domain_model_package.register" /></f:link.page>
-        </f:else>
-    </f:if>
+        <f:link.action action="register" arguments="{package:package}" class="reglink">jetzt bestellen</f:link.action>
     </p>
-    <p>* <f:translate key="tx_armpackage_domain_model_package.note" /></p>
 </div>

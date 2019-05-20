@@ -59,6 +59,23 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
+        if($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+             $this->view->assign('login', 1);
+        }
+        $packages = $this->packageRepository->findAll();
+        $this->view->assign('packages', $packages);
+    }
+    
+    /**
+     * action mlist
+     *
+     * @return void
+     */
+    public function mlistAction()
+    {
+        if($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+             $this->view->assign('login', 1);
+        }
         $packages = $this->packageRepository->findAll();
         $this->view->assign('packages', $packages);
     }
@@ -73,8 +90,10 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('package')) {
             $pack = $this->request->getArgument('package');
             $qty = 0;
+            
             if ($pack > 0) {
                 $package = $this->packageRepository->findByUid($pack);
+                $mnth = $package->getMnth();
                 $this->view->assign('package', $package);
             }
             if ($this->request->hasArgument('qty')) {
@@ -88,26 +107,29 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
             if ($total == '') {
                 if ($qty == 1) {
-                    $total = $package->getRate() * $qty;
+                    $total = $package->getRate() * $qty * $mnth;
                 } elseif($qty == 2) {
-                    $total = ($package->getRate() - $package->getRate() * $package->getRebate2() /100) * $qty; 
+                    $total = ($package->getRate() - $package->getRate() * $package->getRebate2() /100) * $qty * $mnth; 
                 } elseif($qty > 2 && $qty < 11) {
-                    $total = ($package->getRate() - $package->getRate() * $package->getRebate3to10() /100) * $qty; 
+                    $total = ($package->getRate() - $package->getRate() * $package->getRebate3to10() /100) * $qty * $mnth; 
                 } else {
-                    $total = ($package->getRate() - $package->getRate() * $package->getRebatemt10() /100) * $qty; 
+                    $total = ($package->getRate() - $package->getRate() * $package->getRebatemt10() /100) * $qty * $mnth; 
                 }
             }
-            $amount = $package->getRate() * $qty;
+            $amount = $package->getRate() * $qty * $mnth;
             $discount = $amount - $total;
+            
+            $this->view->assign('pack', $package->getTitle());
             $this->view->assign('total', number_format($total,2,",","."));
             $this->view->assign('qty', $qty);
             $this->view->assign('amount', number_format($amount,2,",","."));
             $this->view->assign('discount', number_format($discount,2,",","."));
             $this->view->assign('feuser', $GLOBALS['TSFE']->fe_user->user['uid']);
+            
         } else {
             $this->addFlashMessage('Please select a package', 
                '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-            $this->redirect("list");
+            $this->redirect("mlist");
         }
     }
 
@@ -120,6 +142,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         if ($this->request->hasArgument('total')) {
             $total = $this->request->getArgument('total');
+            $total = str_replace(',', '.', $total);
         }
         if ($this->request->hasArgument('qty')) {
             $qty = $this->request->getArgument('qty');
@@ -132,9 +155,11 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
         if ($this->request->hasArgument('discount')) {
             $discount = $this->request->getArgument('discount');
+            $discount = str_replace(',', '.', $discount);
         }
         if ($this->request->hasArgument('amount')) {
             $amount = $this->request->getArgument('amount');
+            $amount = str_replace(',', '.', $amount);
         }
         
         if ($packuid > 0 && $feuser > 0 && $total > 0 && $qty > 0) {
@@ -176,6 +201,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                         'description' => urlencode($package->getTitle()), 
                         'vat' => 0, 
                         'currency' => $payConf['currency'], 
+                        'email' => $GLOBALS['TSFE']->fe_user->user['email'], 
                         'tablename' => 'tx_armpackage_domain_model_registration', 
                         'method'=> 'stripe'),
                         'Payment',
@@ -190,14 +216,14 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $this->addFlashMessage('Payment module not loaded, please contact website administrator (office@marktmacher.com)', 
                         '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR, FALSE);
                 //die('Pay!');
-                $this->redirect('list');
+                $this->redirect('mlist');
             }
             
         } else {
              $this->addFlashMessage('Complete order information missing', 
                 '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR, FALSE);
              //die('Order');
-             $this->redirect('list');
+             $this->redirect('mlist');
         } 
     }
     
@@ -215,6 +241,8 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $rate = number_format($rate,2,",",".");
         $amount = floatval($registration->getAmount());
         $amount = number_format($amount,2,",",".");
+        $discount = floatval($registration->getDiscount());
+        $discount = number_format($discount,2,",",".");
         
         if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('armpdfkit')) {
             $pdf = $this->objectManager->get('ARM\\Armpdfkit\\Pdf\\Pdf');
@@ -274,11 +302,20 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf::writeCell('8832 Wilen', 30, 5, 0, 1);
             $pdf::writeLine('',TRUE,1);
             
+            $country = 'Österreich';
+            switch ($GLOBALS['TSFE']->fe_user->user['country']) {
+                case 'CHF':
+                    $country = 'Schweiz';
+                    break;
+                 case 'DEU':
+                    $country = 'Deutschland';
+                    break;
+            }
             $y = $pdf::$pdf->GetY();
             $pdf::$pdf->SetY($y-5);
             $pdf::$pdf->SetX(17);
             $pdf::writeCell('Land', 15, 5, 0, 0);
-            $pdf::writeCell($GLOBALS['TSFE']->fe_user->user['country'], 48, 5, 0, 0);
+            $pdf::writeCell($country, 48, 5, 0, 0);
             
             $pdf::writeCell('Kunden Tel.', 20, 5, 0, 0);
             $pdf::writeCell($GLOBALS['TSFE']->fe_user->user['telephone'], 50, 5, 0, 0);
@@ -367,7 +404,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf::writeCell(' ',60, 5, 0, 0);
             $pdf::writeCell('Rabatt',30, 5, 1, 0);
             $pdf::writeCell(' ',20, 5, 1, 0);
-            $pdf::writeCell($registration->getDiscount(),30, 5, 1, 1, 'R');
+            $pdf::writeCell($discount,30, 5, 1, 1, 'R');
             
             $pdf::setFont('helvetica',8,'B');
             $pdf::writeCell(' ',10, 5, 0, 0);
@@ -402,12 +439,13 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['templateRootPaths'][0]);
-        $templatePathAndFilename = $partialRootPath.'Email/Stripe.html';
+        $templatePathAndFilename = $partialRootPath.'Email/PreStripe.html';
 
         $emailView->setTemplatePathAndFilename($templatePathAndFilename);
         $variables = [
                         'username'=>$GLOBALS['TSFE']->fe_user->user['username'],
-                        'company'=>$GLOBALS['TSFE']->fe_user->user['company'],
+                        'fname'=>$GLOBALS['TSFE']->fe_user->user['first_name'],
+                        'lname'=>$GLOBALS['TSFE']->fe_user->user['last_name'],
                         'orderid'=>$registration->getUid(),
                         'currency'=>$this->settings['currency'],
                         'total'=>  number_format($registration->getTotal(),2,",","."),
@@ -415,7 +453,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                         'pstatus'=>'Pending',
                         'rate'=>  number_format($registration->getRate(),2,",","."),
                         'qty'=>  $registration->getQty(),
-                        'discount'=>  $registration->getDiscount(),
+                        'discount'=>  number_format($registration->getDiscount(),2,",","."),
                         'vat'=>  '0,00',
                         'package'=>  $registration->getPtitle()
                     ];
@@ -454,7 +492,15 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * Create branch
      */
     public function branchAction() {
-         if ($this->request->hasArgument('puser')) {
+        
+    
+        if ($GLOBALS['TSFE']->fe_user->user['tx_femanager_activepack'] == 0 && $GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+            $link = $this->uriBuilder->setTargetPageUid($this->settings['dashboardPid'])->build();
+            $this->redirectToUri($link);
+            die();
+        }
+        
+        if ($this->request->hasArgument('puser')) {
             $puser =  $this->request->getArgument('puser');
             $this->view->assign('puser', $puser);
         }
@@ -465,18 +511,6 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($this->request->hasArgument('company')) {
             $company =  $this->request->getArgument('company');
             $this->view->assign('company', $company);
-        }
-        if ($this->request->hasArgument('address')) {
-           $address =  $this->request->getArgument('address');
-            $this->view->assign('address', $address);
-        }
-        if ($this->request->hasArgument('city')) {
-           $city =  $this->request->getArgument('city');
-            $this->view->assign('city', $city);
-        }
-        if ($this->request->hasArgument('zip')) {
-           $zip =  $this->request->getArgument('zip');
-            $this->view->assign('zip', $zip);
         }
         $countries = ['CHF'=>'Schweiz','DEU'=>'Deutschland','AUT'=>'Österreich'];
         $this->view->assign('countries', $countries);
@@ -505,33 +539,6 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $sub = FALSE;
             }
         }
-        if ($this->request->hasArgument('address')) {
-           $address =  $this->request->getArgument('address');
-           if ($address == '') {
-                $this->addFlashMessage('Bitte geben Sie die Adresse ein', 
-               '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-               $sub = FALSE;
-           }
-        } else {
-            
-        }
-        if ($this->request->hasArgument('city')) {
-           $city =  $this->request->getArgument('city');
-           if ($city == '') {
-               $this->addFlashMessage('Bitte geben Sie den Ort ein', 
-               '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-               $sub = FALSE;
-           }
-        }
-        
-        if ($this->request->hasArgument('zip')) {
-           $zip =  $this->request->getArgument('zip');
-           if ($zip == '') {
-               $this->addFlashMessage('Bitte geben Sie die Postleitzahl ein', 
-               '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-               $sub = FALSE;
-           }
-        }
         
         if ($this->request->hasArgument('country')) {
            $country =  $this->request->getArgument('country');
@@ -543,9 +550,6 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $branch = GeneralUtility::makeInstance('ARM\\Armpackage\\Domain\\Model\\Branch');
             $branch->setFeuser($feuser);
             $branch->setCompany($company);
-            $branch->setAddress($address);
-            $branch->setCity($city);
-            $branch->setZip($zip);
             $branch->setCountry($country);
             
             $this->branchRepository->add($branch);
@@ -571,7 +575,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
             $queryBuilder->getRestrictions()->removeAll();
-            $rows = $queryBuilder->select('uid','company')
+            $rows = $queryBuilder->select('uid','company','tx_femanager_activepack')
                 ->from('fe_users')
                 ->where(
                     $queryBuilder->expr()->eq('deleted', 0),
@@ -581,7 +585,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 ->execute()
                 ->fetchAll();
             
-            if (count($rows) > 0) {
+            if (count($rows) > 0 && $rows[0]['tx_femanager_activepack']==1) {
                 
                 $cdata = $rows[0];
                 $arr['status'] = 'OK';
@@ -590,8 +594,14 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $arr['text'] = 'Der Benutzername wurde erfolgreich bestätigt.';
                       
             } else {
+                
                 $arr['status'] = 'ERR';
-                $arr['error'] = 'Benutzername "'. $username.'" ist ungültig. Bitte geben Sie den gültigen Benutzernamen ein. Sollen Sie diesen nicht kennen, fragen Sie bei Ihrem Unternehmen an.';
+                
+                if ($rows[0]['tx_femanager_activepack']==0) {
+                    $arr['error'] = 'Das Seminar ist noch nicht abonniert. Sie können sich darum als Student nicht registrieren.';
+                } else {
+                    $arr['error'] = 'Benutzername "'. $username.'" ist ungültig. Bitte geben Sie den gültigen Benutzernamen ein. Sollen Sie diesen nicht kennen, fragen Sie bei Ihrem Unternehmen an.';
+                }
             }
             
         } else {
@@ -624,7 +634,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_armpackage_domain_model_package');
             $queryBuilder->getRestrictions()->removeAll();
-            $rows = $queryBuilder->select('rate','rebate2','rebate3to10','rebatemt10')
+            $rows = $queryBuilder->select('rate','rebate2','rebate3to10','rebatemt10','mnth')
                 ->from('tx_armpackage_domain_model_package')
                 ->where(
                     $queryBuilder->expr()->eq('deleted', 0),
@@ -637,15 +647,17 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             if (count($rows) > 0) {
                 
                 $cdata = $rows[0];
-                $total = $rate = $cdata['rate'];
+                $rate = $cdata['rate'];
+                $total = $rate * $cdata['mnth'];
                 if ($qty == 2) {
-                    $total = ($rate - $rate *  $cdata['rebate2'] / 100 ) * $qty;
+                    $total = ($rate - $rate *  $cdata['rebate2'] / 100 ) * $qty * $cdata['mnth'];
                 } else if ($qty > 2 && $qty < 11) {
-                    $total = ($rate - $rate *  $cdata['rebate3to10'] / 100 ) * $qty;
+                    $total = ($rate - $rate *  $cdata['rebate3to10'] / 100 ) * $qty * $cdata['mnth'];
                 } else if ($qty > 10) {
-                    $total = ($rate - $rate *  $cdata['rebatemt10'] / 100 ) * $qty;
+                    $total = ($rate - $rate *  $cdata['rebatemt10'] / 100 ) * $qty * $cdata['mnth'];
                 }
-                $amount = $rate * $qty;
+                //$total = ceil($total);
+                $amount = $rate * $qty * $cdata['mnth'];
                 $discount = number_format(($amount - $total), 2, ",", ".");
                 
                 $arr['status'] = 'OK';

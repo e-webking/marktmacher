@@ -100,14 +100,17 @@ class ArmpaymentsHook
             if ($transactionId != '' && $status==1) {
                 $data['status'] = 2; //update the payment status
                 $data['total'] = $amount;
-                    //send email
-                    $emailArr['pstatus'] = 'BEZAHLT';
-                    $emailArr['payment'] = 'Transaction ID - '.$transactionId;
-                    $emailArr['information'] = 'Online ['. $gateway .']';
+                //send email
+                $emailArr['pstatus'] = 'BEZAHLT';
+                $emailArr['payment'] = 'Transaction ID - '.$transactionId;
+                $emailArr['information'] = 'Online ['. $gateway .']';
+                
+                //update the fe_user table
+                $GLOBALS['TYPO3_DB']->exec_UPDATEquery('fe_users', 'uid='. $GLOBALS['TSFE']->fe_user->user['uid'], array('tx_femanager_activepack'=>1));
             } else {
-                    $emailArr['pstatus'] = 'UNPAID';
-                    $emailArr['payment'] = 'Zahlungstransaktion nicht erfolgreich!';
-                    $emailArr['information'] = 'Online ['. $gateway .']';
+                $emailArr['pstatus'] = 'UNPAID';
+                $emailArr['payment'] = 'Zahlungstransaktion nicht erfolgreich!';
+                $emailArr['information'] = 'Online ['. $gateway .']';
             }
 
             $GLOBALS['TYPO3_DB']->exec_UPDATEquery($tablename, 'uid='.$orderid, $data);

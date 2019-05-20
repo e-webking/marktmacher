@@ -4,7 +4,6 @@ defined('TYPO3_MODE') || die('Access denied.');
 call_user_func(
     function()
     {
-
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
             'ARM.Armpackage',
             'List',
@@ -35,6 +34,11 @@ call_user_func(
             'Student Login'
         );
         
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'ARM.Armpackage',
+            'Mlist',
+            'Minimal List'
+        );
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('armpackage', 'Configuration/TypoScript', 'Courses');
 

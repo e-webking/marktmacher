@@ -13,6 +13,8 @@ plugin.tx_armpackage {
         storagePid =
     }
     settings {
+        loginPid = 18
+        dashboardPid = 21
         furnplanLoginUrl = https://furnplan.academy/sign_in
         furnplanRegUrl = https://furnplan.academy/sign_up
         senderEmailAdresse = office@marktmacher.com

@@ -37,6 +37,12 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $brief = '';
+    
+    /**
+     *
+     * @var int
+     */
+    protected $mnth = 0;
 
     /**
      * rate
@@ -44,6 +50,12 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var float
      */
     protected $rate = 0.0;
+    
+    /**
+     *
+     * @var float
+     */
+    protected $dsprate = 0.0;
 
     /**
      * rebate2
@@ -128,6 +140,27 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->brief = $brief;
     }
+    
+    /**
+     * Returns the mnth
+     *
+     * @return int $mnth
+     */
+    public function getMnth()
+    {
+        return $this->mnth;
+    }
+
+    /**
+     * Sets the mnth
+     *
+     * @param int $mnth
+     * @return void
+     */
+    public function setMnth($mnth)
+    {
+        $this->mnth = $mnth;
+    }
 
     /**
      * Returns the rate
@@ -148,6 +181,27 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setRate($rate)
     {
         $this->rate = $rate;
+    }
+    
+    /**
+     * Returns the dsprate
+     *
+     * @return float $dsprate
+     */
+    public function getDsprate()
+    {
+        return $this->dsprate;
+    }
+
+    /**
+     * Sets the dsprate
+     *
+     * @param float $dsprate
+     * @return void
+     */
+    public function setDsprate($dsprate)
+    {
+        $this->dsprate = $dsprate;
     }
 
     /**

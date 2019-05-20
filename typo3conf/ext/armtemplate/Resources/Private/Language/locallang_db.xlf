@@ -15,14 +15,8 @@
 			<trans-unit id="tx_armpackage_domain_model_package.brief">
 				<source>Brief</source>
 			</trans-unit>
-                        <trans-unit id="tx_armpackage_domain_model_package.mnth">
-				<source>No. of months</source>
-			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rate">
 				<source>Rate (€)</source>
-			</trans-unit>
-                        <trans-unit id="tx_armpackage_domain_model_package.dsprate">
-				<source>Display Rate (€) - Visible if not equal to (!=) Rate </source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.rebate2">
 				<source>Rebate2 (%)</source>

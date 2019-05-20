@@ -19,6 +19,18 @@ call_user_func(
         
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
             'ARM.Armpackage',
+            'Mlist',
+            [
+                'Package' => 'mlist, register, confirm, getPrice'
+            ],
+            // non-cacheable actions
+            [
+                'Package' => 'mlist, register, confirm, getPrice'
+            ]
+        );
+        
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'ARM.Armpackage',
             'Registration',
             [
                 'Package' => 'branch, storebranch'
@@ -98,3 +110,4 @@ call_user_func(
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['armpackage'] = \ARM\Armpackage\Controller\PackageController::class . '::getCompanyAction';
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['armpackageprice'] = \ARM\Armpackage\Controller\PackageController::class . '::getPriceAction';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['armpayments']['tx_armpayments_pi1']['paymentProcess'][] = \ARM\Armpackage\Hook\ArmpaymentsHook::class;
+//$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['beforeRedirect'][] = \ARM\Armpackage\Hook\FeloginHook::class .'::checkUser';

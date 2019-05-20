@@ -3,11 +3,13 @@
     <f:section name="content">
             <f:flashMessages />
             <br><br>
+            <h3 class="darkgreybg white text-center">Bestell - Bestätigung</h3>
+            <br><br>
             <f:if condition="{packages}">
-                <div class="row">
+                <div class="row mlist">
                     <f:for each="{packages}" as="package">
                         <div class="col-sm-4">
-                            <f:render partial="Package/List" arguments="{_all}" />
+                            <f:render partial="Package/Mlist" arguments="{_all}" />
                         </div>
                     </f:for>
                 </div>

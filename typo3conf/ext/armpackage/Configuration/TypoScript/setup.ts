@@ -20,6 +20,8 @@ plugin.tx_armpackage {
         requireCHashArgumentForActionArguments = 1
     }
     settings {
+        loginPid = {$plugin.tx_armpackage.settings.loginPid}
+        dashboardPid = {$plugin.tx_armpackage.settings.dashboardPid}
         furnplanLoginUrl = {$plugin.tx_armpackage.settings.furnplanLoginUrl}
         furnplanRegUrl = {$plugin.tx_armpackage.settings.furnplanRegUrl}
         subject = {$plugin.tx_armpackage.settings.subject}
