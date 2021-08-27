@@ -15,6 +15,7 @@ CREATE TABLE tx_armpackage_domain_model_package (
 	rebate3to10 double(11,2) DEFAULT '0.00' NOT NULL,
 	rebatemt10 double(11,2) DEFAULT '0.00' NOT NULL,
         mnth smallint(5) unsigned DEFAULT '0' NOT NULL,
+        privatepkg smallint(5) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -65,6 +66,7 @@ CREATE TABLE tx_armpackage_domain_model_registration (
 	total double(11,2) DEFAULT '0.00' NOT NULL,
 	package int(11) unsigned DEFAULT '0',
         status smallint(5) unsigned DEFAULT '0' NOT NULL,
+        rdate int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

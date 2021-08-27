@@ -17,6 +17,13 @@ class User extends \In2code\Femanager\Domain\Model\User
      * @var integer
      */
     protected $branch;
+    
+    /**
+     *
+     * @var int
+     */
+    protected $active;
+    
 
     /**
      * Returns the gender
@@ -37,6 +44,28 @@ class User extends \In2code\Femanager\Domain\Model\User
     public function setBranch($branch)
     {
         $this->branch = $branch;
+        return $this;
+    }
+    
+    /**
+     * Returns the active
+     *
+     * @return integer $active
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Sets the active
+     *
+     * @param integer $active
+     * @return User
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
         return $this;
     }
 }

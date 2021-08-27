@@ -42,6 +42,13 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
+    public $privatepkg = 0;
+
+
+    /**
+     *
+     * @var int
+     */
     protected $mnth = 0;
 
     /**
@@ -139,6 +146,27 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBrief($brief)
     {
         $this->brief = $brief;
+    }
+    
+    /**
+     * Returns the privatepkg
+     *
+     * @return int $privatepkg
+     */
+    public function getPrivatepkg()
+    {
+        return $this->privatepkg;
+    }
+
+    /**
+     * Sets the privatepkg
+     *
+     * @param int $privatepkg
+     * @return void
+     */
+    public function setPrivatepkg($privatepkg)
+    {
+        $this->privatepkg = $privatepkg;
     }
     
     /**

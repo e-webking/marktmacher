@@ -51,6 +51,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @inject
      */
     protected $userRepository;
+    
 
     /**
      * action list
@@ -59,10 +60,10 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
-        if($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+        if ($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
              $this->view->assign('login', 1);
         }
-        $packages = $this->packageRepository->findAll();
+        $packages = $this->packageRepository->getNonPrivate();
         $this->view->assign('packages', $packages);
     }
     
@@ -76,7 +77,16 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
              $this->view->assign('login', 1);
         }
-        $packages = $this->packageRepository->findAll();
+        $packages = $this->packageRepository->getNonPrivate();
+        $this->view->assign('packages', $packages);
+    }
+    
+    /**
+     * List all the private packages
+     */
+    public function listPrivateAction()
+    {
+        $packages = $this->packageRepository->getPrivate();
         $this->view->assign('packages', $packages);
     }
 
@@ -415,7 +425,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf::writeCell(' ',20, 5, 1, 0);
             $pdf::writeCell(number_format($registration->getTotal(),2,",","."),30, 5, 1, 1, 'R');
             $pdf::setFont('helvetica',8,'');
-            $pdf::writeCell('      Bankverbindung: ',180, 5, 1, 1);
+            $pdf::writeCell('       Bankverbindung: Begünstigter: Marcel Kuriger Marktmacher.com',180, 5, 1, 1);
             $pdf::writeCell('      '.$this->settings['bankdata'],180, 5, 1, 1);
             
             $filename = 'Rechnung_'.$registration->getUid().'.pdf';
@@ -760,11 +770,98 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     
     /**
      * 
+     * @param \ARM\Armpackage\Domain\Model\Registration $registration
+     */
+    public function reminderAction(\ARM\Armpackage\Domain\Model\Registration $registration) {
+        
+        if($registration != null) {
+            //get the username and email
+            $feuser = $registration->getFeuser();
+            
+            if ($feuser > 0) {
+                
+                $user = $this->userRepository->findByUid($feuser);
+                $name = $user->getCompany();
+                $email = $user->getEmail();
+                
+                $dtNow = new \DateTime("now");
+                $packageMonth = $registration->getPackage()->getMnth();
+                $regDate = $registration->getCrdate();
+                $expDate = $regDate->add(new \DateInterval('P'.$packageMonth.'M'));
+                
+                $registration->setRdate($dtNow);
+                
+                $this->regRepository->update($registration);
+                
+
+                $this->addFlashMessage('Reminder successfuly sent', 
+                   '', \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO);
+                if ($dtNow > $expDate) { //1st reminders
+                    $this->sendBeEmail($email, $name, $expDate, 2);
+                } else {
+                    $this->sendBeEmail($email, $name, $expDate);
+                }
+                
+                $this->redirect('listall');
+            }
+        }
+    }
+    
+    /**
+     * 
      * @param array $arr
      * @return string
      */
     protected function array2Json($arr)
     {
         return json_encode($arr);
+    }
+    
+    /**
+     * 
+     * @param string $email
+     * @param string $name
+     * @param \DateTime $edate
+     * @param int $reminder
+     */
+    protected function sendBeEmail($email, $name, $edate, $reminder=1) {
+        
+        $emailView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+        $emailView->setFormat('html');
+
+        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+        $partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['templateRootPaths'][0]);
+        $templatePathAndFilename = $partialRootPath.'Email/ReminderOne.html';
+        $subject = 'Ihr Abo für das Seminar läuft am '.$edate->format("d-m-Y"); 
+        
+        if ($reminder == 2) {
+            $subject = 'Ihr Abo für die Seminare der furnplan academy ist ausgelaufen';
+            $templatePathAndFilename = $partialRootPath.'Email/ReminderTwo.html';
+        }
+
+        $emailView->setTemplatePathAndFilename($templatePathAndFilename);
+        $emailView->assign('date', $edate->format("d-m-Y"));
+        $extensionName = $this->request->getControllerExtensionName();
+        $emailView->getRequest()->setControllerExtensionName($extensionName);
+        
+        $body = $emailView->render(); 
+
+        // Mail senden
+        $mail = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
+
+        
+        $senderMail = 'admin@marktmacher.com';                       
+        $senderName = 'Marktmacher.com';  
+        
+        if (\TYPO3\CMS\Core\Utility\GeneralUtility::validEmail($email)) {
+            $mail->setFrom(array($senderMail => $senderName))
+                 ->setTo(array($email => $name))
+                 ->setCc(array($senderMail => $senderName))
+                 ->setSubject($subject)
+                 ->setBody($body, 'text/html')
+                 ->send();
+        }
+        
+        return;
     }
 }

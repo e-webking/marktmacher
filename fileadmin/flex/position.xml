@@ -48,6 +48,22 @@
                 <numIndex index="0">Black</numIndex>
                 <numIndex index="1">black</numIndex>
               </numIndex>
+              <numIndex index="2" type="array">
+                <numIndex index="0">Blue</numIndex>
+                <numIndex index="1">blue</numIndex>
+              </numIndex>
+              <numIndex index="3" type="array">
+                <numIndex index="0">Green</numIndex>
+                <numIndex index="1">green</numIndex>
+              </numIndex>
+              <numIndex index="4" type="array">
+                <numIndex index="0">Red</numIndex>
+                <numIndex index="1">red</numIndex>
+              </numIndex>
+              <numIndex index="5" type="array">
+                <numIndex index="0">Yellow</numIndex>
+                <numIndex index="1">yellow</numIndex>
+              </numIndex>
             </items>
           </config>
         </TCEforms>

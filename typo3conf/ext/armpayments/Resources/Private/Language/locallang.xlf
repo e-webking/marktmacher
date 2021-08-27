@@ -8,7 +8,7 @@
 				<source>Make payment with your Credit Card</source>
 			</trans-unit>
  			<trans-unit id="tx_armpayment_tpl.odetails">
-				<source>Order details</source>
+				<source>Seminardetails</source>
 			</trans-unit>
                         <trans-unit id="tx_armpayment_tpl.pbutton">
 				<source>Pay with Card</source>

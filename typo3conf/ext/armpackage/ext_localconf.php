@@ -76,6 +76,18 @@ call_user_func(
                 'Package' => 'mypurchase'
             ]
         );
+        
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'ARM.Armpackage',
+            'Plist',
+            [
+                'Package' => 'listPrivate, register, confirm, getPrice'
+            ],
+            // non-cacheable actions
+            [
+                'Package' => 'listPrivate, register, confirm, getPrice'
+            ]
+        );
 
     // wizards
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(

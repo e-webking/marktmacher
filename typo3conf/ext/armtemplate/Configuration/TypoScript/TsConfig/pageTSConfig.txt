@@ -73,6 +73,14 @@ TCEFORM {
                 144 = Heading 4 (Blue Pastell)
                 145 = Heading 3 (Yellow Pastell)
                 146 = Heading 4 (Yellow Pastell)
+                147 = Heading 4 (Bold)
+                148 = Heading 4 (Bold White)
+                149 = Heading 4 (Bold Grey)
+                150 = Heading 4 (Bold Anthracite)
+                151 = Heading 4 (Bold Yellow)
+                152 = Heading 4 (Bold Green)
+                153 = Heading 4 (Bold Blue)
+                154 = Heading 4 (Bold Red)
             }
         }
     }

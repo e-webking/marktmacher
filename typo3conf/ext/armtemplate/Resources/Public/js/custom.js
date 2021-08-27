@@ -101,7 +101,7 @@
     var menuanimate = function(){
         if($(window).width() > 768) {
             var winscrolled = $window.scrollTop();
-            if (winscrolled >= 550) {
+            if (winscrolled >= 130) {
                 $(".scrollh").fadeOut();
                 $(".scrollv").fadeIn();
             } else {
@@ -136,7 +136,7 @@
     $('#puser').on('blur', function(){
         var username = $('#puser').val();
         if (username == '') {
-            $('#userprocess').html('Please fill username field.');
+            $('#userprocess').html('Bitte geben Sie den Benutzernamen ein');
             $('#puser').focus();
         }
         
