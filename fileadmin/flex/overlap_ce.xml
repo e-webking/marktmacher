@@ -24,6 +24,28 @@
           </config>
         </TCEforms>
         </field_hpos>
+        <field_baseheight type="array">
+        <TCEforms type="array">
+          <label>Base block height</label>
+          <config type="array">
+            <type>input</type>
+            <size>10</size>
+            <eval>int</eval>
+            <default>370</default>
+          </config>
+        </TCEforms>
+        </field_baseheight>
+        <field_bottomheight type="array">
+        <TCEforms type="array">
+          <label>Bottom block height</label>
+          <config type="array">
+            <type>input</type>
+            <size>10</size>
+            <eval>int</eval>
+            <default>170</default>
+          </config>
+        </TCEforms>
+        </field_bottomheight>
         <field_heading type="array">
         <TCEforms type="array">
           <label>Heading</label>
@@ -34,6 +56,31 @@
           </config>
         </TCEforms>
       </field_heading>
+      <field_link>
+          <TCEforms type="array">
+          <label>Link</label>
+          <config type="array">
+            <type>input</type>
+            <size>30</size>
+            <eval>trim</eval>
+            <wizards type="array">
+                <link type="array">
+                    <type>popup</type>
+                    <title>Header Link</title>
+                    <icon>link_popup.gif</icon>
+                    <module type="array">
+                        <name>wizard_element_browser</name>
+                        <urlParameters type="array">
+                            <mode>wizard</mode>
+                        </urlParameters>
+                    </module>
+                    <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+                </link>
+            </wizards>
+            <softref>typolink</softref>
+          </config>
+        </TCEforms>
+      </field_link>
       <field_color type="array">
         <TCEforms type="array">
           <label>Heading Color</label>

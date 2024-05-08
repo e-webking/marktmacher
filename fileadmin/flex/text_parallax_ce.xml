@@ -28,6 +28,28 @@
           </config>
         </TCEforms>
         </field_hpos>
+        <field_baseheight type="array">
+        <TCEforms type="array">
+          <label>Base block height</label>
+          <config type="array">
+            <type>input</type>
+            <size>10</size>
+            <eval>int</eval>
+            <default>400</default>
+          </config>
+        </TCEforms>
+        </field_baseheight>
+        <field_bottomheight type="array">
+        <TCEforms type="array">
+          <label>Bottom block height</label>
+          <config type="array">
+            <type>input</type>
+            <size>10</size>
+            <eval>int</eval>
+            <default>400</default>
+          </config>
+        </TCEforms>
+        </field_bottomheight>
       <field_mainbgcolor type="array">
         <TCEforms type="array">
           <label>Base BG color</label>
