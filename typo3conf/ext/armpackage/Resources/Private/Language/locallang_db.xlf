@@ -105,6 +105,15 @@
 			<trans-unit id="tx_armpackage_list.description">
 				<source>Package list</source>
 			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_studentemail">
+				<source>Student Email</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_studentemail.feuser">
+				<source>Web User (Dealer)</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_studentemail.email">
+				<source>Email</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -29,8 +29,13 @@ class User extends \In2code\Femanager\Domain\Model\User
      * @var string
      */
     protected $responsible;
-
-
+    
+    /**
+     * 
+     * @var \int
+     */
+    protected $students;
+    
     /**
      * Returns the gender
      *
@@ -75,7 +80,6 @@ class User extends \In2code\Femanager\Domain\Model\User
         return $this;
     }
 
-    
     /**
      * Returns the responsible
      *
@@ -97,5 +101,22 @@ class User extends \In2code\Femanager\Domain\Model\User
         $this->responsible = $responsible;
         return $this;
     }
-
+    
+    /**
+     * 
+     * @return \int
+     */
+    public function getStudents() {
+        return $this->students;
+    }
+    
+    /**
+     * Sets the $students
+     *
+     * @param \int $students
+     * @return void
+     */
+    public function setStudents($students) {
+        $this->students = $students;
+    }
 }

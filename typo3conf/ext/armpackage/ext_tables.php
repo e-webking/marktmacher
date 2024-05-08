@@ -56,6 +56,9 @@ call_user_func(
         
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_armpackage_domain_model_branch', 'EXT:armpackage/Resources/Private/Language/locallang_csh_tx_armpackage_domain_model_branch.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_armpackage_domain_model_branch');
+        
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_armpackage_domain_model_studentemail', 'EXT:armpackage/Resources/Private/Language/locallang_csh_tx_armpackage_domain_model_studentemail.xlf');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_armpackage_domain_model_studentemail');
 
         
         if (TYPO3_MODE === 'BE') {

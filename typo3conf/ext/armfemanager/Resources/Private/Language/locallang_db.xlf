@@ -16,6 +16,9 @@
                         <trans-unit id="tx_femanager_domain_model_user.tx_femanager_responsible">
 				<source>zuständing</source>
 			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.tx_armpackage_students">
+				<source>Students</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

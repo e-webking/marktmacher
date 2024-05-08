@@ -52,6 +52,14 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $userRepository;
     
+    /**
+     * studentRepository
+     *
+     * @var \ARM\Armpackage\Domain\Repository\StudentemailRepository
+     * @inject
+     */
+    protected $studentRepository;
+    
 
     /**
      * action list
@@ -736,7 +744,52 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                     $sub = FALSE;
                 }
             }
+            if ($this->request->hasArgument('studentemail')) {
+                
+                $email =  $this->request->getArgument('studentemail');
+                if ($email == '') {
+                     $this->addFlashMessage('Bitte prüfen Sie Ihre Email Adresse.', 
+                   '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+                    $sub = FALSE;
+                }    
+            }
+            
             if ($sub) {
+                
+                $rec = $this->studentRepository->findByEmail($email);
+                
+                if ($rec->count() == 0) {
+                    
+                    $userObj = $this->userRepository->findByUid($feuser);
+
+                    if ($userObj instanceof \TYPO3\CMS\Extbase\Domain\Model\FrontendUser) {
+
+                        $studentRec = GeneralUtility::makeInstance(\ARM\Armpackage\Domain\Model\Studentemail::class);
+                        $studentRec->setEmail($email);
+                        $studentRec->setFeuser($feuser);
+                        $studentRec->setPid($userObj->getPid());
+                        $this->studentRepository->add($studentRec);
+                        $persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+                        $persistenceManager->persistAll();
+                        
+                        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+                        $qb->getRestrictions()->removeAll();
+                        $rows = $qb->select('tx_armpackage_students')
+                                ->from('fe_users')
+                                ->where(
+                                    $qb->expr()->eq('uid', $qb->createNamedParameter($feuser))
+                                )
+                                ->execute()
+                                ->fetch();
+                        $currentStudentCnt = $rows['tx_armpackage_students'];
+                        $qb->update('fe_users')
+                        ->where(
+                            $qb->expr()->eq('uid', $qb->createNamedParameter($feuser))
+                        )
+                        ->set('tx_armpackage_students', ++$currentStudentCnt)
+                        ->execute();
+                    }
+                }
                $this->redirectToUri($this->settings['furnplanLoginUrl']);
             }
         }
