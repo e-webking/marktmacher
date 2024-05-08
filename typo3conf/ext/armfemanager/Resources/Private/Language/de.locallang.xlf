@@ -7,6 +7,14 @@
 				<source>No. of branches</source>
                                 <target>Anzahl Verkaufshäuser</target>
 			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.noofcounsellor">
+				<source>No. of counsellors</source>
+                                <target>Anzahl WohnberaterInnen</target>
+			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.responsible">
+				<source>Responsible</source>
+                                <target>Zuständing</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

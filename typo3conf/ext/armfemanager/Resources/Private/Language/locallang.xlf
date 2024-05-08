@@ -6,6 +6,12 @@
 			<trans-unit id="tx_femanager_domain_model_user.branch">
 				<source>No. of branches</source>
 			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.noofcounsellor">
+				<source>No. of counsellors</source>
+			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.responsible">
+				<source>Responsible</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -1,11 +1,79 @@
-<header class="header2">
-    <div class="insidemenu">
+<header>
+    <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <f:cObject typoscriptObjectPath="lib.fplogo" />
+            <div class="col-xs-2">
+                <f:cObject typoscriptObjectPath="lib.lueoendlogo" />
             </div>
-            <div class="col-sm-9">
-                <f:cObject typoscriptObjectPath="lib.colorMenu" /> 
+            <div class="col-xs-10">
+                <div class="hidden-xs">
+                    <div class="mainnav">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            
+                                <f:cObject typoscriptObjectPath="lib.colorMenu" /> 
+                            
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <ul class="tel-email">
+                                <li>{lueoedtel}</li>
+                                <li><f:cObject typoscriptObjectPath="lib.lueoedemail" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                        </div>
+                </div>
+                <div class="visible-xs">
+                    <nav class="header-nav">
+                        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+                        <div class="header-nav__content">
+                            <f:cObject typoscriptObjectPath="lib.mainMenu" />
+                            <ul class="tel-email">
+                                <li>{lueoedtel}</li>
+                                <li><f:cObject typoscriptObjectPath="lib.lueoedemail" /></li>
+                            </ul>
+                        </div>
+                    </nav> 
+                    <a class="header-menu-toggle" href="#0" class="scrollh">
+                        <span class="header-menu-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scrollv">
+        <div class="row">
+            <div class="col-xs-2">
+                <f:cObject typoscriptObjectPath="lib.lueoendlogo" />
+            </div>
+            <div class="col-xs-10">
+                <div class="hidden-xs">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <f:cObject typoscriptObjectPath="lib.colorMenu" />
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <ul class="tel-email">
+                                <li>{lueoedtel}</li>
+                                <li><f:cObject typoscriptObjectPath="lib.lueoedemail" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="visible-xs">
+                    <nav class="header-nav">
+                        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+                        <div class="header-nav__content">
+                            <f:cObject typoscriptObjectPath="lib.mainMenu" />
+                            <ul class="tel-email">
+                                <li>{lueoedtel}</li>
+                                <li><f:cObject typoscriptObjectPath="lib.lueoedemail" /></li>
+                            </ul>
+                        </div> 
+                    </nav> 
+                    <a class="header-menu-toggle" href="#0" class="scrollh">
+                        <span class="header-menu-icon"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -33,7 +33,7 @@ lib.fplogo {
 lib.mainMenu = HMENU
 lib.mainMenu {
     wrap = <ul class="header-nav__list">|</ul>
-    
+    excludeUidList = 58
     1 = TMENU
     1 {
         expAll = 1
@@ -43,7 +43,22 @@ lib.mainMenu {
             wrapItemAndSub = <li>|</li>
             ATagTitle.field = description // title
             ATagParams = class="smoothscroll"
-            stdWrap.htmlSpecialChars = 1
+            stdWrap.cObject = COA
+            stdWrap.cObject {
+                10 = TEXT
+                10 {
+                    field = tx_armlinkclass
+                    wrap = <span class="|">
+                    wrap.override = <span class="normal">
+                    wrap.override.if {
+                        value.data = field:tx_armlinkclass
+                        equals = 
+                    }
+                }
+                20 = TEXT
+                20.field = nav_title // title
+                20.wrap = |</span>
+            }
         }
         CUR = 1
         CUR {			
@@ -61,7 +76,23 @@ lib.mainMenu {
             NO {
                     wrapItemAndSub = <li>|</li>
                     ATagTitle.field = description // title
-                    stdWrap.htmlSpecialChars = 1
+                    stdWrap.cObject = COA
+                    stdWrap.cObject {
+                        10 = TEXT
+                        10 {
+                            field = tx_armlinkclass
+                            wrap = <span class="|">
+                            wrap.override = <span class="normal">
+                            wrap.override.if {
+                                value.data = field:tx_armlinkclass
+                                equals = 
+                            }
+                        }
+                        20 = TEXT
+                        20.field = nav_title // title
+                        20.wrap = |</span>
+                }
+                        
             }
             ACT= 1
             ACT.wrapItemAndSub = <li class="active">|</li>
@@ -75,7 +106,22 @@ lib.mainMenu {
             NO {
                     wrapItemAndSub = <li>|</li>
                     ATagTitle.field = description // title
-                    stdWrap.htmlSpecialChars = 1
+                    stdWrap.cObject = COA
+                    stdWrap.cObject {
+                        10 = TEXT
+                        10 {
+                            field = tx_armlinkclass
+                            wrap = <span class="|">
+                            wrap.override = <span class="normal">
+                            wrap.override.if {
+                                value.data = field:tx_armlinkclass
+                                equals = 
+                            }
+                        }
+                        20 = TEXT
+                        20.field = nav_title // title
+                        20.wrap = |</span>
+                }
             }
 
             ACT= 1
@@ -87,7 +133,7 @@ lib.mainMenu {
 lib.colorMenu = HMENU
 lib.colorMenu {
     wrap = <ul class="colormenu">|</ul>
-    
+    excludeUidList = 58
     1 = TMENU
     1 {
         expAll = 1
@@ -96,14 +142,44 @@ lib.colorMenu {
         NO {
             wrapItemAndSub = <li>|</li>
             ATagTitle.field = description // title
-            stdWrap.htmlSpecialChars = 1
+            stdWrap.cObject = COA
+            stdWrap.cObject {
+                10 = TEXT
+                10 {
+                    field = tx_armlinkclass
+                    wrap = <span class="|">
+                    wrap.override = <span class="normal">
+                    wrap.override.if {
+                        value.data = field:tx_armlinkclass
+                        equals = 
+                    }
+                }
+                20 = TEXT
+                        20.field = nav_title // title
+                        20.wrap = |</span>
+                }
         }
         
         IFSUB = 1
         IFSUB {
             wrapItemAndSub = <li class="dropdown">|</li>
             ATagParams = class="dropdown-toggle js-activated" data-toggle="dropdown"
-            stdWrap.htmlSpecialChars = 1
+            stdWrap.cObject = COA
+            stdWrap.cObject {
+                10 = TEXT
+                10 {
+                    field = tx_armlinkclass
+                    wrap = <span class="|">
+                    wrap.override = <span class="normal">
+                    wrap.override.if {
+                        value.data = field:tx_armlinkclass
+                        equals = 
+                    }
+                }
+                20 = TEXT
+                        20.field = nav_title // title
+                        20.wrap = |</span>
+                }
         }
     }
     2 = TMENU

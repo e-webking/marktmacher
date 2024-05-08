@@ -18,6 +18,7 @@ $GLOBALS['TCA']['tx_armpayments_domain_model_payment'] = array(
             'transOrigPointerField' => 'l10n_parent',
             'transOrigDiffSourceField' => 'l10n_diffsource',
             'delete' => 'deleted',
+            'default_sortby' => 'uid DESC',
             'enablecolumns' => array(
                     'disabled' => 'hidden',
                     'crdate' => 'crdate',

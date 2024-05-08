@@ -7,6 +7,15 @@
 			<trans-unit id="tx_femanager_domain_model_user.tx_femanager_branch">
 				<source>Anzahl Verkaufshäuser</source>
 			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.tx_femanager_activepack">
+				<source>Has active course plack</source>
+			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.tx_femanager_noofcounsellor">
+				<source>Anzahl WohnberaterInnen</source>
+			</trans-unit>
+                        <trans-unit id="tx_femanager_domain_model_user.tx_femanager_responsible">
+				<source>zuständing</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

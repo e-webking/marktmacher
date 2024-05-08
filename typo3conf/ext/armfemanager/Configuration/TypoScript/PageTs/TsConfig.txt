@@ -3,6 +3,8 @@ tx_femanager {
         new {
             addFieldOptions {
                 tx_femanager_branch = Anzahl Verkaufshäuser
+                tx_femanager_activepack = Aktivpaket
+                tx_femanager_responsible = Zuständing
             }
         }
         edit < tx_femanager.flexForm.new

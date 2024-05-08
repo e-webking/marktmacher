@@ -110,6 +110,7 @@ class PaymentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $currency = $this->request->getArgument('currency');
         $description = $this->request->getArgument('description');
         $method = $this->request->getArgument('method');
+        $mail = $this->request->getArgument('email');
 
         $this->view->assign('stripePubKey', $publishKey);
         $this->view->assign('orderid', $orderid);
@@ -117,9 +118,10 @@ class PaymentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('amountCent', $amountCent);
         $this->view->assign('vat', $vat);
         $this->view->assign('currency', $currency);
-        $this->view->assign('description', $description);
+        $this->view->assign('description', urldecode($description));
         $this->view->assign('tablename', $tablename);            
         $this->view->assign('method', $method);
+        $this->view->assign('email', $mail);
 
     }
 
@@ -149,6 +151,7 @@ class PaymentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         //charge customer
         $charge = $stripeObj->charge($customer, $amountCent, strtolower($currency));
+        
         $refId = $charge->id;
         $captured = $charge->captured;
         $status = $charge->status;

@@ -101,7 +101,7 @@
     var menuanimate = function(){
         if($(window).width() > 768) {
             var winscrolled = $window.scrollTop();
-            if (winscrolled >= 550) {
+            if (winscrolled >= 130) {
                 $(".scrollh").fadeOut();
                 $(".scrollv").fadeIn();
             } else {
@@ -113,16 +113,21 @@
     }
    
     $window.on('scroll', menuanimate);
-
-    $( '.parallax-block' ).jarallax({
-        speed: 0.4,
-        imgWidth: 1366,
-        imgHeight: 768
-    });
-    
-    $('.light-parallax').jarallax({
-        speed: 0.2
-    });
+    if($(window).width() >= 1280) {
+        $( '.parallax-block' ).jarallax({
+            speed: 0.4,
+            imgWidth: 1366,
+            imgHeight: 768
+        });
+        
+        $('.light-parallax').jarallax({
+            speed: 0.2
+        });
+    } else {
+        $( '.parallax-block' ).each(function(index){
+            $(this).removeAttr('style');
+        });
+    }
     
     /* Registration */    
     $('#femanager_field_usergroup').on('change', function(){
@@ -136,7 +141,7 @@
     $('#puser').on('blur', function(){
         var username = $('#puser').val();
         if (username == '') {
-            $('#userprocess').html('Please fill username field.');
+            $('#userprocess').html('Bitte geben Sie den Benutzernamen ein');
             $('#puser').focus();
         }
         
@@ -177,6 +182,7 @@
     $('#packqty').on('change', function(){
         var qty = $('#packqty').val();
         var packuid = $('#package').val();
+        var noofpart = $('#noofpart').val();
         
         if (qty < 1) {
             $('#buyprocess').html('Quantity must be greater than zero!');
@@ -196,6 +202,53 @@
                     data: {
                             "arguments[package]": packuid,
                             "arguments[qty]": qty,
+                            "arguments[noofpart]": noofpart,
+                            "pluginName":"Package",
+                            "controllerName":"Package",
+                            "actionName":"getPrice",
+                            "extensionName": "Armpackage",
+                            "vendor": "ARM",
+                            "formatName":"html"
+                    }
+            }).done(function( data ) {
+                var html = '';
+                $('#bformoverlay').hide();
+                if (data.status == 'OK') {
+                    $('#total').val(data.total);
+                    $('#amount').val(data.amount);
+                    $('#discount').val(data.discount);
+                    $('#btnsub').removeAttr("disabled");;
+                } else{
+                    html += '<span class="error">'+data.error+'</span>';
+                }
+              $('#buyprocess').html(html);
+            });
+        }
+    });
+    $('#noofpart').on('change', function(){
+        var qty = $('#packqty').val();
+        var packuid = $('#package').val();
+        var noofpart = $('#noofpart').val();
+        
+        if (noofpart < 1) {
+            $('#buyprocess').html('Anzahl Seminar-Teilnehmer must be greater than zero!');
+            $('#btnsub').attr('disabled',1);
+            $('#noofpart').focus();
+        }
+        
+        if (noofpart > 0) {
+            $('#buyprocess').html('');
+            $('#bformoverlay').show();
+            var url = "index.php?eID=armpackageprice";
+            $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    format: "json",
+                    data: {
+                            "arguments[package]": packuid,
+                            "arguments[qty]": qty,
+                            "arguments[noofpart]": noofpart,
                             "pluginName":"Package",
                             "controllerName":"Package",
                             "actionName":"getPrice",

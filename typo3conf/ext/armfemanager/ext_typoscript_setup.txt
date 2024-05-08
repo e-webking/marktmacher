@@ -14,6 +14,8 @@ config.tx_extbase {
 
                     columns {
                         tx_femanager_branch.mapOnProperty = branch
+                        tx_femanager_activepack.mapOnProperty = active
+                        tx_femanager_responsible.mapOnProperty = responsible
                     }
                 }
             }

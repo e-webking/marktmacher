@@ -17,12 +17,51 @@ plugin.tx_felogin_pi1 {
 
     _LOCAL_LANG {
         default {
-            ll_welcome_message = Bitte geben Sie Ihren Benutzername und Ihr Passwort ein
+            ll_welcome_message = Setzen Sie den Bestellvorgang fort, indem Sie sich hier einloggen. Bitte geben Sie Ihren Benutzername und Ihr Passwort ein
             username = Benutzername
             password = Passwort
             ll_forgot_password = Passwort vergessen?
             ll_forgot_header_backToLogin = Zurück zum Login
             ll_send_password = Passwort zurücksetzen
+            ll_error_message = Leider ist ein Fehler aufgetreten beim Login. Wahrscheinlich haben Sie den Benutzernamen oder das Passwort nicht korrekt eingegeben. Bitte prüfen Sie auch Gross- und Kleinschreibung
+            change_password = Geben Sie Ihr neues Passwort ein
+            ll_change_password_message = Bitte gib dein neues Passwort zweimal ein. Das Passwort muss mindestens %s Zeichen lang sein.
+            ll_change_password_notvalid_message = Der Link den Sie angeklickt haben ist ungültig. Bitte fordern Sie nochmals ein neues Passwort an.
+            ll_change_password_notequal_message = Die beiden Passwörter stimmen nicht überein. Bitte geben Sie diese erneut ein. Das Passwort muss mindestens %s Zeichen lang sein.
+            ll_change_password_tooshort_message = Das Passwort ist zu kurz. Bitte geben Sie neue Passwörter ein. Die Passwörter müssen mindestens %s Zeichen lang sein.
+            ll_change_password_done_message = Ihr Passwort wurde gesichert. Sie können sich nun mit dem neuen Passwort einloggen.
+            newpassword_label1 = Bitte geben Sie das Passwort ein
+            newpassword_label2 = Bitte wiederholen Sie das neue Passwort
+            your_email = Ihr E-Mail:
+            ll_forgot_email_password (
+            Ihr Passwort
+
+Guten Tag %s
+Ihr Benutzername ist "%s"
+Ihr Passwort "%s"
+            )
+            ll_forgot_email_nopassword (
+            Ihr Passwort
+Guten Tag %s
+Wir konnten keinen Benutzernamen finden für diese Email Adresse. Darum können wir Ihnen das Passwort nicht senden. Wahrscheinlich haben Sie die Email Adresse falsch geschrieben (Gross- / Kleinschreibung beachten) oder Sie haben sich noch nicht registriert?
+            )
+            ll_forgot_validate_reset_password (
+            Ihr neues Passwort
+
+Guten Tag %s,
+Diese Email erhalten Sie, weil Sie ein neues Passwort angefragt haben. Bitte klicken Sie auf den nachstehenden Link.
+%s
+
+Aus Sicherheitsgründen ist dieser Link gültig bis %s. Sollten Sie den Link nicht anklicken bis zu diesem Datum, so müssen Sie die Anfrage für ein neues Passwort wiederholen.
+            )
+            ll_forgot_message = Bitte geben Sie die Email Adresse ein, welche Sie bei der Registrierung verwendet haben. Dann klicken Sie auf "Passwort senden" und das Passwort wird umgehend an Sie gesandt. Bitte prüfen Sie die Schreibweise der Email Adresse.
+            ll_forgot_message_emailSent = Ihr Passwort wurde nun an Ihre Email Adresse %s gesandt.
+            ll_forgot_reset_message = Bitte geben Sie den Benutzernamen oder Email Adresse ein. Eine Anleitung, um das Passwort zurückzusetzen wird umgehend an Sie gesandt.
+            ll_forgot_reset_message_emailSent = Eine Email wurde an die im Konto registrierten Email Adresse gesandt. In der Email erhalten Sie einen Link, um Ihr Passwort zurückzusetzen. Sollten Sie keine Email erhalten, so wurde Ihr Konto oder Ihre Email Adresse nicht gefunden.
+            ll_forgot_reset_message_error = Ihr Konto oder die Email Adresse existiert nicht.
+            ll_forgot_header_backToLogin = Bitte gehen Sie zurück zum Login
+            ll_enter_your_data = Benutzername oder Email Adresse:
+            noValidRedirectUrl = die URL "%s" für die Weiterleitung wurde nicht angenommen!
         }
     }
 }
@@ -46,6 +85,8 @@ plugin.tx_femanager {
             tx_femanager_domain_model_user.telephone = Telefon
             tx_femanager_domain_model_user.company = Unternehmen / Firma
             tx_femanager_domain_model_user.branch = Anzahl Verkaufshäuser
+            tx_femanager_domain_model_user.noofcounsellor = Anzahl WohnberaterInnen
+            tx_femanager_domain_model_user.responsible = Zuständing
             tx_femanager_domain_model_user.www = Webseite
             tx_femanager_domain_model_user.country = Land
             tx_femanager_domain_model_user.terms = Ich stimme den AGB zu
@@ -61,6 +102,11 @@ plugin.tx_femanager {
             emailUpdateRequestRefusedSignature = Mit freundlichen Grüßen,
             emailSignature2 = Marktmacher Team
             emailCreateUserConfirmationSubject = Bitte bestätigen Sie Ihre Registrierung
+            validationErrorTerms = Bitte bestätigen Sie, dass Sie unseren AGB zustimmen.
+            emailCreateUserConfirmationSubject = Bitte bestätigen Sie Ihre Registrierung bei der furnplan academy
+            validationErrorUniquePage = dieser Benutzername ist schon vergeben
+            validationErrorUniqueDb = dieser Benutzername ist schon vergeben
+            validationErrorMustNotInclude = Eingabe Benutzernamen ist ungültig. Bitte geben Sie keine Sonderzeichen ein und schreiben Sie in einem Wort.
         }
         de {
             tx_femanager_domain_model_user.username = Benutzername
@@ -87,24 +133,34 @@ plugin.tx_femanager {
             emailSignature2 = Ihr Team vom Marktmacher.com
             create = Profil erfolgreich erstellt
             login = Sie sind jetzt erfolgreich eingeloggt
-            emailCreateUserConfirmationSubject = Bitte bestätigen Sie Ihre Registrierung
+            emailCreateUserConfirmationSubject = Bitte bestätigen Sie Ihre Registrierung bei der furnplan academy
             emailCreateUserConfirmationSalutation = Sehr geehrte 
             emailCreateUserConfirmationText1 = vielen Dank für Ihre Registrierung auf der Seite http://www.marktmacher.com/. Bitte bestätigen Sie Ihre Registrierung durch Aufruf des folgenden Links:
             emailCreateUserConfirmationLinkConfirm = Profil bestätigen
             emailCreateUserConfirmationText2 = Rufen Sie bitte den folgenden Link auf, falls Sie die Registrierung ablehnen möchten:
             emailCreateUserConfirmationLinkConfirmRefused = Profil löschen
+            validationErrorTerms = Bitte bestätigen Sie, dass Sie unseren AGB zustimmen.
             validationErrorSameAs = Bitte überprüfen Sie den eingegebenen Wert
             validationErrorRequiredModel = Benutzername und Passwort müssen ausgefüllt werden
             validationErrorRequired = Bitte füllen Sie das  %sfeld aus
             validationErrorPasswordRepeat = Bitte geben Sie das gleiche Passwort zweimal ein.
             validationErrorUniquePage = Der Wert von Feld%s wird bereits verwendet
             createRequestWaitingForUserConfirm = Um die Registrierung erfolgreich abzuschließen, schauen Sie bitte in Ihr E-Mail-Postfach. Wir haben Ihnen eine E-Mail mit einem Bestätigungslink geschickt. Bitte klicken Sie auf diesen Link, um die Registrierung abzuschließen.
+            validationErrorMustNotInclude = Eingabe Benutzernamen ist ungültig. Bitte geben Sie keine Sonderzeichen ein und schreiben Sie in einem Wort.
         }
     }
     settings {
         new {
             fillEmailWithUsername = 0
-            login = 0
+            login = 1
+            userConfirmationRedirect = TEXT
+            userConfirmationRedirect {
+                typolink {
+                    parameter = 34
+                    returnLast = url
+                    linkAccessRestrictedPages = 1
+                }
+            }
             validation {
                 email {
                     required = 1
@@ -112,6 +168,12 @@ plugin.tx_femanager {
                 }
                 usergroup {
                     inList = 1
+                }
+                company {
+                    required = 1
+                }
+                branch {
+                    required = 1
                 }
                 firstName {
                     required = 1
@@ -132,7 +194,7 @@ plugin.tx_femanager {
                     required = 1
                 }
                 terms {
-                    required = 1
+                    terms = 1
                 }
             }
             email {

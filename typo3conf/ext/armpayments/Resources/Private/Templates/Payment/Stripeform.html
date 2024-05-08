@@ -1,21 +1,21 @@
 <div id="armpayment">
     <div class="row">
-        <div class="col-lg-1 col-lg-offset-1"><f:image src="{f:uri.resource(path:'Images/stripe.png')}" width="48" height="48" alt="Stripe" /></div>
+        <div class="col-lg-1 col-lg-offset-1"></div>
         <div class="col-lg-8"><h2><f:translate key="tx_armpayment_tpl.ccpayment" /></h2></div>   
     </div>
     <h3><f:translate key="tx_armpayment_tpl.odetails" /></h3>
     <div class="table-responsive">
         <table class="table table-stripe">
             <tr>
-                <td>Order ID</td>
+                <td>Auftragsnummer</td>
                 <td>{orderid}</td>
             </tr>
             <tr>
-                <td>Kurs</td>
+                <td>Seminar für</td>
                 <td>{description}</td>
             </tr>
             <tr>
-                <td>Kosten</td>
+                <td>Preis</td>
                 <td>{amount} {currency}</td>
             </tr>
         </table>
@@ -30,6 +30,7 @@
           data-locale="auto"
           data-label="{f:translate(key:'tx_armpayment_tpl.pbutton')}"
           data-currency="{currency}"
+          data-email="{email}"
           ></script>
                     
                 <input type="hidden" name="method" value="{method}">

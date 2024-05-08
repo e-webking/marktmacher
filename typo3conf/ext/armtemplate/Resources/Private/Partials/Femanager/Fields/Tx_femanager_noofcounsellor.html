@@ -1,15 +1,14 @@
 {namespace femanager=In2code\Femanager\ViewHelpers}
+
 <div class="row control-group">
     <label class="col-sm-5 control-label">
-        <f:translate key="tx_femanager_domain_model_user.branch" />
-        <f:if condition="{femanager:Validation.IsRequiredField(fieldName:'branch')}">
+        <f:translate key="tx_femanager_domain_model_user.noofcounsellor" />
+        <f:if condition="{femanager:validation.IsRequiredField(fieldName:'noofcounsellor')}">
             <span>*</span>
         </f:if>
     </label>
        <div class="controls col-sm-7">
         <femanager:form.textfield
-            id="femanager_field_branch"
-            property="branch"
-            class="form-control" />
+            id="femanager_field_noofcounsellor"  property="noofcounsellor" class="form-control" />
     </div>
 </div>

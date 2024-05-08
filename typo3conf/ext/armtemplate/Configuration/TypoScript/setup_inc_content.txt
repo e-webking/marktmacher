@@ -69,6 +69,9 @@ lib.imgLinks.source = {$cmsImgLinksUid}
 lib.linkList < lib.address
 lib.linkList.source = {$cmsLinkListUid}
 
+lib.imgLinksTwo < lib.address
+lib.imgLinksTwo.source = {$cmsImgLinksTwoUid}
+
 tt_content.stdWrap.innerWrap.cObject = CASE
 tt_content.stdWrap.innerWrap.cObject {
   key.field = frame_class 
@@ -776,6 +779,9 @@ tt_content.gridelements_pi1.20.10.setup {
             10 = TEXT
             10.data = field:flexform_field_vid
             10.wrap = <section class="imgblk parallax-block jarallax" style="background-image: url(uploads/tx_armtemplate/|)">
+            20 = TEXT
+            20.data = field:flexform_field_vid
+            20.wrap = <div class="mobile-visible"><img src="uploads/tx_armtemplate/|"></div>
             wrap = |
         }
         columns {
