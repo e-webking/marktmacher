@@ -15,6 +15,10 @@ CREATE TABLE tx_armpackage_domain_model_package (
 	rebate3to10 double(11,2) DEFAULT '0.00' NOT NULL,
 	rebatemt10 double(11,2) DEFAULT '0.00' NOT NULL,
         mnth smallint(5) unsigned DEFAULT '0' NOT NULL,
+        privatepkg smallint(5) unsigned DEFAULT '0' NOT NULL,
+        additionalcost varchar(255) DEFAULT '' NOT NULL,
+        dacost double(11,2) DEFAULT '0.00' NOT NULL,
+        note text,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -57,6 +61,7 @@ CREATE TABLE tx_armpackage_domain_model_registration (
 	feuser int(11) DEFAULT '0' NOT NULL,
         ptitle varchar(250) DEFAULT '' NOT NULL,
 	qty int(11) DEFAULT '0' NOT NULL,
+        noofpart int(11) DEFAULT '0' NOT NULL,
 	rate double(11,2) DEFAULT '0.00' NOT NULL,
         currency char(3) DEFAULT 'EUR' NOT NULL,
 	amount double(11,2) DEFAULT '0.00' NOT NULL,
@@ -65,6 +70,7 @@ CREATE TABLE tx_armpackage_domain_model_registration (
 	total double(11,2) DEFAULT '0.00' NOT NULL,
 	package int(11) unsigned DEFAULT '0',
         status smallint(5) unsigned DEFAULT '0' NOT NULL,
+        rdate int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

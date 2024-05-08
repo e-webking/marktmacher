@@ -9,6 +9,9 @@
 			<trans-unit id="tx_armpackage_domain_model_package.title">
 				<source>Title</source>
 			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_package.privatepkg">
+				<source>For private users</source>
+			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_package.subtitle">
 				<source>Subtitle</source>
 			</trans-unit>
@@ -43,7 +46,10 @@
 				<source>Pack Title</source>
 			</trans-unit>                        
 			<trans-unit id="tx_armpackage_domain_model_registration.qty">
-				<source>Qty</source>
+				<source>Anzahl Standorte</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_registration.noofpart">
+				<source>Anzahl Seminar-Teilnehmer</source>
 			</trans-unit>
 			<trans-unit id="tx_armpackage_domain_model_registration.rate">
 				<source>Rate</source>
@@ -68,6 +74,9 @@
 			</trans-unit>
                         <trans-unit id="tx_armpackage_domain_model_registration.currency">
 				<source>Currency</source>
+			</trans-unit>
+                        <trans-unit id="tx_armpackage_domain_model_registration.rdate">
+				<source>Reminder Date</source>
 			</trans-unit>
                         <trans-unit id="tx_armpackage_domain_model_branch">
 				<source>Branch</source>

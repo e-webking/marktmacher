@@ -39,6 +39,12 @@ call_user_func(
             'Mlist',
             'Minimal List'
         );
+        
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'ARM.Armpackage',
+            'Plist',
+            'Private Package List'
+        );
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('armpackage', 'Configuration/TypoScript', 'Courses');
 
@@ -86,7 +92,7 @@ call_user_func(
                     'list',	// Submodule key
                     '',     // Position
                     array(
-                        'Package' => 'listall,search',
+                        'Package' => 'listall,search, reminder',
                     ),
                     array(
                         'access' => 'user,group',

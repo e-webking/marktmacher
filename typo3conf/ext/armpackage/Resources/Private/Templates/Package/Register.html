@@ -15,10 +15,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-5 control-label">Preis pro Seminar-TeilnehmerIn Euro</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield id="addcost" name="addcost" class="form-control" value="{package.dacost->f:format.number(decimals:2,decimalSeparator:',',thousandsSeparator:'.')}" readonly="1" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-5 control-label">Anzahl Standorte *</label>
                         <div class="controls col-sm-7">
                             <f:form.textfield type="number" id="packqty" name="qty" class="form-control" value="{qty}" />
                             <div class="pknote">Bitte geben Sie hier die Anzahl Verkaufsstellen an, in denen furnplan installiert ist.</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 control-label">Anzahl Seminar-Teilnehmer *</label>
+                        <div class="controls col-sm-7">
+                            <f:form.textfield type="number" id="noofpart" name="noofpart" class="form-control" value="{noofpart}" />
+                            <div class="pknote">Bitte geben Sie die Anzahl Seminar-Teilnehmer an, die insgesamt von allen Verkaufsstellen teilnehmen werden.</div>
                         </div>
                     </div>
                      <div class="form-group row">

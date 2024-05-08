@@ -51,6 +51,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @inject
      */
     protected $userRepository;
+    
 
     /**
      * action list
@@ -59,10 +60,10 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
-        if($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+        if ($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
              $this->view->assign('login', 1);
         }
-        $packages = $this->packageRepository->findAll();
+        $packages = $this->packageRepository->getNonPrivate();
         $this->view->assign('packages', $packages);
     }
     
@@ -76,7 +77,16 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if($GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
              $this->view->assign('login', 1);
         }
-        $packages = $this->packageRepository->findAll();
+        $packages = $this->packageRepository->getNonPrivate();
+        $this->view->assign('packages', $packages);
+    }
+    
+    /**
+     * List all the private packages
+     */
+    public function listPrivateAction()
+    {
+        $packages = $this->packageRepository->getPrivate();
         $this->view->assign('packages', $packages);
     }
 
@@ -88,8 +98,10 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function registerAction()
     {
         if ($this->request->hasArgument('package')) {
+            
             $pack = $this->request->getArgument('package');
             $qty = 0;
+            $noofpart = 0;
             
             if ($pack > 0) {
                 $package = $this->packageRepository->findByUid($pack);
@@ -102,26 +114,33 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             if ($qty == 0) {
                 $qty = 1;
             }
+            if ($this->request->hasArgument('noofpart')) {
+                $noofpart = intval($this->request->getArgument('noofpart'));
+            }
+            if ($noofpart == 0) {
+                $noofpart = 1;
+            }
             if ($this->request->hasArgument('total')) {
                 $total = $this->request->getArgument('total');
             }
             if ($total == '') {
                 if ($qty == 1) {
-                    $total = $package->getRate() * $qty * $mnth;
+                    $total = ($package->getRate() * $qty * $mnth) + ($package->getDacost() * $noofpart);
                 } elseif($qty == 2) {
-                    $total = ($package->getRate() - $package->getRate() * $package->getRebate2() /100) * $qty * $mnth; 
+                    $total = (($package->getRate() - $package->getRate() * $package->getRebate2() /100) * $qty * $mnth) + ($package->getDacost() * $noofpart); 
                 } elseif($qty > 2 && $qty < 11) {
-                    $total = ($package->getRate() - $package->getRate() * $package->getRebate3to10() /100) * $qty * $mnth; 
+                    $total = (($package->getRate() - $package->getRate() * $package->getRebate3to10() /100) * $qty * $mnth) + ($package->getDacost() * $noofpart); 
                 } else {
-                    $total = ($package->getRate() - $package->getRate() * $package->getRebatemt10() /100) * $qty * $mnth; 
+                    $total = (($package->getRate() - $package->getRate() * $package->getRebatemt10() /100) * $qty * $mnth) + ($package->getDacost() * $noofpart); 
                 }
             }
-            $amount = $package->getRate() * $qty * $mnth;
+            $amount = ($package->getRate() * $qty * $mnth) + ($package->getDacost() * $noofpart);
             $discount = $amount - $total;
             
             $this->view->assign('pack', $package->getTitle());
             $this->view->assign('total', number_format($total,2,",","."));
             $this->view->assign('qty', $qty);
+            $this->view->assign('noofpart', $noofpart);
             $this->view->assign('amount', number_format($amount,2,",","."));
             $this->view->assign('discount', number_format($discount,2,",","."));
             $this->view->assign('feuser', $GLOBALS['TSFE']->fe_user->user['uid']);
@@ -142,10 +161,14 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         if ($this->request->hasArgument('total')) {
             $total = $this->request->getArgument('total');
+            $total = str_replace('.', '', $total);
             $total = str_replace(',', '.', $total);
         }
         if ($this->request->hasArgument('qty')) {
             $qty = $this->request->getArgument('qty');
+        }
+        if ($this->request->hasArgument('noofpart')) {
+            $noofpart = intval($this->request->getArgument('noofpart'));
         }
         if ($this->request->hasArgument('feuser')) {
             $feuser = $this->request->getArgument('feuser');
@@ -159,10 +182,11 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
         if ($this->request->hasArgument('amount')) {
             $amount = $this->request->getArgument('amount');
+            $amount = str_replace('.', '', $amount);
             $amount = str_replace(',', '.', $amount);
         }
-        
-        if ($packuid > 0 && $feuser > 0 && $total > 0 && $qty > 0) {
+
+        if ($packuid > 0 && $feuser > 0 && $total > 0 && $qty > 0 && $noofpart > 0) {
             
             $package = $this->packageRepository->findByUid($packuid);
             // Register the order
@@ -170,6 +194,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $order->setFeuser($feuser);
             $order->setPtitle($package->getTitle());
             $order->setQty($qty);
+            $order->setNoofpart($noofpart);
             $order->setRate($package->getRate());
             $order->setCurrency($this->settings['currency']);
             $order->setDiscount($discount);
@@ -453,6 +478,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                         'pstatus'=>'Pending',
                         'rate'=>  number_format($registration->getRate(),2,",","."),
                         'qty'=>  $registration->getQty(),
+                        'noofpart'=>  $registration->getNoofpart(),
                         'discount'=>  number_format($registration->getDiscount(),2,",","."),
                         'vat'=>  '0,00',
                         'package'=>  $registration->getPtitle()
@@ -629,12 +655,13 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $params = $request->getParsedBody();
         $puid = $params['arguments']['package'];
         $qty = $params['arguments']['qty'];
+        $noofpart = $params['arguments']['noofpart'];
         
-        if (isset($puid) && $qty > 0) {
+        if (isset($puid) && $qty > 0 && $noofpart > 0) {
             
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_armpackage_domain_model_package');
             $queryBuilder->getRestrictions()->removeAll();
-            $rows = $queryBuilder->select('rate','rebate2','rebate3to10','rebatemt10','mnth')
+            $rows = $queryBuilder->select('rate','dacost','rebate2','rebate3to10','rebatemt10','mnth')
                 ->from('tx_armpackage_domain_model_package')
                 ->where(
                     $queryBuilder->expr()->eq('deleted', 0),
@@ -648,16 +675,18 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 
                 $cdata = $rows[0];
                 $rate = $cdata['rate'];
-                $total = $rate * $cdata['mnth'];
+                $acost = $cdata['dacost'];
+                $total = ($rate * $cdata['mnth'] * $qty) + ($acost * $noofpart);
+                
                 if ($qty == 2) {
-                    $total = ($rate - $rate *  $cdata['rebate2'] / 100 ) * $qty * $cdata['mnth'];
+                    $total = (($rate - ($rate *  $cdata['rebate2'] / 100 )) * $qty * $cdata['mnth']) + ($acost * $noofpart);
                 } else if ($qty > 2 && $qty < 11) {
-                    $total = ($rate - $rate *  $cdata['rebate3to10'] / 100 ) * $qty * $cdata['mnth'];
+                    $total = (($rate - ($rate *  $cdata['rebate3to10'] / 100 )) * $qty * $cdata['mnth']) + ($acost * $noofpart);
                 } else if ($qty > 10) {
-                    $total = ($rate - $rate *  $cdata['rebatemt10'] / 100 ) * $qty * $cdata['mnth'];
+                    $total = (($rate - ($rate *  $cdata['rebatemt10'] / 100 )) * $qty * $cdata['mnth']) + ($acost * $noofpart);
                 }
                 //$total = ceil($total);
-                $amount = $rate * $qty * $cdata['mnth'];
+                $amount = ($rate  * $qty * $cdata['mnth']) + ($acost * $noofpart);
                 $discount = number_format(($amount - $total), 2, ",", ".");
                 
                 $arr['status'] = 'OK';
@@ -760,11 +789,98 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     
     /**
      * 
+     * @param \ARM\Armpackage\Domain\Model\Registration $registration
+     */
+    public function reminderAction(\ARM\Armpackage\Domain\Model\Registration $registration) {
+        
+        if($registration != null) {
+            //get the username and email
+            $feuser = $registration->getFeuser();
+            
+            if ($feuser > 0) {
+                
+                $user = $this->userRepository->findByUid($feuser);
+                $name = $user->getCompany();
+                $email = $user->getEmail();
+                
+                $dtNow = new \DateTime("now");
+                $packageMonth = $registration->getPackage()->getMnth();
+                $regDate = $registration->getCrdate();
+                $expDate = $regDate->add(new \DateInterval('P'.$packageMonth.'M'));
+                
+                $registration->setRdate($dtNow);
+                
+                $this->regRepository->update($registration);
+                
+
+                $this->addFlashMessage('Reminder successfuly sent', 
+                   '', \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO);
+                if ($dtNow > $expDate) { //1st reminders
+                    $this->sendBeEmail($email, $name, $expDate, 2);
+                } else {
+                    $this->sendBeEmail($email, $name, $expDate);
+                }
+                
+                $this->redirect('listall');
+            }
+        }
+    }
+    
+    /**
+     * 
      * @param array $arr
      * @return string
      */
     protected function array2Json($arr)
     {
         return json_encode($arr);
+    }
+    
+    /**
+     * 
+     * @param string $email
+     * @param string $name
+     * @param \DateTime $edate
+     * @param int $reminder
+     */
+    protected function sendBeEmail($email, $name, $edate, $reminder=1) {
+        
+        $emailView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+        $emailView->setFormat('html');
+
+        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+        $partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['templateRootPaths'][0]);
+        $templatePathAndFilename = $partialRootPath.'Email/ReminderOne.html';
+        $subject = 'Ihr Abo für das Seminar läuft am '.$edate->format("d-m-Y"); 
+        
+        if ($reminder == 2) {
+            $subject = 'Ihr Abo für die Seminare der furnplan academy ist ausgelaufen';
+            $templatePathAndFilename = $partialRootPath.'Email/ReminderTwo.html';
+        }
+
+        $emailView->setTemplatePathAndFilename($templatePathAndFilename);
+        $emailView->assign('date', $edate->format("d-m-Y"));
+        $extensionName = $this->request->getControllerExtensionName();
+        $emailView->getRequest()->setControllerExtensionName($extensionName);
+        
+        $body = $emailView->render(); 
+
+        // Mail senden
+        $mail = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
+
+        
+        $senderMail = 'admin@marktmacher.com';                       
+        $senderName = 'Marktmacher.com';  
+        
+        if (\TYPO3\CMS\Core\Utility\GeneralUtility::validEmail($email)) {
+            $mail->setFrom(array($senderMail => $senderName))
+                 ->setTo(array($email => $name))
+                 ->setCc(array($senderMail => $senderName))
+                 ->setSubject($subject)
+                 ->setBody($body, 'text/html')
+                 ->send();
+        }
+        
+        return;
     }
 }

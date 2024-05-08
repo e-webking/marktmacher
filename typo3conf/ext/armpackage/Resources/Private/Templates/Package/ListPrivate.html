@@ -1,0 +1,17 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:layout name="Default" />
+    <f:section name="content">
+            <f:flashMessages />
+            <br><br>
+            <f:if condition="{packages}">
+                <div class="row">
+                    <f:for each="{packages}" as="package">
+                        <div class="col-sm-4">
+                            <f:render partial="Package/List" arguments="{_all}" />
+                        </div>
+                    </f:for>
+                </div>
+            </f:if>
+            <br><br>
+    </f:section>
+</html>

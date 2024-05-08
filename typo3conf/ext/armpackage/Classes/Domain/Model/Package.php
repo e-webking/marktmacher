@@ -42,6 +42,13 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
+    public $privatepkg = 0;
+
+
+    /**
+     *
+     * @var int
+     */
     protected $mnth = 0;
 
     /**
@@ -51,6 +58,13 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $rate = 0.0;
     
+    /**
+     * 
+     * @var float
+     */
+    protected $dacost = 0.0;
+
+
     /**
      *
      * @var float
@@ -77,6 +91,18 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var float
      */
     protected $rebatemt10 = 0.0;
+    
+    /**
+     * 
+     * @var string
+     */
+    protected $additionalcost = '';
+    
+    /**
+     * 
+     * @var string
+     */
+    protected $note = '';
 
     /**
      * Returns the title
@@ -139,6 +165,27 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBrief($brief)
     {
         $this->brief = $brief;
+    }
+    
+    /**
+     * Returns the privatepkg
+     *
+     * @return int $privatepkg
+     */
+    public function getPrivatepkg()
+    {
+        return $this->privatepkg;
+    }
+
+    /**
+     * Sets the privatepkg
+     *
+     * @param int $privatepkg
+     * @return void
+     */
+    public function setPrivatepkg($privatepkg)
+    {
+        $this->privatepkg = $privatepkg;
     }
     
     /**
@@ -265,5 +312,68 @@ class Package extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setRebatemt10($rebatemt10)
     {
         $this->rebatemt10 = $rebatemt10;
+    }
+    
+    /**
+     * Returns the additionalcost
+     *
+     * @return string $additionalcost
+     */
+    public function getAdditionalcost()
+    {
+        return $this->additionalcost;
+    }
+
+    /**
+     * Sets the additionalcost
+     *
+     * @param string $additionalcost
+     * @return void
+     */
+    public function setAdditionalcost($additionalcost)
+    {
+        $this->additionalcost = $additionalcost;
+    }
+    
+    /**
+     * Returns the note
+     *
+     * @return string $note
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Sets the note
+     *
+     * @param string $note
+     * @return void
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+    
+    /**
+     * Returns the dacost
+     *
+     * @return float $dacost
+     */
+    public function getDacost()
+    {
+        return $this->dacost;
+    }
+
+    /**
+     * Sets the dacost
+     *
+     * @param float $dacost
+     * @return void
+     */
+    public function setDacost($dacost)
+    {
+        $this->dacost = $dacost;
     }
 }

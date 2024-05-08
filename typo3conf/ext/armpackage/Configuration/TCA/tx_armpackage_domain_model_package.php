@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,subtitle,brief,mnth,dsprate,rate,rebate2,rebate3to10,rebatemt10',
+        'searchFields' => 'title,subtitle,brief,mnth,dsprate,rate,rebate2,rebate3to10,rebatemt10,dacost',
         'iconfile' => 'EXT:armpackage/Resources/Public/Icons/tx_armpackage_domain_model_package.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, brief, mnth, dsprate, rate, rebate2, rebate3to10, rebatemt10',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, privatepkg, title, subtitle, brief, mnth, dsprate, rate, dacost, rebate2, rebate3to10, rebatemt10, additionalcost, note',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, brief, mnth, dsprate, rate, rebate2, rebate3to10, rebatemt10, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, privatepkg, title, subtitle, brief, mnth, dsprate, rate, dacost, rebate2, rebate3to10, rebatemt10, additionalcost, note, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -115,7 +115,18 @@ return [
                 ],
             ],
         ],
-
+        'privatepkg' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_package.privatepkg',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                    ]
+                ],
+            ],
+        ],
         'title' => [
             'exclude' => true,
             'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_package.title',
@@ -141,6 +152,18 @@ return [
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
+                'eval' => 'trim',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'default'
+            ]
+        ],
+        'note' => [
+            'exclude' => true,
+            'label' => 'Foot note',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
                 'eval' => 'trim',
                 'enableRichtext' => true,
                 'richtextConfiguration' => 'default'
@@ -200,6 +223,23 @@ return [
                 'eval' => 'double2'
             ]
         ],
-    
+        'additionalcost' => [
+            'exclude' => true,
+            'label' => 'Additional Cost (Text display)',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'dacost' => [
+            'exclude' => true,
+            'label' => 'Additional Cost (Numberic for calculation)',
+            'config' => [
+                'type' => 'input',
+                'size' => 10,
+                'eval' => 'double2'
+            ]
+        ],
     ],
 ];

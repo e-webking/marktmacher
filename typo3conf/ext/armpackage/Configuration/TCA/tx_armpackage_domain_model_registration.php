@@ -13,19 +13,20 @@ return [
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
+        'default_sortby' => 'uid DESC',
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'feuser,ptitle,qty,rate,amount,discount,vat,total,package,status,',
+        'searchFields' => 'feuser,ptitle,qty,noofpart,rate,amount,discount,vat,total,package,status,rdate,',
         'iconfile' => 'EXT:armpackage/Resources/Public/Icons/tx_armpackage_domain_model_registration.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, ptitle, status, qty, rate, currency, amount, discount, vat, total, package',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, ptitle, status, qty, noofpart, rate, currency, amount, discount, vat, total, package, rdate',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, ptitle, status, rate, currency, qty, amount, discount, vat, total, package, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, feuser, ptitle, status, rate, currency, qty, noofpart, amount, discount, vat, total, package, rdate, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -121,9 +122,11 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_registration.feuser',
             'config' => [
-                'type' => 'input',
-                'size' => 4,
-                'eval' => 'int'
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'foreign_table' => 'fe_users',
+                'minitems' => 0,
+                'maxitems' => 1,
             ]
         ],
         'ptitle' => [
@@ -162,6 +165,15 @@ return [
         'qty' => [
             'exclude' => true,
             'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_registration.qty',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
+            ]
+        ],
+        'noofpart'=> [
+            'exclude' => true,
+            'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_registration.noofpart',
             'config' => [
                 'type' => 'input',
                 'size' => 4,
@@ -212,6 +224,17 @@ return [
                 'size' => 30,
                 'eval' => 'double2'
             ]
+        ],
+        'rdate' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:armpackage/Resources/Private/Language/locallang_db.xlf:tx_armpackage_domain_model_registration.rdate',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 13,
+                'eval' => 'date',
+                'default' => 0,
+            ],
         ],
         'package' => [
             'exclude' => true,

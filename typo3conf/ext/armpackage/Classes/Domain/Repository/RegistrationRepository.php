@@ -16,5 +16,4 @@ namespace ARM\Armpackage\Domain\Repository;
  * The repository for Registrations
  */
 class RegistrationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
-{
-    }
+{}

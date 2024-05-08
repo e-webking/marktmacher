@@ -4,10 +4,13 @@
     <div class="pbrief"><f:format.raw>{package.brief}</f:format.raw></div>
     <f:if condition="{package.dsprate}">
         <f:if condition="{0:package.dsprate} > {0:package.rate}">
-            <div class="strprice text-center"><strike>&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.dsprate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</strike></div>
+            <div class="strprice text-center"><strike>&euro; <f:format.number decimals="2" decimalSeparator="," thousandsSeparator="." >{package.dsprate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</strike></div>
         </f:if>
     </f:if>
-    <div class="pprice text-center">&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.rate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</div>
+    <div class="pprice text-center">&euro; <f:format.number decimals="2" decimalSeparator="," thousandsSeparator="." >{package.rate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</div><br>
+    <f:if condition="{package.additionalcost}">
+        <p class="text-center">{package.additionalcost}</p>
+    </f:if>
     <p class="text-center">
     <f:if condition="{login}">
         <f:then>
@@ -18,5 +21,11 @@
         </f:else>
     </f:if>
     </p>
-    <p>* <f:translate key="tx_armpackage_domain_model_package.note" /></p>
+    <f:if condition="{package.privatepkg}">
+        <f:else>
+            <div class="pnote text-center">
+                <f:format.raw>{package.note}</f:format.raw>
+            </div>
+        </f:else>
+    </f:if>
 </div>

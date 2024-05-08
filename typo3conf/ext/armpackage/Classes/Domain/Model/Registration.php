@@ -44,6 +44,12 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $qty = 0;
     
     /**
+     * 
+     * @var int
+     */
+    protected $noofpart=0;
+
+    /**
      * status
      *
      * @var int
@@ -91,6 +97,12 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var float
      */
     protected $total = 0.0;
+    
+    /**
+     *
+     * @var DateTime 
+     */
+    protected $rdate;
 
     /**
      * package
@@ -139,6 +151,28 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setQty($qty)
     {
         $this->qty = $qty;
+    }
+    //noofpart
+    
+    /**
+     * Returns the noofpart
+     *
+     * @return int $noofpart
+     */
+    public function getNoofpart()
+    {
+        return $this->noofpart;
+    }
+
+    /**
+     * Sets the noofpart
+     *
+     * @param int $noofpart
+     * @return void
+     */
+    public function setNoofpart($noofpart)
+    {
+        $this->noofpart = $noofpart;
     }
     
     /**
@@ -349,4 +383,23 @@ class Registration extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCrdate($crdate) {
         $this->crdate = $crdate;
     }
+    
+    /**
+     * Returns the rdate
+     *
+     * @return DateTime $rdate
+     */
+    public function getRdate() {
+        return $this->rdate;
+    }
+
+   /**
+    * Sets the rdate
+    *
+    * @param DateTime $rdate
+    * @return void
+    */
+   public function setRdate($rdate) {
+        $this->rdate = $rdate;
+   }
 }

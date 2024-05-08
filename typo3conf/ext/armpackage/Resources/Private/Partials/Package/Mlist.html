@@ -6,8 +6,11 @@
             <div class="strprice text-center"><strike>&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.dsprate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</strike></div>
         </f:if>
     </f:if>
-    <div class="pprice text-center">&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.rate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</div>
-    <div class="pnote text-center">* Der Abo Preis pro Monat gilt pro Standort, an dem furnplan installiert ist und angewendet wird.</div>
+    <div class="pprice text-center">&euro; <f:format.number decimals="1" decimalSeparator="," thousandsSeparator="." >{package.rate}</f:format.number> / <f:translate key="tx_armpackage_domain_model_package.month" />*</div><br>
+    <f:if condition="{package.additionalcost}">
+        <p class="text-center">{package.additionalcost}</p>
+    </f:if>
+    <div class="pnote text-center"><f:format.raw>{package.note}</f:format.raw></div>
     <p class="text-center">
         <f:link.action action="register" arguments="{package:package}" class="reglink">jetzt bestellen</f:link.action>
     </p>

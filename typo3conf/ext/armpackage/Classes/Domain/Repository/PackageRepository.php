@@ -17,4 +17,39 @@ namespace ARM\Armpackage\Domain\Repository;
  */
 class PackageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+    /**
+     * 
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function getNonPrivate() {
+        
+        $query = $this->createQuery();
+        $constraints = array();
+        $constraints[] = $query->equals('hidden',0);
+        $constraints[] = $query->equals('privatepkg', 0);
+        
+        $query->matching(
+                $query->logicalAnd($constraints)
+        );
+
+        return $query->execute();
     }
+    
+    /**
+     * 
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function getPrivate() {
+        
+        $query = $this->createQuery();
+        $constraints = array();
+        $constraints[] = $query->equals('hidden',0);
+        $constraints[] = $query->equals('privatepkg', 1);
+        
+        $query->matching(
+                $query->logicalAnd($constraints)
+        );
+
+        return $query->execute();
+    }
+}

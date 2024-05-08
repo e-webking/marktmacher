@@ -17,20 +17,32 @@
         </f:else>
     </f:if></td>
     <td>{reg.currency} {reg.total}</td>
+    
+    <f:switch expression="{reg.status}">
+        <f:case value="3">
+            <td>Rejected</td>
+            <td>-</td>
+            <td>-</td>
+        </f:case>
+        <f:case value="2">
+            <td>Paid</td>
+            <td><f:format.date format="d.m.Y">{arm:expiry(uid:reg.uid)}</f:format.date></td>
+            <td><f:format.date format="d.m.Y">{reg.rdate}</f:format.date></td>
+        </f:case>
+        <f:case value="1">
+            <td>Unpaid</td>
+            <td>-</td>
+            <td>-</td>
+        </f:case>
+        <f:case value="0">
+            <td>Unpaid</td>
+            <td>-</td>
+            <td>-</td>
+        </f:case>
+    </f:switch>
     <td>
-        <f:switch expression="{reg.status}">
-            <f:case value="3">
-                Rejected
-            </f:case>
-            <f:case value="2">
-                Paid
-            </f:case>
-            <f:case value="1">
-                Unpaid
-            </f:case>
-            <f:case value="0">
-                Unpaid
-            </f:case>
-        </f:switch>
+        <f:if condition="{arm:sendReminder(uid:reg.uid)}">
+            <f:link.action action="reminder" arguments="{registration:reg}">Send Reminder</f:link.action>
+        </f:if>
     </td>
 </tr>
