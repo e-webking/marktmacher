@@ -8,7 +8,7 @@
                         checked="false"
                         additionalAttributes="{femanager:Validation.FormValidationData(settings:settings,fieldName:'terms')}" />
                 <f:translate key="tx_femanager_domain_model_user.terms" />
-                <f:if condition="{femanager:Validation.IsRequiredField(fieldName:'terms')}">
+                <f:if condition="{femanager:Validation.IsTermsField(fieldName:'terms')}">
                     <span>*</span>
                 </f:if>
                 <f:if condition="{settings.misc.termsUrl}">

@@ -30,6 +30,7 @@ class User extends \In2code\Femanager\Domain\Model\User
      */
     protected $responsible;
 
+
     /**
      * Returns the gender
      *
@@ -96,4 +97,5 @@ class User extends \In2code\Femanager\Domain\Model\User
         $this->responsible = $responsible;
         return $this;
     }
+
 }

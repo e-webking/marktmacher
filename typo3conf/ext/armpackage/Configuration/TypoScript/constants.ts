@@ -22,7 +22,7 @@ plugin.tx_armpackage {
         paymentUid = 23
         currency = EUR
         subject = Kursanmeldung unter www.marktmacher.com
-        bankdata = Raiffeisenbank  Hauptstrasse 19   8840 Einsiedeln   SWIFT-BIC: RAIFCH22   Cl No. 81361 IBAN: CH88 8080 8006 6519 4375 5
+        bankdata = Raiffeisenbank  Hauptstrasse 19   8840 Einsiedeln   SWIFT-BIC: RAIFCH22   Cl No. 81361 IBAN: CH63 8080 8007 0607 7136 6
     }
 }
 

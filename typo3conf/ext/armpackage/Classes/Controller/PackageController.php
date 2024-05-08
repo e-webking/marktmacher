@@ -440,7 +440,7 @@ class PackageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $pdf::writeCell(' ',20, 5, 1, 0);
             $pdf::writeCell(number_format($registration->getTotal(),2,",","."),30, 5, 1, 1, 'R');
             $pdf::setFont('helvetica',8,'');
-            $pdf::writeCell('      Bankverbindung: ',180, 5, 1, 1);
+            $pdf::writeCell('       Bankverbindung: Begünstigter: Marcel Kuriger Marktmacher.com',180, 5, 1, 1);
             $pdf::writeCell('      '.$this->settings['bankdata'],180, 5, 1, 1);
             
             $filename = 'Rechnung_'.$registration->getUid().'.pdf';
